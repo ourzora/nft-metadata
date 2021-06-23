@@ -13,8 +13,10 @@ export async function parseGenericMetadata(
   const resp = await fetch(cloudflareIPFSURI)
   const metadata = await resp.json()
 
-  if (!metadata.name || !metadata.image) {
-    throw new Error('Required params from metadata missing')
+  if (!metadata.image && !metadata.animation_url) {
+    throw new Error(
+      `Invalid metadata required content params from metadata missing`,
+    )
   }
 
   const imageURI = getIPFSUrl(metadata.image)
@@ -22,20 +24,15 @@ export async function parseGenericMetadata(
     ? getIPFSUrl(metadata.animation_url)
     : null
 
-  const {
-    name,
-    description = '',
-    attributes,
-    external_url: externalURL,
-  } = metadata
+  const { name, description, attributes, external_url: externalURL } = metadata
   const contentURI = animationURI || imageURI
 
   return {
     metadata,
-    name,
-    description,
     tokenURI: publicTokenURI,
     contentURI,
+    ...(name && { name }),
+    ...(description && { description }),
     ...(attributes && { attributes }),
     ...(externalURL && { externalURL }),
   }

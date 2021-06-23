@@ -1,24 +1,23 @@
-import { Parser } from '../../src/parser'
-import { RARIBLE_TOKEN_ADDRESS } from '../../src/constants/addresses'
-import RARIBLE_METADATA_STUB from '../mock-reponses/contracts/rarible/301_962.json'
-import { testProvider } from '../mock-reponses/setupProvider'
+import { Parser, RARIBLE_TOKEN_ADDRESS } from '../../src'
+import METADATA_STUB from '../mock-reponses/contracts/rarible/301_962.json'
+import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
 
-const RARIBLE_MAINNET_MOCK = {
+const RARIBLE_CRITERIA = {
   input: {
     tokenId:
       '30105810670306411381802272225292624615592980350863712708305530245480406056962',
     tokenAddress: RARIBLE_TOKEN_ADDRESS,
   },
   output: {
-    metadata: RARIBLE_METADATA_STUB,
-    name: RARIBLE_METADATA_STUB.name,
-    description: RARIBLE_METADATA_STUB.description,
+    metadata: METADATA_STUB,
+    name: METADATA_STUB.name,
+    description: METADATA_STUB.description,
     tokenURI:
       'https://ipfs.io/ipfs/QmfHrsEpXXrvi2dTTNake723kkMapDQXeuYDsVmSRdsQNH',
-    contentURI: RARIBLE_METADATA_STUB.image,
-    externalURL: RARIBLE_METADATA_STUB.external_url,
-    attributes: RARIBLE_METADATA_STUB.attributes,
+    contentURI: METADATA_STUB.image,
+    externalURL: METADATA_STUB.external_url,
+    attributes: METADATA_STUB.attributes,
   },
 }
 
@@ -29,12 +28,12 @@ describe('Rarible ERC721', () => {
     jest.setTimeout(10000)
   })
 
-  it('should be able to fetch and parse metadata for a rarible erc721', async () => {
+  it(`should be able to fetch and parse metadata for token id: ${RARIBLE_CRITERIA.input.tokenId}`, async () => {
     const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
-      RARIBLE_MAINNET_MOCK.input.tokenAddress,
-      RARIBLE_MAINNET_MOCK.input.tokenId,
+      RARIBLE_CRITERIA.input.tokenAddress,
+      RARIBLE_CRITERIA.input.tokenId,
     )
-    expect(meta).toStrictEqual(RARIBLE_MAINNET_MOCK.output)
+    expect(meta).toStrictEqual(RARIBLE_CRITERIA.output)
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

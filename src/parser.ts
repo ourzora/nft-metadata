@@ -6,7 +6,7 @@ import { parserLookup } from './parsers'
 export interface NftMetadata {
   metadata: any
 
-  name: string
+  name?: string
   description?: string
 
   ownerAddress: string
