@@ -29,11 +29,20 @@ describe('Sorare ERC721', () => {
   })
 
   it(`should be able to fetch and parse metadata for token id: ${SORARE_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
-      SORARE_CRITERIA.input.tokenAddress,
-      SORARE_CRITERIA.input.tokenId,
-    )
-    expect(meta).toStrictEqual(SORARE_CRITERIA.output)
+    const { ownerAddress, attributes, metadata, ...meta } =
+      await parser.fetchAndParseTokenMeta(
+        SORARE_CRITERIA.input.tokenAddress,
+        SORARE_CRITERIA.input.tokenId,
+      )
+    const {
+      attributes: outputAttributes,
+      metadata: outputMetadata,
+      ...immutableOutput
+    } = SORARE_CRITERIA.output
+
+    expect(meta).toStrictEqual(immutableOutput)
+    expect(attributes).toBeDefined()
+    expect(attributes).toBeDefined()
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

@@ -15,6 +15,7 @@ export interface NftMetadata {
   contentURI: string
 
   externalLink?: string
+  attributes?: Record<string, any>[]
 }
 
 export class Parser {

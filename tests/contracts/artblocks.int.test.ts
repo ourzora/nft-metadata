@@ -1,0 +1,68 @@
+import {
+  ART_BLOCKS_CURATED_TOKEN_ADDRESS,
+  ART_BLOCKS_TOKEN_ADDRESS,
+  Parser,
+} from '../../src'
+import METADATA_STUB from '../mock-reponses/contracts/artblocks/91000216.json'
+import CURATED_METADATA_STUB from '../mock-reponses/contracts/artblocks/curated/100.json'
+import { testProvider } from '../setupProvider'
+import { isAddress } from '@ethersproject/address'
+
+const ART_BLOCKS_CRITERIA = {
+  input: {
+    tokenId: '91000216',
+    tokenAddress: ART_BLOCKS_TOKEN_ADDRESS,
+  },
+  output: {
+    metadata: METADATA_STUB,
+    name: METADATA_STUB.name,
+    description: METADATA_STUB.description,
+    tokenURI: 'https://api.artblocks.io/token/91000216',
+    contentURI: METADATA_STUB.animation_url,
+    previewURI: METADATA_STUB.image,
+    attributes: METADATA_STUB.traits,
+    externalURL: METADATA_STUB.external_url,
+  },
+}
+const ART_BLOCKS_CURATED_CRITERIA = {
+  input: {
+    tokenId: '100',
+    tokenAddress: ART_BLOCKS_CURATED_TOKEN_ADDRESS,
+  },
+  output: {
+    metadata: CURATED_METADATA_STUB,
+    name: CURATED_METADATA_STUB.name,
+    description: CURATED_METADATA_STUB.description,
+    tokenURI: 'https://api.artblocks.io/token/100',
+    contentURI: CURATED_METADATA_STUB.animation_url,
+    previewURI: CURATED_METADATA_STUB.image,
+    attributes: CURATED_METADATA_STUB.traits,
+    externalURL: CURATED_METADATA_STUB.external_url,
+  },
+}
+
+describe('ArtBlocks ERC721', () => {
+  const parser = new Parser(testProvider)
+
+  beforeEach(() => {
+    jest.setTimeout(10000)
+  })
+
+  it(`should be able to fetch and parse metadata for token id: ${ART_BLOCKS_CRITERIA.input.tokenId}`, async () => {
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+      ART_BLOCKS_CRITERIA.input.tokenAddress,
+      ART_BLOCKS_CRITERIA.input.tokenId,
+    )
+    expect(meta).toStrictEqual(ART_BLOCKS_CRITERIA.output)
+    expect(isAddress(ownerAddress)).toBeTruthy()
+  })
+
+  it(`should be able to fetch and parse metadata for curated token id: ${ART_BLOCKS_CURATED_CRITERIA.input.tokenId}`, async () => {
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+      ART_BLOCKS_CURATED_CRITERIA.input.tokenAddress,
+      ART_BLOCKS_CURATED_CRITERIA.input.tokenId,
+    )
+    expect(meta).toStrictEqual(ART_BLOCKS_CURATED_CRITERIA.output)
+    expect(isAddress(ownerAddress)).toBeTruthy()
+  })
+})

@@ -1,0 +1,50 @@
+{
+  "platform": "Art Blocks Factory",
+  "name": "planets #216",
+  "curation_status": "factory",
+  "series": "N/A",
+  "description": "A minimal and geometric interpretation of a planetary system. Additional project feature(s) => Rotation: clockwise, Type: matter, Binary: false, Orbits: 7, Rings: 3, Moons: 0, Ufos: 0",
+  "external_url": "https://www.artblocks.io/token/91000216",
+  "artist": "donnoh",
+  "royaltyInfo": {
+    "artistAddress": "0x33d66941465ac776c38096cb1bc496c673ae7390",
+    "additionalPayee": "0x0000000000000000000000000000000000000000",
+    "additionalPayeePercentage": "0",
+    "royaltyFeeByID": "10"
+  },
+  "collection_name": "planets by donnoh",
+  "traits": [
+    { "trait_type": "planets", "value": "All planets" },
+    { "trait_type": "planets", "value": "Rotation: clockwise" },
+    { "trait_type": "planets", "value": "Type: matter" },
+    { "trait_type": "planets", "value": "Binary: false" },
+    { "trait_type": "planets", "value": "Orbits: 7" },
+    { "trait_type": "planets", "value": "Rings: 3" },
+    { "trait_type": "planets", "value": "Moons: 0" },
+    { "trait_type": "planets", "value": "Ufos: 0" }
+  ],
+  "payout_address": "0x8E9398907d036e904ffF116132ff2Be459592277",
+  "features": [
+    "Rotation: clockwise",
+    "Type: matter",
+    "Binary: false",
+    "Orbits: 7",
+    "Rings: 3",
+    "Moons: 0",
+    "Ufos: 0"
+  ],
+  "website": "https://twitter.com/lucadonnoh",
+  "is dynamic": true,
+  "script type": "p5js",
+  "aspect ratio (w/h)": "1",
+  "uses hash": true,
+  "tokenID": "91000216",
+  "token hash": "0xb561d04fc80811fdc83dd2ef9b07ed357e568b5c10decba8f88a9221b15c8215",
+  "license": "CC BY-NC 4.0",
+  "animation_url": "https://api.artblocks.io/generator/91000216",
+  "image": "https://api.artblocks.io/image/91000216",
+  "interactive_nft": {
+    "code_uri": "https://api.artblocks.io/generator/91000216",
+    "version": "0.0.9"
+  }
+}

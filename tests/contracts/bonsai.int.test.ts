@@ -15,6 +15,7 @@ const BONSAI_CRITERIA = {
     tokenURI:
       'https://ipfs.io/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100',
     contentURI: METADATA_STUB.animation_url,
+    previewURI: METADATA_STUB.image,
     attributes: METADATA_STUB.attributes,
   },
 }

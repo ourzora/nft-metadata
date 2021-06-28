@@ -1,0 +1,20 @@
+{
+  "id":"100",
+  "name":"Parcel 0,100",
+  "description":"",
+  "image":"https://api.decentraland.org/v2/parcels/0/100/map.png?size=24&width=1024&height=1024",
+  "external_url":"https://market.decentraland.org/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100",
+  "attributes":[
+    {
+      "trait_type":"X",
+      "value":0,
+      "display_type":"number"
+    },
+    {
+      "trait_type":"Y",
+      "value":100,
+      "display_type":"number"
+    }
+  ],
+  "background_color":"000000"
+}
