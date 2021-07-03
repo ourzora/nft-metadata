@@ -12,9 +12,10 @@ const ZORA_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    contentURI:
+    contentURL:
       'https://ipfs.fleek.co/ipfs/bafkreic4zqxiofoxuf6dcefp4n5ykynyjncq3ohpz4mh3edet4qseaifb4',
-    tokenURI:
+    contentURLMimeType: 'text/plain',
+    tokenURL:
       'https://ipfs.fleek.co/ipfs/bafkreic364j5bx3tai5esijlnicpssmmudqlo4nwz5reftkpz6w2qrdhym',
   },
 }

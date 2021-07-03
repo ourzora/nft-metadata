@@ -12,10 +12,12 @@ const BONSAI_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://ipfs.io/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100',
-    contentURI: METADATA_STUB.animation_url,
-    previewURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.animation_url,
+    contentURLMimeType: 'video/mp4',
+    previewURL: METADATA_STUB.image,
+    previewURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,
   },
 }

@@ -2,6 +2,7 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import { getAddress } from '@ethersproject/address'
 import { fetcherLookup } from './fetchers'
 import { parserLookup } from './parsers'
+import { IPFS_IO_GATEWAY } from './utils/ipfs'
 
 export interface NftMetadata {
   metadata: any
@@ -11,15 +12,23 @@ export interface NftMetadata {
 
   ownerAddress: string
 
-  tokenURI: string
-  contentURI: string
+  tokenURL: string
+
+  contentURL: string
+  contentURLMimeType: string
+
+  previewURL?: string
+  previewURLMimeType?: string
 
   externalLink?: string
   attributes?: Record<string, any>[]
 }
 
 export class Parser {
-  constructor(private readonly provider: JsonRpcProvider) {}
+  constructor(
+    private readonly provider: JsonRpcProvider,
+    private readonly ipfsBaseURL: string = IPFS_IO_GATEWAY,
+  ) {}
 
   public async fetchUnderlyingContractData(
     contractAddress: string,
@@ -35,7 +44,13 @@ export class Parser {
     tokenURI: string,
   ) {
     const parser = parserLookup(contractAddress)
-    return parser(this.provider, contractAddress, tokenId, tokenURI)
+    return parser(
+      this.provider,
+      this.ipfsBaseURL,
+      contractAddress,
+      tokenId,
+      tokenURI,
+    )
   }
 
   public async fetchAndParseTokenMeta(
@@ -56,7 +71,6 @@ export class Parser {
     )
 
     return {
-      tokenURI,
       ownerAddress,
       ...parsedMetadata,
     }

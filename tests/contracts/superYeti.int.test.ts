@@ -12,9 +12,10 @@ const SUPER_YET_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://defra.systems/metadata/QmXFtqihiEDP5sJwME5dNB3NnYk6LeiepbD4RPP1XES6Ys/asset/100',
-    contentURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.image,
+    contentURLMimeType: 'image/jpeg',
     attributes: METADATA_STUB.attributes,
   },
 }

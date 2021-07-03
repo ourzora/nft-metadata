@@ -12,9 +12,10 @@ const VEE_FRIENDS_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://erc721.veefriends.com/api/metadata/0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb/294',
-    contentURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.image,
+    contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,
     externalURL: METADATA_STUB.external_url,
   },

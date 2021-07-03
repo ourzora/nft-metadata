@@ -13,9 +13,10 @@ const RARIBLE_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://ipfs.io/ipfs/QmfHrsEpXXrvi2dTTNake723kkMapDQXeuYDsVmSRdsQNH',
-    contentURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.image,
+    contentURLMimeType: 'image/jpeg',
     externalURL: METADATA_STUB.external_url,
     attributes: METADATA_STUB.attributes,
   },

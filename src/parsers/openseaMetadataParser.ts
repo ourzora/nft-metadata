@@ -1,13 +1,15 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { getIPFSUrl } from '../utils/ipfs'
-import { fetchMetadata } from '../utils/fetch'
+import { fetchMetadata, fetchMimeType } from '../utils/fetch'
+import { NftMetadata } from '../parser'
 
 export async function parseGenericMetadata(
   _: JsonRpcProvider,
+  ipfsBaseURL: string,
   __: string,
   ___: string,
   tokenURI: string,
-) {
+): Promise<NftMetadata> {
   const publicTokenURI = getIPFSUrl(tokenURI)
   const metadata = await fetchMetadata(tokenURI)
 
@@ -17,20 +19,27 @@ export async function parseGenericMetadata(
     )
   }
 
-  const imageURI = getIPFSUrl(metadata.image)
+  const imageURI = getIPFSUrl(metadata.image, ipfsBaseURL)
   const animationURI = metadata?.animation_url
-    ? getIPFSUrl(metadata.animation_url)
+    ? getIPFSUrl(metadata.animation_url, ipfsBaseURL)
     : null
 
   const { name, description, attributes, external_url: externalURL } = metadata
-  const contentURI = animationURI || imageURI
-  const previewURI = imageURI && animationURI ? imageURI : undefined
+  const contentURL = animationURI || imageURI
+  const previewURL = imageURI && animationURI ? imageURI : undefined
+
+  const contentURLMimeType = await fetchMimeType(contentURL)
+  const previewURLMimeType = previewURL
+    ? await fetchMimeType(previewURL)
+    : undefined
 
   return {
     metadata,
-    tokenURI: publicTokenURI,
-    contentURI,
-    ...(previewURI && { previewURI }),
+    tokenURL: publicTokenURI,
+    contentURL,
+    contentURLMimeType,
+    ...(previewURL && { previewURL }),
+    ...(previewURLMimeType && { previewURLMimeType }),
     ...(name && { name }),
     ...(description && { description }),
     ...(attributes && { attributes }),

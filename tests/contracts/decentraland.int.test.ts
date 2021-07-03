@@ -11,9 +11,10 @@ const DECENTRALAND_CRITERIA = {
   output: {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
-    tokenURI:
+    tokenURL:
       'https://api.decentraland.org/v2/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100',
-    contentURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.image,
+    contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,
     externalURL: METADATA_STUB.external_url,
   },

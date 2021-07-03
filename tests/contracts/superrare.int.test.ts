@@ -12,9 +12,10 @@ const SUPERARE_CRITERIA = {
     metadata: METADATA_STUB,
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://ipfs.pixura.io/ipfs/QmfQs1DPrZgmR7osnWvRuXpDvqP5ihfEfSBKPGAQyeL1WS/metadata.json',
-    contentURI: METADATA_STUB.image,
+    contentURL: METADATA_STUB.image,
+    contentURLMimeType: 'image/gif',
   },
 }
 

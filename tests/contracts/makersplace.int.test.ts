@@ -13,9 +13,10 @@ const IMAGE_CRITERIA = {
     metadata: IMAGE_METADATA_STUB,
     name: IMAGE_METADATA_STUB.name,
     description: IMAGE_METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://ipfsgateway.makersplace.com/ipfs/QmQZ66nmWPRFTqfuxVuAMHKb57xwhDZfGkSDGd7MJjxbWm',
-    contentURI: IMAGE_METADATA_STUB.imageUrl,
+    contentURL: IMAGE_METADATA_STUB.imageUrl,
+    contentURLMimeType: 'image/jpeg',
     attributes: IMAGE_METADATA_STUB.attributes,
   },
 }
@@ -28,10 +29,12 @@ const VIDEO_CRITERIA = {
     metadata: VIDEO_METADATA_STUB,
     name: VIDEO_METADATA_STUB.name,
     description: VIDEO_METADATA_STUB.description,
-    tokenURI:
+    tokenURL:
       'https://ipfsgateway.makersplace.com/ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU',
-    contentURI: VIDEO_METADATA_STUB.properties.preview_media_file2.description,
-    previewURI: VIDEO_METADATA_STUB.imageUrl,
+    contentURL: VIDEO_METADATA_STUB.properties.preview_media_file2.description,
+    contentURLMimeType: 'video/mp4',
+    previewURL: VIDEO_METADATA_STUB.imageUrl,
+    previewURLMimeType: 'image/jpeg',
     attributes: VIDEO_METADATA_STUB.attributes,
   },
 }

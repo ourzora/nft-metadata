@@ -3,12 +3,14 @@ import { parseGenericMetadata } from './openseaMetadataParser'
 
 export async function parseArtblocksMetadata(
   provider: JsonRpcProvider,
+  ipfsBaseURL: string,
   contractAddress: string,
   tokenId: string,
   tokenURI: string,
 ) {
   const baseMeta = await parseGenericMetadata(
     provider,
+    ipfsBaseURL,
     contractAddress,
     tokenId,
     tokenURI,
