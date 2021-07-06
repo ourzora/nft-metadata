@@ -35,7 +35,11 @@ export class Parser {
     tokenId: string,
   ) {
     const fetcher = fetcherLookup(contractAddress)
-    return fetcher(this.provider, contractAddress, tokenId)
+    return fetcher({
+      provider: this.provider,
+      contractAddress,
+      tokenId,
+    })
   }
 
   public async parseTokenMetadata(
@@ -44,13 +48,13 @@ export class Parser {
     tokenURI: string,
   ) {
     const parser = parserLookup(contractAddress)
-    return parser(
-      this.provider,
-      this.ipfsBaseURL,
+    return parser({
+      provider: this.provider,
       contractAddress,
       tokenId,
       tokenURI,
-    )
+      ipfsBaseURL: this.ipfsBaseURL,
+    })
   }
 
   public async fetchAndParseTokenMeta(

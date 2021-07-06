@@ -1,12 +1,12 @@
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
 import { getAddress } from '@ethersproject/address'
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { FetcherConfig } from './index'
 
-export async function fetchUnderlyingContractData(
-  provider: JsonRpcProvider,
-  contractAddress: string,
-  tokenId: string,
-) {
+export async function defaultFetcher({
+  provider,
+  contractAddress,
+  tokenId,
+}: FetcherConfig) {
   const erc721Contract = Erc721Factory.connect(contractAddress, provider)
 
   const promises = [

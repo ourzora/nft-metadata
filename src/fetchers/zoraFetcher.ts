@@ -1,12 +1,12 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
 import { getAddress } from '@ethersproject/address'
+import { FetcherConfig } from './index'
 
-export async function fetchZoraContractData(
-  provider: JsonRpcProvider,
-  contractAddress: string,
-  tokenId: string,
-) {
+export async function fetchZoraContractData({
+  contractAddress,
+  provider,
+  tokenId,
+}: FetcherConfig) {
   const erc721Contract = MediaFactory.connect(contractAddress, provider)
   const promises = [
     erc721Contract.tokenMetadataURI(tokenId),

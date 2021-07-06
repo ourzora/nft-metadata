@@ -1,15 +1,12 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { getIPFSUrl } from '../utils/ipfs'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
 import { NftMetadata } from '../parser'
+import { ParserConfig } from './index'
 
-export async function parseGenericMetadata(
-  _: JsonRpcProvider,
-  ipfsBaseURL: string,
-  __: string,
-  ___: string,
-  tokenURI: string,
-): Promise<NftMetadata> {
+export async function parseGenericMetadata({
+  ipfsBaseURL,
+  tokenURI,
+}: ParserConfig): Promise<NftMetadata> {
   const publicTokenURI = getIPFSUrl(tokenURI)
   const metadata = await fetchMetadata(tokenURI)
 

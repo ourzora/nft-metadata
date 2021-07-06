@@ -1,13 +1,13 @@
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { FetcherConfig } from './index'
 
 const DECENTRALAND_API_BASE_URL = 'https://api.decentraland.org/v2'
 
-export async function fetchDecentralandContractData(
-  provider: JsonRpcProvider,
-  contractAddress: string,
-  tokenId: string,
-) {
+export async function fetchDecentralandContractData({
+  contractAddress,
+  provider,
+  tokenId,
+}: FetcherConfig) {
   const erc721Contract = Erc721Factory.connect(contractAddress, provider)
   const ownerAddress = await erc721Contract.ownerOf(tokenId)
   return {

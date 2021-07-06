@@ -11,6 +11,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "restricted"
+  },
   "dependencies": {
     "cross-fetch": "^3.1.4",
     "@zoralabs/core": "^1.0.4"

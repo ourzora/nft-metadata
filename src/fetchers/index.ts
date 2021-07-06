@@ -1,4 +1,4 @@
-import { fetchUnderlyingContractData } from './defaultFetcher'
+import { defaultFetcher } from './defaultFetcher'
 import { getAddress } from '@ethersproject/address'
 import {
   DECENTRALAND_TOKEN_ADDRESS,
@@ -8,8 +8,22 @@ import {
 import { fetchHashmasksContractData } from './hashmaskFetcher'
 import { fetchDecentralandContractData } from './decentralandFetcher'
 import { fetchZoraContractData } from './zoraFetcher'
+import { JsonRpcProvider } from '@ethersproject/providers'
 
-export function fetcherLookup(contractAddress: string) {
+export interface FetcherConfig {
+  provider: JsonRpcProvider
+  contractAddress: string
+  tokenId: string
+}
+
+export interface FetcherResponse {
+  tokenURI: string
+  ownerAddress: string
+}
+
+export type Fetcher = (config: FetcherConfig) => Promise<FetcherResponse>
+
+export function fetcherLookup(contractAddress: string): Fetcher {
   const safeAddress = getAddress(contractAddress)
   switch (safeAddress) {
     case DECENTRALAND_TOKEN_ADDRESS:
@@ -19,6 +33,6 @@ export function fetcherLookup(contractAddress: string) {
     case ZORA_TOKEN_ADDRESS:
       return fetchZoraContractData
     default:
-      return fetchUnderlyingContractData
+      return defaultFetcher
   }
 }

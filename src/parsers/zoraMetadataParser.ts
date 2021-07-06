@@ -1,17 +1,18 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { getIPFSUrl } from '../utils/ipfs'
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
+import { ParserConfig } from './index'
 
-export async function parseZoraMetadata(
-  provider: JsonRpcProvider,
-  ipfsBaseURL: string,
-  contractAddress: string,
-  tokenId: string,
-  tokenURI: string,
-) {
+export async function parseZoraMetadata({
+  provider,
+  contractAddress,
+  tokenId,
+  tokenURI,
+  ipfsBaseURL,
+}: ParserConfig) {
   const publicTokenURI = getIPFSUrl(tokenURI, ipfsBaseURL)
-  const metadata = await fetchMetadata(tokenURI)
+  const fetchURI = getIPFSUrl(tokenURI, ipfsBaseURL, true)
+  const metadata = await fetchMetadata(fetchURI)
 
   const ZContract = MediaFactory.connect(contractAddress, provider)
   const contentURI = await ZContract.tokenURI(tokenId)

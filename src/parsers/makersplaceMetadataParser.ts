@@ -1,14 +1,8 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { getIPFSUrl } from '../utils/ipfs'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
+import { ParserConfig } from './index'
 
-export async function parseMakersplaceMetadata(
-  _: JsonRpcProvider,
-  __: string,
-  ___: string,
-  ____: string,
-  tokenURI: string,
-) {
+export async function parseMakersplaceMetadata({ tokenURI }: ParserConfig) {
   const publicTokenURI = getIPFSUrl(
     tokenURI,
     'https://ipfsgateway.makersplace.com',

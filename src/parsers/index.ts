@@ -11,8 +11,22 @@ import { parseZoraMetadata } from './zoraMetadataParser'
 import { parseMakersplaceMetadata } from './makersplaceMetadataParser'
 import { parseHashmasksMetadata } from './hashmasksMetadataParser'
 import { parseArtblocksMetadata } from './artblocksMetadataParser'
+import { JsonRpcProvider } from '@ethersproject/providers'
+import { NftMetadata } from '../parser'
 
-export function parserLookup(contractAddress: string) {
+export interface ParserConfig {
+  provider: JsonRpcProvider
+  contractAddress: string
+  tokenId: string
+  tokenURI: string
+  ipfsBaseURL: string
+}
+
+export type Parser = (
+  config: ParserConfig,
+) => Promise<Omit<NftMetadata, 'ownerAddress'>>
+
+export function parserLookup(contractAddress: string): Parser {
   const safeAddress = getAddress(contractAddress)
   switch (safeAddress) {
     case ART_BLOCKS_TOKEN_ADDRESS:

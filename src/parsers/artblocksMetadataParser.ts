@@ -1,20 +1,8 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { parseGenericMetadata } from './openseaMetadataParser'
+import { ParserConfig } from './index'
 
-export async function parseArtblocksMetadata(
-  provider: JsonRpcProvider,
-  ipfsBaseURL: string,
-  contractAddress: string,
-  tokenId: string,
-  tokenURI: string,
-) {
-  const baseMeta = await parseGenericMetadata(
-    provider,
-    ipfsBaseURL,
-    contractAddress,
-    tokenId,
-    tokenURI,
-  )
+export async function parseArtblocksMetadata(config: ParserConfig) {
+  const baseMeta = await parseGenericMetadata(config)
   return {
     ...baseMeta,
     ...(baseMeta.metadata.traits && { attributes: baseMeta.metadata.traits }),

@@ -21,7 +21,7 @@ const ZORA_CRITERIA = {
 }
 
 describe('Zora ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new Parser(testProvider, 'https://ipfs.fleek.co')
 
   beforeEach(() => {
     jest.setTimeout(10000)

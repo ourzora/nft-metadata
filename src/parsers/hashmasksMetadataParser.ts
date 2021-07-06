@@ -1,21 +1,11 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { Contract } from '@ethersproject/contracts'
 import { parseGenericMetadata } from './openseaMetadataParser'
+import { ParserConfig } from './index'
 
-export async function parseHashmasksMetadata(
-  provider: JsonRpcProvider,
-  ipfsBaseURL: string,
-  contractAddress: string,
-  tokenId: string,
-  tokenURI: string,
-) {
-  const baseMeta = await parseGenericMetadata(
-    provider,
-    ipfsBaseURL,
-    contractAddress,
-    tokenId,
-    tokenURI,
-  )
+export async function parseHashmasksMetadata(config: ParserConfig) {
+  const baseMeta = await parseGenericMetadata(config)
+
+  const { contractAddress, tokenId, provider } = config
 
   const HMContract = new Contract(
     contractAddress,
