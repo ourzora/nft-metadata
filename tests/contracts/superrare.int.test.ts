@@ -14,6 +14,7 @@ const SUPERARE_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://ipfs.pixura.io/ipfs/QmfQs1DPrZgmR7osnWvRuXpDvqP5ihfEfSBKPGAQyeL1WS/metadata.json',
+    tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/gif',
   },

@@ -13,6 +13,7 @@ const BORED_APE_CRITERIA = {
     name: 'Chocolate',
     description: METADATA_STUB.description,
     tokenURL: 'https://hashmap.azurewebsites.net/getMask/3837',
+    tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/jpeg',
     attributes: METADATA_STUB.attributes,

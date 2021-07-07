@@ -13,6 +13,7 @@ const DECENTRALAND_CRITERIA = {
     name: METADATA_STUB.name,
     tokenURL:
       'https://api.decentraland.org/v2/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100',
+    tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,

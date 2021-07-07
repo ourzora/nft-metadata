@@ -1,7 +1,7 @@
-import { getIPFSUrl } from '../utils/ipfs'
+import { getIPFSUrl, isValidURL } from '../utils/ipfs'
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
-import { ParserConfig } from './index'
+import { ParserConfig, ParserResponse } from './index'
 
 export async function parseZoraMetadata({
   provider,
@@ -9,27 +9,38 @@ export async function parseZoraMetadata({
   tokenId,
   tokenURI,
   ipfsBaseURL,
-}: ParserConfig) {
+}: ParserConfig): Promise<ParserResponse> {
   const publicTokenURI = getIPFSUrl(tokenURI, ipfsBaseURL)
   const fetchURI = getIPFSUrl(tokenURI, ipfsBaseURL, true)
-  const metadata = await fetchMetadata(fetchURI)
 
-  const ZContract = MediaFactory.connect(contractAddress, provider)
-  const contentURI = await ZContract.tokenURI(tokenId)
-  const contentURL = getIPFSUrl(contentURI, ipfsBaseURL)
+  if (isValidURL(fetchURI)) {
+    const { metadata, contentType } = await fetchMetadata(fetchURI)
 
-  const { name, description, externalURL, mimeType } = metadata
-  const contentURLMimeType = mimeType
-    ? mimeType
-    : await fetchMimeType(contentURL)
+    const ZContract = MediaFactory.connect(contractAddress, provider)
+    const contentURI = await ZContract.tokenURI(tokenId)
+    const contentURL = getIPFSUrl(contentURI, ipfsBaseURL)
+    const fetchContentURL = getIPFSUrl(tokenURI, ipfsBaseURL, true)
+
+    const { name, description, externalURL, mimeType } = metadata
+    const contentURLMimeType = mimeType
+      ? mimeType
+      : await fetchMimeType(fetchContentURL)
+
+    return {
+      metadata,
+      tokenURL: publicTokenURI,
+      tokenURLMimeType: contentType,
+      contentURL,
+      contentURLMimeType,
+      ...(name && { name }),
+      ...(description && { description }),
+      ...(externalURL && { externalURL }),
+    }
+  }
 
   return {
-    metadata,
+    metadata: fetchURI,
     tokenURL: publicTokenURI,
-    contentURL,
-    contentURLMimeType,
-    ...(name && { name }),
-    ...(description && { description }),
-    ...(externalURL && { externalURL }),
+    tokenURLMimeType: 'text/plain',
   }
 }

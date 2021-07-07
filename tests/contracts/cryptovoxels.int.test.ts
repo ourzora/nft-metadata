@@ -13,6 +13,7 @@ const CRYPTOVOXELS_CRITERIA = {
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
     tokenURL: 'https://www.cryptovoxels.com/p/100',
+    tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,

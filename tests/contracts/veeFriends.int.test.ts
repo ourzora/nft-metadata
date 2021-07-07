@@ -14,6 +14,7 @@ const VEE_FRIENDS_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://erc721.veefriends.com/api/metadata/0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb/294',
+    tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,

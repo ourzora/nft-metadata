@@ -15,6 +15,7 @@ const SORARE_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://api.sorare.com/api/v1/cards/100408090256748841933639219919068439822835068705742947267506906666220789418990',
+    tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,

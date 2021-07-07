@@ -14,6 +14,8 @@ import { parseArtblocksMetadata } from './artblocksMetadataParser'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { NftMetadata } from '../parser'
 
+export type ParserResponse = Omit<NftMetadata, 'ownerAddress'>
+
 export interface ParserConfig {
   provider: JsonRpcProvider
   contractAddress: string
@@ -22,9 +24,7 @@ export interface ParserConfig {
   ipfsBaseURL: string
 }
 
-export type Parser = (
-  config: ParserConfig,
-) => Promise<Omit<NftMetadata, 'ownerAddress'>>
+export type Parser = (config: ParserConfig) => Promise<ParserResponse>
 
 export function parserLookup(contractAddress: string): Parser {
   const safeAddress = getAddress(contractAddress)

@@ -15,6 +15,7 @@ const RARIBLE_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://ipfs.io/ipfs/QmfHrsEpXXrvi2dTTNake723kkMapDQXeuYDsVmSRdsQNH',
+    tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/jpeg',
     externalURL: METADATA_STUB.external_url,

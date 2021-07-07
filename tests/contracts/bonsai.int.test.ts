@@ -14,6 +14,7 @@ const BONSAI_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://ipfs.io/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100',
+    tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.animation_url,
     contentURLMimeType: 'video/mp4',
     previewURL: METADATA_STUB.image,

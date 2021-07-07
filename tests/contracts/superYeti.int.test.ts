@@ -14,6 +14,7 @@ const SUPER_YET_CRITERIA = {
     description: METADATA_STUB.description,
     tokenURL:
       'https://defra.systems/metadata/QmXFtqihiEDP5sJwME5dNB3NnYk6LeiepbD4RPP1XES6Ys/asset/100',
+    tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.image,
     contentURLMimeType: 'image/jpeg',
     attributes: METADATA_STUB.attributes,

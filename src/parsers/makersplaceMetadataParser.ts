@@ -7,7 +7,7 @@ export async function parseMakersplaceMetadata({ tokenURI }: ParserConfig) {
     tokenURI,
     'https://ipfsgateway.makersplace.com',
   )
-  const metadata = await fetchMetadata(tokenURI)
+  const { metadata, contentType } = await fetchMetadata(tokenURI)
 
   if (!metadata.imageUrl) {
     throw new Error(
@@ -43,6 +43,7 @@ export async function parseMakersplaceMetadata({ tokenURI }: ParserConfig) {
   return {
     metadata,
     tokenURL: publicTokenURI,
+    tokenURLMimeType: contentType,
     contentURL,
     contentURLMimeType,
     ...(previewURL && { previewURL }),

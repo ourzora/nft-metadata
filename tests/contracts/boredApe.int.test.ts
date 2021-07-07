@@ -12,6 +12,7 @@ const BORED_APE_CRITERIA = {
     metadata: BORED_APE_METADATA_STUB,
     tokenURL:
       'https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1',
+    tokenURLMimeType: 'application/json',
     contentURL:
       'https://ipfs.io/ipfs/QmPbxeGcXhYQQNgsC6a36dDyYUcHgMLnGKnF8pVFmGsvqi',
     contentURLMimeType: 'image/png',

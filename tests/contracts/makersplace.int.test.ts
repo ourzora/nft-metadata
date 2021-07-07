@@ -15,6 +15,7 @@ const IMAGE_CRITERIA = {
     description: IMAGE_METADATA_STUB.description,
     tokenURL:
       'https://ipfsgateway.makersplace.com/ipfs/QmQZ66nmWPRFTqfuxVuAMHKb57xwhDZfGkSDGd7MJjxbWm',
+    tokenURLMimeType: 'application/json',
     contentURL: IMAGE_METADATA_STUB.imageUrl,
     contentURLMimeType: 'image/jpeg',
     attributes: IMAGE_METADATA_STUB.attributes,
@@ -31,6 +32,7 @@ const VIDEO_CRITERIA = {
     description: VIDEO_METADATA_STUB.description,
     tokenURL:
       'https://ipfsgateway.makersplace.com/ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU',
+    tokenURLMimeType: 'application/json',
     contentURL: VIDEO_METADATA_STUB.properties.preview_media_file2.description,
     contentURLMimeType: 'video/mp4',
     previewURL: VIDEO_METADATA_STUB.imageUrl,

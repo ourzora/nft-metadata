@@ -13,14 +13,16 @@ export interface NftMetadata {
   ownerAddress: string
 
   tokenURL: string
+  tokenURLMimeType: string
 
-  contentURL: string
-  contentURLMimeType: string
+  contentURL?: string
+  contentURLMimeType?: string
 
   previewURL?: string
   previewURLMimeType?: string
 
   externalLink?: string
+
   attributes?: Record<string, any>[]
 }
 
@@ -67,7 +69,6 @@ export class Parser {
       safeAddress,
       tokenId,
     )
-
     const parsedMetadata = await this.parseTokenMetadata(
       safeAddress,
       tokenId,
