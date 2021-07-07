@@ -78,7 +78,7 @@ describe('Zora ERC721', () => {
   const parser = new Parser(testProvider, 'https://ipfs.fleek.co')
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(20000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${ZORA_CRITERIA.input.tokenId}`, async () => {

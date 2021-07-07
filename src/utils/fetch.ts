@@ -26,9 +26,9 @@ export async function fetchMetadata(uri: string) {
   const contentType = resp.headers.get('content-type')
 
   if (!contentType) {
-    const errMessage = `Failed to fetch mimetype for uri: ${uri} as content-type is not valid`
-    console.error(errMessage)
-    throw new Error(errMessage)
+    throw new Error(
+      `Failed to fetch mimetype for uri: ${uri} as content-type is not valid`,
+    )
   }
 
   if (jsonContentTypes.some((ct) => contentType.includes(ct))) {
@@ -36,7 +36,13 @@ export async function fetchMetadata(uri: string) {
     return { metadata, contentType }
   }
 
-  return { metadata: resp.body, contentType }
+  if (resp.status !== 200) {
+    throw new Error(
+      `Invalid Response for uri: ${uri} received code: ${resp.status}`,
+    )
+  }
+
+  return { metadata: resp.text(), contentType }
 }
 
 export async function fetchMimeType(uri: string, defaultType?: string) {
