@@ -2,12 +2,17 @@ import { getIPFSUrl } from '../utils/ipfs'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
 import { ParserConfig } from './index'
 
-export async function parseMakersplaceMetadata({ tokenURI }: ParserConfig) {
+export async function parseMakersplaceMetadata({
+  tokenURI,
+  fetchTimeout,
+}: ParserConfig) {
   const publicTokenURI = getIPFSUrl(
     tokenURI,
     'https://ipfsgateway.makersplace.com',
   )
-  const { metadata, contentType } = await fetchMetadata(tokenURI)
+  const { metadata, contentType } = await fetchMetadata(tokenURI, {
+    timeout: fetchTimeout,
+  })
 
   if (!metadata.imageUrl) {
     throw new Error(
@@ -35,9 +40,9 @@ export async function parseMakersplaceMetadata({ tokenURI }: ParserConfig) {
 
   const contentURLMimeType = animationURI
     ? 'video/mp4'
-    : await fetchMimeType(contentURL)
+    : await fetchMimeType(contentURL, { timeout: fetchTimeout })
   const previewURLMimeType = previewURL
-    ? await fetchMimeType(previewURL)
+    ? await fetchMimeType(previewURL, { timeout: fetchTimeout })
     : undefined
 
   return {

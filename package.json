@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "@zoralabs/core": "^1.0.4",
-    "cross-fetch": "^3.1.4"
+    "cross-fetch": "^3.1.4",
+    "node-abort-controller": "^2.0.0"
   },
   "devDependencies": {
     "@ethersproject/address": "5.3.0",

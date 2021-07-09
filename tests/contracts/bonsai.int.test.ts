@@ -24,7 +24,9 @@ const BONSAI_CRITERIA = {
 }
 
 describe('Bonsai ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new Parser(testProvider, {
+    fetchTimeout: 10000,
+  })
 
   beforeEach(() => {
     jest.setTimeout(10000)

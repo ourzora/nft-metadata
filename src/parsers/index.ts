@@ -17,6 +17,7 @@ import { NftMetadata } from '../parser'
 export type ParserResponse = Omit<NftMetadata, 'ownerAddress'>
 
 export interface ParserConfig {
+  fetchTimeout: number
   provider: JsonRpcProvider
   contractAddress: string
   tokenId: string

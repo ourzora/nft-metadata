@@ -26,11 +26,22 @@ export interface NftMetadata {
   attributes?: Record<string, any>[]
 }
 
+export type ParserServiceOptions = {
+  ipfsBaseURL?: string
+  fetchTimeout?: number
+}
+
 export class Parser {
+  ipfsBaseURL: string
+  fetchTimeout: number
+
   constructor(
     private readonly provider: JsonRpcProvider,
-    private readonly ipfsBaseURL: string = IPFS_IO_GATEWAY,
-  ) {}
+    options: ParserServiceOptions = {},
+  ) {
+    this.ipfsBaseURL = options.ipfsBaseURL || IPFS_IO_GATEWAY
+    this.fetchTimeout = options.fetchTimeout || 10000
+  }
 
   public async fetchUnderlyingContractData(
     contractAddress: string,
@@ -51,6 +62,7 @@ export class Parser {
   ) {
     const parser = parserLookup(contractAddress)
     return parser({
+      fetchTimeout: this.fetchTimeout,
       provider: this.provider,
       contractAddress,
       tokenId,

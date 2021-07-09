@@ -1,6 +1,11 @@
 import fetch from 'cross-fetch'
 import { getIPFSUrl } from './ipfs'
 import { universalAtob } from './encoding'
+import AbortController from 'node-abort-controller'
+
+interface FetchOptions {
+  timeout?: number
+}
 
 const jsonContentTypes = [
   'text/plain',
@@ -8,11 +13,31 @@ const jsonContentTypes = [
   'application/ld+json',
 ]
 
+async function fetchWithTimeout(
+  resource: string,
+  options: RequestInit & { timeout?: number } = {},
+) {
+  const { timeout = 10000 } = options
+
+  const controller = new AbortController()
+  const id = setTimeout(() => controller.abort(), timeout)
+
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal,
+  })
+  clearTimeout(id)
+  return response
+}
+
 export function getDataURIMimeType(uri: string) {
   return uri.substring(uri.indexOf(':') + 1, uri.indexOf(';'))
 }
 
-export async function fetchMetadata(uri: string) {
+export async function fetchMetadata(
+  uri: string,
+  { timeout }: FetchOptions = {},
+) {
   if (uri.substring(0, 29) === 'data:application/json;base64,') {
     const json = universalAtob(uri.substring(29))
     return {
@@ -21,8 +46,8 @@ export async function fetchMetadata(uri: string) {
     }
   }
 
-  const cloudflareIPFSURI = getIPFSUrl(uri, 'https://cloudflare-ipfs.com')
-  const resp = await fetch(cloudflareIPFSURI)
+  const metaIPFSURI = getIPFSUrl(uri, 'https://gateway.ipfs.io')
+  const resp = await fetchWithTimeout(metaIPFSURI, { timeout })
   const contentType = resp.headers.get('content-type')
 
   if (!contentType) {
@@ -45,13 +70,19 @@ export async function fetchMetadata(uri: string) {
   return { metadata: resp.text(), contentType }
 }
 
-export async function fetchMimeType(uri: string, defaultType?: string) {
+export async function fetchMimeType(
+  uri: string,
+  { timeout }: FetchOptions = {},
+  defaultType?: string,
+) {
   if (uri.includes('data:')) {
     return getDataURIMimeType(uri)
   }
-
   try {
-    const resp = await fetch(uri, { method: 'HEAD' })
+    const resp = await fetchWithTimeout(uri, {
+      method: 'HEAD',
+      timeout,
+    })
     return resp.headers.get('content-type')
   } catch (e) {
     console.error(

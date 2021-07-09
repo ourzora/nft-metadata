@@ -1,6 +1,6 @@
 import { URL } from 'url'
 export const IPFS_REGEX = /.*?\/ipfs\/(.*?)/g
-export const IPFS_IO_GATEWAY = 'https://ipfs.io'
+export const IPFS_IO_GATEWAY = 'https://gateway.ipfs.io'
 
 export const isValidURL = (value: string) => {
   try {

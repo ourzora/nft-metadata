@@ -4,11 +4,14 @@ import { NftMetadata } from '../parser'
 import { ParserConfig } from './index'
 
 export async function parseGenericMetadata({
+  fetchTimeout,
   ipfsBaseURL,
   tokenURI,
 }: ParserConfig): Promise<NftMetadata> {
   const publicTokenURI = getIPFSUrl(tokenURI)
-  const { metadata, contentType } = await fetchMetadata(tokenURI)
+  const { metadata, contentType } = await fetchMetadata(tokenURI, {
+    timeout: fetchTimeout,
+  })
 
   if (!metadata.image && !metadata.animation_url) {
     throw new Error(
@@ -25,9 +28,13 @@ export async function parseGenericMetadata({
   const contentURL = animationURI || imageURI
   const previewURL = imageURI && animationURI ? imageURI : undefined
 
-  const contentURLMimeType = await fetchMimeType(contentURL)
+  const contentURLMimeType = await fetchMimeType(contentURL, {
+    timeout: fetchTimeout,
+  })
   const previewURLMimeType = previewURL
-    ? await fetchMimeType(previewURL)
+    ? await fetchMimeType(previewURL, {
+        timeout: fetchTimeout,
+      })
     : undefined
 
   return {

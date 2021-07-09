@@ -4,6 +4,7 @@ import { fetchMetadata, fetchMimeType } from '../utils/fetch'
 import { ParserConfig, ParserResponse } from './index'
 
 export async function parseZoraMetadata({
+  fetchTimeout,
   provider,
   contractAddress,
   tokenId,
@@ -14,7 +15,9 @@ export async function parseZoraMetadata({
   const fetchURI = getIPFSUrl(tokenURI, ipfsBaseURL, true)
 
   if (isValidURL(fetchURI)) {
-    const { metadata, contentType } = await fetchMetadata(fetchURI)
+    const { metadata, contentType } = await fetchMetadata(fetchURI, {
+      timeout: fetchTimeout,
+    })
 
     const ZContract = MediaFactory.connect(contractAddress, provider)
     const contentURI = await ZContract.tokenURI(tokenId)
@@ -24,7 +27,9 @@ export async function parseZoraMetadata({
     const { name, description, externalURL, mimeType } = metadata
     const contentURLMimeType = mimeType
       ? mimeType
-      : await fetchMimeType(fetchContentURL)
+      : await fetchMimeType(fetchContentURL, {
+          timeout: fetchTimeout,
+        })
 
     return {
       metadata,

@@ -75,7 +75,9 @@ const ZORA_NON_URL_CRITERIA = {
 }
 
 describe('Zora ERC721', () => {
-  const parser = new Parser(testProvider, 'https://ipfs.fleek.co')
+  const parser = new Parser(testProvider, {
+    fetchTimeout: 20000,
+  })
 
   beforeEach(() => {
     jest.setTimeout(20000)
