@@ -10,12 +10,15 @@ export async function fetchZoraContractData({
 }: FetcherConfig) {
   const erc721Contract = MediaFactory.connect(contractAddress, provider)
   const tokenURI = await erc721Contract.tokenMetadataURI(tokenId)
+  const creatorAddress = await erc721Contract.tokenCreators(tokenId)
 
   try {
     const ownerAddress = await erc721Contract.ownerOf(tokenId)
+
     return {
       tokenURI,
       ownerAddress: getAddress(ownerAddress),
+      creatorAddress: getAddress(creatorAddress),
     }
   } catch (e) {
     const totalSupply = await erc721Contract.totalSupply()
@@ -26,6 +29,7 @@ export async function fetchZoraContractData({
       return {
         tokenURI,
         ownerAddress: getAddress(AddressZero),
+        creatorAddress: getAddress(creatorAddress),
       }
     }
     throw e

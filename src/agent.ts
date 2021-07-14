@@ -11,6 +11,7 @@ export interface NftMetadata {
   description?: string
 
   ownerAddress: string
+  creatorAddress?: string
 
   tokenURL: string
   tokenURLMimeType: string
@@ -79,7 +80,7 @@ export class MetadataAgent {
   ): Promise<NftMetadata> {
     const safeAddress = getAddress(tokenAddress)
 
-    const { tokenURI, ownerAddress } = await this.fetchUnderlyingContractData(
+    const { tokenURI, ...rest } = await this.fetchUnderlyingContractData(
       safeAddress,
       tokenId,
     )
@@ -93,7 +94,7 @@ export class MetadataAgent {
     )
 
     return {
-      ownerAddress,
+      ...rest,
       ...parsedMetadata,
     }
   }

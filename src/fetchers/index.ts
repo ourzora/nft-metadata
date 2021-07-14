@@ -19,6 +19,7 @@ export interface FetcherConfig {
 export interface FetcherResponse {
   tokenURI: string
   ownerAddress: string
+  creatorAddress?: string
 }
 
 export type Fetcher = (config: FetcherConfig) => Promise<FetcherResponse>
