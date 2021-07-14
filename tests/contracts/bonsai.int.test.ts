@@ -1,4 +1,4 @@
-import { BONSAI_TOKEN_ADDRESS, Parser } from '../../src'
+import { BONSAI_TOKEN_ADDRESS, MetadataAgent } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/bonsai/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -17,14 +17,14 @@ const BONSAI_CRITERIA = {
     tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.animation_url,
     contentURLMimeType: 'video/mp4',
-    previewURL: METADATA_STUB.image,
-    previewURLMimeType: 'image/png',
+    imageURL: METADATA_STUB.image,
+    imageURLMimeType: 'image/png',
     attributes: METADATA_STUB.attributes,
   },
 }
 
 describe('Bonsai ERC721', () => {
-  const parser = new Parser(testProvider, {
+  const parser = new MetadataAgent(testProvider, {
     fetchTimeout: 10000,
   })
 

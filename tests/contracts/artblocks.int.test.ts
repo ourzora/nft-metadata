@@ -1,7 +1,7 @@
 import {
   ART_BLOCKS_CURATED_TOKEN_ADDRESS,
   ART_BLOCKS_TOKEN_ADDRESS,
-  Parser,
+  MetadataAgent,
 } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/artblocks/91000216.json'
 import CURATED_METADATA_STUB from '../mock-reponses/contracts/artblocks/curated/100.json'
@@ -21,8 +21,8 @@ const ART_BLOCKS_CRITERIA = {
     tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: METADATA_STUB.animation_url,
     contentURLMimeType: 'text/html; charset=utf-8',
-    previewURL: METADATA_STUB.image,
-    previewURLMimeType: 'image/png',
+    imageURL: METADATA_STUB.image,
+    imageURLMimeType: 'image/png',
     attributes: METADATA_STUB.traits,
     externalURL: METADATA_STUB.external_url,
   },
@@ -40,15 +40,15 @@ const ART_BLOCKS_CURATED_CRITERIA = {
     tokenURLMimeType: 'application/json; charset=utf-8',
     contentURL: CURATED_METADATA_STUB.animation_url,
     contentURLMimeType: 'text/html; charset=utf-8',
-    previewURL: CURATED_METADATA_STUB.image,
-    previewURLMimeType: 'image/png',
+    imageURL: CURATED_METADATA_STUB.image,
+    imageURLMimeType: 'image/png',
     attributes: CURATED_METADATA_STUB.traits,
     externalURL: CURATED_METADATA_STUB.external_url,
   },
 }
 
 describe('ArtBlocks ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

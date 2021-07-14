@@ -1,4 +1,4 @@
-import { BORED_APE_TOKEN_ADDRESS, Parser } from '../../src'
+import { BORED_APE_TOKEN_ADDRESS, MetadataAgent } from '../../src'
 import BORED_APE_METADATA_STUB from '../mock-reponses/contracts/boredApeYacht/1.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -21,7 +21,7 @@ const BORED_APE_CRITERIA = {
 }
 
 describe('Bored Ape ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

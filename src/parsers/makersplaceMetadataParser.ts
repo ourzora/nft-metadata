@@ -36,13 +36,13 @@ export async function parseMakersplaceMetadata({
 
   const { name, description, attributes } = metadata
   const contentURL = animationURI || imageURI
-  const previewURL = imageURI && animationURI ? imageURI : undefined
+  const imageURL = imageURI && animationURI ? imageURI : undefined
 
   const contentURLMimeType = animationURI
     ? 'video/mp4'
     : await fetchMimeType(contentURL, { timeout: fetchTimeout })
-  const previewURLMimeType = previewURL
-    ? await fetchMimeType(previewURL, { timeout: fetchTimeout })
+  const imageURLMimeType = imageURL
+    ? await fetchMimeType(imageURL, { timeout: fetchTimeout })
     : undefined
 
   return {
@@ -51,8 +51,8 @@ export async function parseMakersplaceMetadata({
     tokenURLMimeType: contentType,
     contentURL,
     contentURLMimeType,
-    ...(previewURL && { previewURL }),
-    ...(previewURLMimeType && { previewURLMimeType }),
+    ...(imageURL && { imageURL }),
+    ...(imageURLMimeType && { imageURLMimeType }),
     ...(name && { name }),
     ...(description && { description }),
     ...(attributes && { attributes }),

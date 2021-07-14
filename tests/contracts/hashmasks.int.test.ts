@@ -1,4 +1,4 @@
-import { HASHMASKS_TOKEN_ADDRESS, Parser } from '../../src'
+import { HASHMASKS_TOKEN_ADDRESS, MetadataAgent } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/hashmasks/3837.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -22,7 +22,7 @@ const BORED_APE_CRITERIA = {
 }
 
 describe('Hashmask ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

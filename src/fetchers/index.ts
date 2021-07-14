@@ -23,6 +23,7 @@ export interface FetcherResponse {
 
 export type Fetcher = (config: FetcherConfig) => Promise<FetcherResponse>
 
+// TODO - look at making lookup a registry instead
 export function fetcherLookup(contractAddress: string): Fetcher {
   const safeAddress = getAddress(contractAddress)
   switch (safeAddress) {

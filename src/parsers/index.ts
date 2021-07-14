@@ -12,7 +12,7 @@ import { parseMakersplaceMetadata } from './makersplaceMetadataParser'
 import { parseHashmasksMetadata } from './hashmasksMetadataParser'
 import { parseArtblocksMetadata } from './artblocksMetadataParser'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { NftMetadata } from '../parser'
+import { NftMetadata } from '../agent'
 
 export type ParserResponse = Omit<NftMetadata, 'ownerAddress'>
 

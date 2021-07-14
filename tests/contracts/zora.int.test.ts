@@ -1,4 +1,4 @@
-import { Parser, ZORA_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, ZORA_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/zora/100.json'
 import { testProvider } from '../setupProvider'
 import { getAddress, isAddress } from '@ethersproject/address'
@@ -75,7 +75,7 @@ const ZORA_NON_URL_CRITERIA = {
 }
 
 describe('Zora ERC721', () => {
-  const parser = new Parser(testProvider, {
+  const parser = new MetadataAgent(testProvider, {
     fetchTimeout: 20000,
   })
 

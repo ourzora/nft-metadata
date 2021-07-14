@@ -1,4 +1,4 @@
-import { Parser, SUPER_YETI_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, SUPER_YETI_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/superYeti/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -22,7 +22,7 @@ const SUPER_YET_CRITERIA = {
 }
 
 describe('Super Yeti ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

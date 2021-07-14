@@ -38,6 +38,7 @@ export async function fetchMetadata(
   uri: string,
   { timeout }: FetchOptions = {},
 ) {
+  // TODO - dont do dank shit at 2am
   if (uri.substring(0, 29) === 'data:application/json;base64,') {
     const json = universalAtob(uri.substring(29))
     return {
@@ -50,6 +51,7 @@ export async function fetchMetadata(
   const resp = await fetchWithTimeout(metaIPFSURI, { timeout })
   const contentType = resp.headers.get('content-type')
 
+  // TODO - idk id this is valid / we can bail / add config to not bail (not strict vs strict)
   if (!contentType) {
     throw new Error(
       `Failed to fetch mimetype for uri: ${uri} as content-type is not valid`,
@@ -87,7 +89,7 @@ export async function fetchMimeType(
   } catch (e) {
     console.error(
       `Failed to fetch mimetype for uri: ${uri} because: ${
-        e?.message || 'Unknown Error occured'
+        e?.message || 'Unknown Error occurred'
       }`,
     )
     return defaultType

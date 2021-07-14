@@ -1,6 +1,6 @@
 {
   "name": "@zoralabs/nft-metadata",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "generic nft metadata parsers",
   "author": "Zora",
   "license": "MIT",

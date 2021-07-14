@@ -1,4 +1,4 @@
-import { DECENTRALAND_TOKEN_ADDRESS, Parser } from '../../src'
+import { DECENTRALAND_TOKEN_ADDRESS, MetadataAgent } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/decentraland/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -22,7 +22,7 @@ const DECENTRALAND_CRITERIA = {
 }
 
 describe('Decentraland ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

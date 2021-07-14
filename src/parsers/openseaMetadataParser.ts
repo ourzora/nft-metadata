@@ -1,6 +1,6 @@
 import { getIPFSUrl } from '../utils/ipfs'
 import { fetchMetadata, fetchMimeType } from '../utils/fetch'
-import { NftMetadata } from '../parser'
+import { NftMetadata } from '../agent'
 import { ParserConfig } from './index'
 
 export async function parseGenericMetadata({
@@ -8,7 +8,7 @@ export async function parseGenericMetadata({
   ipfsBaseURL,
   tokenURI,
 }: ParserConfig): Promise<NftMetadata> {
-  const publicTokenURI = getIPFSUrl(tokenURI)
+  const publicTokenURI = getIPFSUrl(tokenURI, ipfsBaseURL)
   const { metadata, contentType } = await fetchMetadata(tokenURI, {
     timeout: fetchTimeout,
   })
@@ -26,13 +26,13 @@ export async function parseGenericMetadata({
 
   const { name, description, attributes, external_url: externalURL } = metadata
   const contentURL = animationURI || imageURI
-  const previewURL = imageURI && animationURI ? imageURI : undefined
+  const imageURL = imageURI && animationURI ? imageURI : undefined
 
   const contentURLMimeType = await fetchMimeType(contentURL, {
     timeout: fetchTimeout,
   })
-  const previewURLMimeType = previewURL
-    ? await fetchMimeType(previewURL, {
+  const imageURLMimeType = imageURL
+    ? await fetchMimeType(imageURL, {
         timeout: fetchTimeout,
       })
     : undefined
@@ -43,8 +43,8 @@ export async function parseGenericMetadata({
     tokenURLMimeType: contentType,
     contentURL,
     contentURLMimeType,
-    ...(previewURL && { previewURL }),
-    ...(previewURLMimeType && { previewURLMimeType }),
+    ...(imageURL && { imageURL }),
+    ...(imageURLMimeType && { imageURLMimeType }),
     ...(name && { name }),
     ...(description && { description }),
     ...(attributes && { attributes }),

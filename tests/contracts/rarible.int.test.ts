@@ -1,4 +1,4 @@
-import { Parser, RARIBLE_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, RARIBLE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/rarible/301_962.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -24,7 +24,7 @@ const RARIBLE_CRITERIA = {
 }
 
 describe('Rarible ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

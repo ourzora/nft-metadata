@@ -1,4 +1,4 @@
-import { Parser, VEE_FRIENDS_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, VEE_FRIENDS_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/veeFriends/294.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -23,7 +23,7 @@ const VEE_FRIENDS_CRITERIA = {
 }
 
 describe('Vee Friends ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

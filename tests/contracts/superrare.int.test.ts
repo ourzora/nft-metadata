@@ -1,4 +1,4 @@
-import { Parser, SUPERRARE_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, SUPERRARE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/superrare/17798.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -21,7 +21,7 @@ const SUPERARE_CRITERIA = {
 }
 
 describe('Superrare ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

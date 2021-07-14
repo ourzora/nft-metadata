@@ -1,4 +1,4 @@
-import { Parser, SORARE_TOKEN_ADDRESS } from '../../src'
+import { MetadataAgent, SORARE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/sorare/100_990.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -24,7 +24,7 @@ const SORARE_CRITERIA = {
 }
 
 describe('Sorare ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)

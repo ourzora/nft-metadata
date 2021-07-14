@@ -18,8 +18,8 @@ export interface NftMetadata {
   contentURL?: string
   contentURLMimeType?: string
 
-  previewURL?: string
-  previewURLMimeType?: string
+  imageURL?: string
+  imageURLMimeType?: string
 
   externalLink?: string
 
@@ -31,13 +31,15 @@ export type ParserServiceOptions = {
   fetchTimeout?: number
 }
 
-export class Parser {
+export class MetadataAgent {
   ipfsBaseURL: string
   fetchTimeout: number
 
   constructor(
+    // TODO - match network to rpc provider
     private readonly provider: JsonRpcProvider,
     options: ParserServiceOptions = {},
+    // TODO - extend the base fetchers
   ) {
     this.ipfsBaseURL = options.ipfsBaseURL || IPFS_IO_GATEWAY
     this.fetchTimeout = options.fetchTimeout || 10000
@@ -81,6 +83,9 @@ export class Parser {
       safeAddress,
       tokenId,
     )
+
+    // TODO - collate / fetch meta here
+
     const parsedMetadata = await this.parseTokenMetadata(
       safeAddress,
       tokenId,

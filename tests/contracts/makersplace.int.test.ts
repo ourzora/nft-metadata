@@ -1,4 +1,4 @@
-import { MAKERSPLACE_TOKEN_ADDRESS, Parser } from '../../src'
+import { MAKERSPLACE_TOKEN_ADDRESS, MetadataAgent } from '../../src'
 import IMAGE_METADATA_STUB from '../mock-reponses/contracts/makersplace/100.json'
 import VIDEO_METADATA_STUB from '../mock-reponses/contracts/makersplace/63253.json'
 import { testProvider } from '../setupProvider'
@@ -35,14 +35,14 @@ const VIDEO_CRITERIA = {
     tokenURLMimeType: 'application/json',
     contentURL: VIDEO_METADATA_STUB.properties.preview_media_file2.description,
     contentURLMimeType: 'video/mp4',
-    previewURL: VIDEO_METADATA_STUB.imageUrl,
-    previewURLMimeType: 'image/jpeg',
+    imageURL: VIDEO_METADATA_STUB.imageUrl,
+    imageURLMimeType: 'image/jpeg',
     attributes: VIDEO_METADATA_STUB.attributes,
   },
 }
 
 describe('Makersplace ERC721', () => {
-  const parser = new Parser(testProvider)
+  const parser = new MetadataAgent(testProvider)
 
   beforeEach(() => {
     jest.setTimeout(10000)
