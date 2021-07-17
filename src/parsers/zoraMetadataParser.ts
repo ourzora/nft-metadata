@@ -45,8 +45,6 @@ export async function parseZoraMetadata({
 
     const translatedMeta = translateMetadataSchema(metadata)
 
-    console.log(JSON.stringify(translatedMeta, null, 2))
-
     const { name, description, externalURL, mimeType, image } = translatedMeta
 
     const imageURL = image ? getIPFSUrl(image, ipfsBaseURL) : undefined
