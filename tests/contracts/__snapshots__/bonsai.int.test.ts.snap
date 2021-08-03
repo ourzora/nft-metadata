@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bonsai ERC721 should be able to fetch and parse metadata for token id: 100 on network 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Pot",
+      "value": "Yellow Plastic",
+    },
+    Object {
+      "trait_type": "Pet",
+      "value": "None",
+    },
+    Object {
+      "trait_type": "Bark",
+      "value": "Birch",
+    },
+    Object {
+      "trait_type": "Leaves",
+      "value": "Momo Maple",
+    },
+    Object {
+      "trait_type": "Fruit",
+      "value": "None",
+    },
+    Object {
+      "trait_type": "Number of fruit",
+      "value": "0",
+    },
+    Object {
+      "trait_type": "Ground cover",
+      "value": "None",
+    },
+    Object {
+      "trait_type": "Background",
+      "value": "day",
+    },
+  ],
+  "contentURL": "https://ipfs.fleek.co/ipfs/QmSN2Tz74XUPchzoGW1gKDjDRCJqYNXsvJUa2R7hURpqjh",
+  "contentURLMimeType": "video/mp4",
+  "description": "[Image (.png)](https://gateway.pinata.cloud/ipfs/QmSckSnuJUwn74ZFvmNMob9dTwfZzjnXVyeKxuDYah93hx)
+
+[Animation (.mp4)](https://gateway.pinata.cloud/ipfs/QmSN2Tz74XUPchzoGW1gKDjDRCJqYNXsvJUa2R7hURpqjh)
+
+[3D Model (.glb)](https://gateway.pinata.cloud/ipfs/QmS8VGJL1P9kcGb2JNkPyUesYamCLRDPBg8aVuCr9qCDZM)
+
+[AR Object (.usdz)](https://gateway.pinata.cloud/ipfs/Qmd6rodUdPr3EZ2SfZ2DxjukQUjz5WaSHLBkrjAnW6yH83)
+",
+  "imageURL": "https://ipfs.fleek.co/ipfs/QmSckSnuJUwn74ZFvmNMob9dTwfZzjnXVyeKxuDYah93hx",
+  "imageURLMimeType": "image/png",
+  "metadata": Object {
+    "animation_url": "https://gateway.pinata.cloud/ipfs/QmSN2Tz74XUPchzoGW1gKDjDRCJqYNXsvJUa2R7hURpqjh",
+    "attributes": Array [
+      Object {
+        "trait_type": "Pot",
+        "value": "Yellow Plastic",
+      },
+      Object {
+        "trait_type": "Pet",
+        "value": "None",
+      },
+      Object {
+        "trait_type": "Bark",
+        "value": "Birch",
+      },
+      Object {
+        "trait_type": "Leaves",
+        "value": "Momo Maple",
+      },
+      Object {
+        "trait_type": "Fruit",
+        "value": "None",
+      },
+      Object {
+        "trait_type": "Number of fruit",
+        "value": "0",
+      },
+      Object {
+        "trait_type": "Ground cover",
+        "value": "None",
+      },
+      Object {
+        "trait_type": "Background",
+        "value": "day",
+      },
+    ],
+    "description": "[Image (.png)](https://gateway.pinata.cloud/ipfs/QmSckSnuJUwn74ZFvmNMob9dTwfZzjnXVyeKxuDYah93hx)
+
+[Animation (.mp4)](https://gateway.pinata.cloud/ipfs/QmSN2Tz74XUPchzoGW1gKDjDRCJqYNXsvJUa2R7hURpqjh)
+
+[3D Model (.glb)](https://gateway.pinata.cloud/ipfs/QmS8VGJL1P9kcGb2JNkPyUesYamCLRDPBg8aVuCr9qCDZM)
+
+[AR Object (.usdz)](https://gateway.pinata.cloud/ipfs/Qmd6rodUdPr3EZ2SfZ2DxjukQUjz5WaSHLBkrjAnW6yH83)
+",
+    "image": "https://gateway.pinata.cloud/ipfs/QmSckSnuJUwn74ZFvmNMob9dTwfZzjnXVyeKxuDYah93hx",
+    "name": "Bonsai #100",
+  },
+  "name": "Bonsai #100",
+  "networkId": 1,
+  "tokenAddress": "0xeC9C519D49856Fd2f8133A0741B4dbE002cE211b",
+  "tokenId": "100",
+  "tokenURI": "https://ipfs.io/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100",
+  "tokenURL": "https://ipfs.fleek.co/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100",
+  "tokenURLMimeType": "application/json",
+}
+`;

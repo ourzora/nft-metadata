@@ -1,10 +1,11 @@
 import fetch from 'cross-fetch'
-import { DWEB_GATEWAY, getIPFSUrl } from './ipfs'
+import { getIPFSUrl, IPFS_IO_GATEWAY } from './ipfs'
 import { universalAtob } from './encoding'
 import AbortController from 'node-abort-controller'
 
 interface FetchOptions {
   timeout?: number
+  ipfsGateway?: string
 }
 
 const jsonContentTypes = [
@@ -36,7 +37,7 @@ export function getDataURIMimeType(uri: string) {
 
 export async function fetchMetadata(
   uri: string,
-  { timeout }: FetchOptions = {},
+  { timeout, ipfsGateway = IPFS_IO_GATEWAY }: FetchOptions = {},
 ) {
   // TODO - dont do dank shit at 2am
   if (uri.substring(0, 29) === 'data:application/json;base64,') {
@@ -47,14 +48,14 @@ export async function fetchMetadata(
     }
   }
 
-  const metaIPFSURI = getIPFSUrl(uri, DWEB_GATEWAY)
+  const metaIPFSURI = getIPFSUrl(uri, ipfsGateway)
   const resp = await fetchWithTimeout(metaIPFSURI, { timeout })
   const contentType = resp.headers.get('content-type')
 
   // TODO - idk id this is valid / we can bail / add config to not bail (not strict vs strict)
   if (!contentType) {
     throw new Error(
-      `Failed to fetch mimetype for uri: ${uri} as content-type is not valid`,
+      `Failed to fetch mimetype for uri: ${metaIPFSURI} as content-type is not valid`,
     )
   }
 

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Foundation ERC721 should be able to fetch and parse metadata for token id: 1798 on network 1 1`] = `
+Object {
+  "contentURL": "https://ipfs.fleek.co/ipfs/Qmb4L77GNjPAqMqAxwLZxpCyUkXrQjt92pHk49246Tjdt3/nft.mp4",
+  "contentURLMimeType": "video/mp4",
+  "description": "Animated DOGECOIN
+
+Auction winner gets:
+-the original .aesprite file used to make this
+-animated gif
+-100x100 thumbnail
+-1000x1000 PNG",
+  "metadata": Object {
+    "description": "Animated DOGECOIN
+
+Auction winner gets:
+-the original .aesprite file used to make this
+-animated gif
+-100x100 thumbnail
+-1000x1000 PNG",
+    "image": "ipfs://ipfs/Qmb4L77GNjPAqMqAxwLZxpCyUkXrQjt92pHk49246Tjdt3/nft.mp4",
+    "name": "The 8bit DOGECOIN!",
+  },
+  "name": "The 8bit DOGECOIN!",
+  "networkId": 1,
+  "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
+  "tokenId": "1798",
+  "tokenURI": "https://ipfs.foundation.app/ipfs/Qmc9kjdUSYaqCcTZG5gArXttWKtsnzFjFFPfRoSLb7ZUUK/metadata.json",
+  "tokenURL": "https://ipfs.fleek.co/ipfs/Qmc9kjdUSYaqCcTZG5gArXttWKtsnzFjFFPfRoSLb7ZUUK/metadata.json",
+  "tokenURLMimeType": "application/json",
+}
+`;

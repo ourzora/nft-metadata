@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Makersplace ERC721 should be able to fetch and parse metadata for makersplace image — token id: 100 on network: 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Creator",
+      "value": "Paul Crudgington",
+    },
+  ],
+  "contentURL": "https://ipfsgateway.makersplace.com/ipfs/QmPPxhZmDX4TiXoj6EykoU8k23YUq3XDgYrrwT55hB3kt8",
+  "contentURLMimeType": "image/jpeg",
+  "description": "This is a really popular spot at The Tate Modern (London) for photographers. The brutalist concrete architecture and sweeping lines make it a dream to shoot, and this is my take on that scene.
+The angle at which the image is made and the processing in black and white, really helps to accentuate the curves and lines and the presence of the lone person gives the sense of scale.",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "trait_type": "Creator",
+        "value": "Paul Crudgington",
+      },
+    ],
+    "description": "This is a really popular spot at The Tate Modern (London) for photographers. The brutalist concrete architecture and sweeping lines make it a dream to shoot, and this is my take on that scene.
+The angle at which the image is made and the processing in black and white, really helps to accentuate the curves and lines and the presence of the lone person gives the sense of scale.",
+    "imageUrl": "https://ipfsgateway.makersplace.com/ipfs/QmPPxhZmDX4TiXoj6EykoU8k23YUq3XDgYrrwT55hB3kt8",
+    "name": "Tate Modern",
+    "properties": Object {
+      "created_at": Object {
+        "description": "2019-03-15T10:53:01.353471+00:00",
+        "type": "datetime",
+      },
+      "description": Object {
+        "description": "This is a really popular spot at The Tate Modern (London) for photographers. The brutalist concrete architecture and sweeping lines make it a dream to shoot, and this is my take on that scene.
+The angle at which the image is made and the processing in black and white, really helps to accentuate the curves and lines and the presence of the lone person gives the sense of scale.",
+        "type": "string",
+      },
+      "digital_media_signature": Object {
+        "description": "d6bf9a289b1f8845190220a16be2fe0ea31f7c6a7ead6f59af6f459a093e1f9b",
+        "type": "string",
+      },
+      "digital_media_signature_type": Object {
+        "description": "SHA-256",
+        "type": "string",
+      },
+      "name": Object {
+        "description": "Tate Modern",
+        "type": "string",
+      },
+      "preview_media_file": Object {
+        "description": "https://ipfsgateway.makersplace.com/ipfs/QmPPxhZmDX4TiXoj6EykoU8k23YUq3XDgYrrwT55hB3kt8",
+        "type": "string",
+      },
+      "preview_media_file_type": Object {
+        "description": "jpg",
+        "type": "string",
+      },
+      "total_supply": Object {
+        "description": 10,
+        "type": "int",
+      },
+    },
+    "title": "Tate Modern",
+    "type": "object",
+  },
+  "name": "Tate Modern",
+  "networkId": 1,
+  "tokenAddress": "0x2A46f2fFD99e19a89476E2f62270e0a35bBf0756",
+  "tokenId": "100",
+  "tokenURI": "ipfs://ipfs/QmQZ66nmWPRFTqfuxVuAMHKb57xwhDZfGkSDGd7MJjxbWm",
+  "tokenURL": "https://ipfsgateway.makersplace.com/ipfs/QmQZ66nmWPRFTqfuxVuAMHKb57xwhDZfGkSDGd7MJjxbWm",
+  "tokenURLMimeType": "application/json",
+}
+`;
+
+exports[`Makersplace ERC721 should be able to fetch and parse metadata for makersplace video — token id: 63253 on network: 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Creator",
+      "value": "Reema",
+    },
+  ],
+  "contentURL": "https://ipfsgateway.makersplace.com/ipfs/QmbhDKcf4fqtjXQvWmSyJT2pU1pYwCoa1wWVkTurBvkBcV",
+  "contentURLMimeType": "video/mp4",
+  "description": "We are the cosmos made conscious. We are consciousness incarnated in stardust. \\"We inhabit a universe where atoms are made in the centers of stars; where each second a thousand suns are born; where the raw material for biological evolution is sometimes made by the explosion of a star halfway across the Milky Way; where a thing as beautiful as a galaxy is formed a hundred billion times . We are the local embodiment of a Cosmos grown to self-awareness. We have begun to contemplate our origins: stardust pondering the stars; organized assemblages of ten billion billion billion atoms considering the evolution of atoms; tracing the long journey by which, here at least, consciousness arose. Not only are we made of stardust; we’re made of elements so fundamental to the universe they were created in the first moments of the Big Bang. The history inside of us stretches back further than we knew and our future remains inescapably among the stars. We are the universe trying to understand itself\\"",
+  "imageURL": "https://ipfsgateway.makersplace.com/ipfs/QmeSH3ap2VCN6KgL4U8ebvrYrWBKPYffJsAbAUiHk9qSik",
+  "imageURLMimeType": "image/jpeg",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "trait_type": "Creator",
+        "value": "Reema",
+      },
+    ],
+    "description": "We are the cosmos made conscious. We are consciousness incarnated in stardust. \\"We inhabit a universe where atoms are made in the centers of stars; where each second a thousand suns are born; where the raw material for biological evolution is sometimes made by the explosion of a star halfway across the Milky Way; where a thing as beautiful as a galaxy is formed a hundred billion times . We are the local embodiment of a Cosmos grown to self-awareness. We have begun to contemplate our origins: stardust pondering the stars; organized assemblages of ten billion billion billion atoms considering the evolution of atoms; tracing the long journey by which, here at least, consciousness arose. Not only are we made of stardust; we’re made of elements so fundamental to the universe they were created in the first moments of the Big Bang. The history inside of us stretches back further than we knew and our future remains inescapably among the stars. We are the universe trying to understand itself\\"",
+    "imageUrl": "https://ipfsgateway.makersplace.com/ipfs/QmeSH3ap2VCN6KgL4U8ebvrYrWBKPYffJsAbAUiHk9qSik",
+    "name": "We Are Made of Stardust",
+    "properties": Object {
+      "created_at": Object {
+        "description": "2021-06-16T18:31:20.779279+00:00",
+        "type": "datetime",
+      },
+      "description": Object {
+        "description": "We are the cosmos made conscious. We are consciousness incarnated in stardust. \\"We inhabit a universe where atoms are made in the centers of stars; where each second a thousand suns are born; where the raw material for biological evolution is sometimes made by the explosion of a star halfway across the Milky Way; where a thing as beautiful as a galaxy is formed a hundred billion times . We are the local embodiment of a Cosmos grown to self-awareness. We have begun to contemplate our origins: stardust pondering the stars; organized assemblages of ten billion billion billion atoms considering the evolution of atoms; tracing the long journey by which, here at least, consciousness arose. Not only are we made of stardust; we’re made of elements so fundamental to the universe they were created in the first moments of the Big Bang. The history inside of us stretches back further than we knew and our future remains inescapably among the stars. We are the universe trying to understand itself\\"",
+        "type": "string",
+      },
+      "digital_media_signature": Object {
+        "description": "da6a09de80950dfbb2ae9bbd00db117e08d9ee2d93a6d4445b9490a27539310e",
+        "type": "string",
+      },
+      "digital_media_signature_type": Object {
+        "description": "SHA-256",
+        "type": "string",
+      },
+      "name": Object {
+        "description": "We Are Made of Stardust",
+        "type": "string",
+      },
+      "preview_media_file": Object {
+        "description": "https://ipfsgateway.makersplace.com/ipfs/QmeSH3ap2VCN6KgL4U8ebvrYrWBKPYffJsAbAUiHk9qSik",
+        "type": "string",
+      },
+      "preview_media_file2": Object {
+        "description": "https://ipfsgateway.makersplace.com/ipfs/QmbhDKcf4fqtjXQvWmSyJT2pU1pYwCoa1wWVkTurBvkBcV",
+        "type": "string",
+      },
+      "preview_media_file2_type": Object {
+        "description": "mp4",
+        "type": "string",
+      },
+      "preview_media_file_type": Object {
+        "description": "jpg",
+        "type": "string",
+      },
+      "total_supply": Object {
+        "description": 1,
+        "type": "int",
+      },
+    },
+    "title": "We Are Made of Stardust",
+    "type": "object",
+  },
+  "name": "We Are Made of Stardust",
+  "networkId": 1,
+  "tokenAddress": "0x2A46f2fFD99e19a89476E2f62270e0a35bBf0756",
+  "tokenId": "63253",
+  "tokenURI": "ipfs://ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU",
+  "tokenURL": "https://ipfsgateway.makersplace.com/ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU",
+  "tokenURLMimeType": "application/json",
+}
+`;

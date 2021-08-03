@@ -1,5 +1,4 @@
 import { Agent, VEE_FRIENDS_TOKEN_ADDRESS } from '../../src'
-import METADATA_STUB from '../mock-reponses/contracts/veeFriends/294.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
 
@@ -7,18 +6,7 @@ const VEE_FRIENDS_CRITERIA = {
   input: {
     tokenId: '294',
     tokenAddress: VEE_FRIENDS_TOKEN_ADDRESS,
-  },
-  output: {
-    metadata: METADATA_STUB,
-    name: METADATA_STUB.name,
-    description: METADATA_STUB.description,
-    tokenURL:
-      'https://erc721.veefriends.com/api/metadata/0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb/294',
-    tokenURLMimeType: 'application/json; charset=utf-8',
-    contentURL: METADATA_STUB.image,
-    contentURLMimeType: 'image/png',
-    attributes: METADATA_STUB.attributes,
-    externalURL: METADATA_STUB.external_url,
+    networkId: 1,
   },
 }
 
@@ -27,21 +15,21 @@ describe('Vee Friends ERC721', () => {
     providers: {
       1: testProvider,
     },
-    ipfsGateway: 'https://dweb.link',
-    fetchTimeout: 15000,
+    ipfsGateway: 'https://ipfs.fleek.co',
+    fetchTimeout: 60000,
   })
 
   beforeEach(() => {
-    jest.setTimeout(60000)
+    jest.setTimeout(120000)
   })
 
-  it(`should be able to fetch and parse metadata for token id: ${VEE_FRIENDS_CRITERIA.input.tokenId}`, async () => {
+  it(`should be able to fetch and parse metadata for token id: ${VEE_FRIENDS_CRITERIA.input.tokenId} on network: ${VEE_FRIENDS_CRITERIA.input.networkId}`, async () => {
     const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
       1,
       VEE_FRIENDS_CRITERIA.input.tokenAddress,
       VEE_FRIENDS_CRITERIA.input.tokenId,
     )
-    expect(meta).toStrictEqual(VEE_FRIENDS_CRITERIA.output)
+    expect(meta).toMatchSnapshot()
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

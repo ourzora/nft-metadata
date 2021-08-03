@@ -232,7 +232,11 @@ export class Agent {
       return { ...contractData }
     }
 
-    const tokenData = await fetchMetadata(contractData.tokenURI)
+    const tokenData = await fetchMetadata(contractData.tokenURI, {
+      timeout: this.options.fetchTimeout,
+      ipfsGateway: this.options.ipfsGateway,
+    })
+
     const metadata = await this.parseMetadata(contractData, tokenData)
 
     return {

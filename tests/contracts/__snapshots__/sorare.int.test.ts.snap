@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sorare ERC721 should be able to fetch and parse metadata for token id: 100408090256748841933639219919068439822835068705742947267506906666220789418990 on network: 1 1`] = `
+Object {
+  "contentURL": "https://assets.sorare.com/card/044a4d0a-2c44-41a8-b81f-ecd69cbe031a/picture/40af00c4aca787c49865c09aec66182e.png",
+  "contentURLMimeType": "image/png",
+  "description": "Rare Player Cards are only issued at 100 editions per season.",
+  "externalURL": "?referrer=opensea",
+  "name": "Hiroyuki Abe 2021-22 • Rare 38/100",
+  "networkId": 1,
+  "tokenAddress": "0x629a673a8242c2ac4b7b8c5d8735fbeac21a6205",
+  "tokenId": "100408090256748841933639219919068439822835068705742947267506906666220789418990",
+  "tokenURI": "https://api.sorare.com/api/v1/cards/100408090256748841933639219919068439822835068705742947267506906666220789418990",
+  "tokenURL": "https://api.sorare.com/api/v1/cards/100408090256748841933639219919068439822835068705742947267506906666220789418990",
+  "tokenURLMimeType": "application/json; charset=utf-8",
+}
+`;

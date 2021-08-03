@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Zora ERC721 should be able to fetch and parse metadata for burnt token id 2000 on network id 4 1`] = `
+Object {
+  "contentURI": "https://images.mirror-media.xyz/nft/e47dc629-cd93-488d-b938-07f15811e6d5.png?height=1536&width=2048",
+  "contentURL": "https://images.mirror-media.xyz/nft/e47dc629-cd93-488d-b938-07f15811e6d5.png?height=1536&width=2048",
+  "contentURLMimeType": "image/png",
+  "description": "http://patrickv1.localhost:3000/PXy-d8dtkp1grR7NktQAhgzeXwQoQhiVoHQc2tBgMSY",
+  "metadata": Object {
+    "description": "http://patrickv1.localhost:3000/PXy-d8dtkp1grR7NktQAhgzeXwQoQhiVoHQc2tBgMSY",
+    "mimeType": "image/png",
+    "name": "Test Reserve Auction",
+    "version": "zora-20210101",
+  },
+  "minterAddress": "0x942cBEa64876Ff0b2e23c0712B37Dc0091804e9c",
+  "name": "Test Reserve Auction",
+  "networkId": 4,
+  "tokenAddress": "0x7C2668BD0D3c050703CEcC956C11Bd520c26f7d4",
+  "tokenId": "2000",
+  "tokenURI": "https://s3-us-west-2.amazonaws.com/metadata.mirror-media.xyz/nft/3e60fd10-ea1e-40e5-86e2-c574d5308df5",
+  "tokenURL": "https://s3-us-west-2.amazonaws.com/metadata.mirror-media.xyz/nft/3e60fd10-ea1e-40e5-86e2-c574d5308df5",
+  "tokenURLMimeType": "application/json",
+}
+`;
+
+exports[`Zora ERC721 should be able to fetch and parse metadata for burnt token id: 828 1`] = `
+Object {
+  "contentURI": "https://ipfs.fleek.co/ipfs/bafybeie7ebeupimyxmq4ytykyabw3iuyivzat4tnqmvtcsr24cetcmicgi",
+  "contentURL": "https://ipfs.fleek.co/ipfs/bafybeie7ebeupimyxmq4ytykyabw3iuyivzat4tnqmvtcsr24cetcmicgi",
+  "contentURLMimeType": "image/png",
+  "description": "Part one in the nine part isolation series. All works work created in the last year inspired by dreams while in quarantine.
+
+digital image 1280 x 1706 png c. 2020",
+  "metadata": Object {
+    "description": "Part one in the nine part isolation series. All works work created in the last year inspired by dreams while in quarantine.
+
+digital image 1280 x 1706 png c. 2020",
+    "mimeType": "image/png",
+    "name": "ISOLATION : ONE",
+    "version": "zora-20210101",
+  },
+  "minterAddress": "0xb77a7F1B277fb6c7f2D9D61a4070fC90c39b6186",
+  "name": "ISOLATION : ONE",
+  "networkId": 1,
+  "ownerAddress": "0x0000000000000000000000000000000000000000",
+  "tokenAddress": "0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7",
+  "tokenId": "828",
+  "tokenURI": "https://ipfs.fleek.co/ipfs/bafybeihglhwbzvrqyue7af2cqz4s6gtg7ylwrhd2uqebv3eo36kpbl32ne",
+  "tokenURL": "https://ipfs.fleek.co/ipfs/bafybeihglhwbzvrqyue7af2cqz4s6gtg7ylwrhd2uqebv3eo36kpbl32ne",
+  "tokenURLMimeType": "application/json",
+}
+`;
+
+exports[`Zora ERC721 should be able to fetch and parse metadata for token id 3313 1`] = `undefined`;
+
+exports[`Zora ERC721 should be able to fetch and parse metadata for token id: 100 1`] = `
+Object {
+  "contentURI": "https://ipfs.fleek.co/ipfs/bafkreic4zqxiofoxuf6dcefp4n5ykynyjncq3ohpz4mh3edet4qseaifb4",
+  "contentURL": "https://ipfs.fleek.co/ipfs/bafkreic4zqxiofoxuf6dcefp4n5ykynyjncq3ohpz4mh3edet4qseaifb4",
+  "contentURLMimeType": "text/plain",
+  "description": "Makes the world go round",
+  "metadata": Object {
+    "description": "Makes the world go round",
+    "mimeType": "text/plain",
+    "name": "Money",
+    "version": "zora-20210101",
+  },
+  "minterAddress": "0xFB2A8333006e8FC0bdFAF81ec3aEB9CA09fe5AA0",
+  "name": "Money",
+  "networkId": 1,
+  "tokenAddress": "0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7",
+  "tokenId": "100",
+  "tokenURI": "https://ipfs.fleek.co/ipfs/bafkreic364j5bx3tai5esijlnicpssmmudqlo4nwz5reftkpz6w2qrdhym",
+  "tokenURL": "https://ipfs.fleek.co/ipfs/bafkreic364j5bx3tai5esijlnicpssmmudqlo4nwz5reftkpz6w2qrdhym",
+  "tokenURLMimeType": "application/json",
+}
+`;

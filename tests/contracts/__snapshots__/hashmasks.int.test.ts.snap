@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hashmask ERC721 should be able to fetch and parse metadata for token id: 3837 on network: 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Character",
+      "value": "Male",
+    },
+    Object {
+      "trait_type": "Mask",
+      "value": "Pixel",
+    },
+    Object {
+      "trait_type": "Skin Color",
+      "value": "Light",
+    },
+    Object {
+      "trait_type": "Eye Color",
+      "value": "Green",
+    },
+    Object {
+      "trait_type": "Item",
+      "value": "No Item",
+    },
+    Object {
+      "trait_type": "Background",
+      "value": "Street Art",
+    },
+    Object {
+      "trait_type": "Glyph",
+      "value": "Planetary",
+    },
+  ],
+  "contentURL": "https://hashmasksstore.blob.core.windows.net/hashmasks/13978.jpg",
+  "contentURLMimeType": "image/jpeg",
+  "description": "Hashmask #3837",
+  "externalURL": "https://www.thehashmasks.com/detail/3837",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "trait_type": "Character",
+        "value": "Male",
+      },
+      Object {
+        "trait_type": "Mask",
+        "value": "Pixel",
+      },
+      Object {
+        "trait_type": "Skin Color",
+        "value": "Light",
+      },
+      Object {
+        "trait_type": "Eye Color",
+        "value": "Green",
+      },
+      Object {
+        "trait_type": "Item",
+        "value": "No Item",
+      },
+      Object {
+        "trait_type": "Background",
+        "value": "Street Art",
+      },
+      Object {
+        "trait_type": "Glyph",
+        "value": "Planetary",
+      },
+    ],
+    "description": "Hashmask #3837",
+    "external_url": "https://www.thehashmasks.com/detail/3837",
+    "image": "https://hashmasksstore.blob.core.windows.net/hashmasks/13978.jpg",
+  },
+  "name": "Chocolate",
+  "networkId": 1,
+  "tokenAddress": "0xC2C747E0F7004F9E8817Db2ca4997657a7746928",
+  "tokenId": "3837",
+  "tokenURI": "https://hashmap.azurewebsites.net/getMask/3837",
+  "tokenURL": "https://hashmap.azurewebsites.net/getMask/3837",
+  "tokenURLMimeType": "application/json; charset=utf-8",
+}
+`;

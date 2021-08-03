@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Decentraland ERC721 should be able to fetch and parse metadata for token id: 100 on network: 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "display_type": "number",
+      "trait_type": "X",
+      "value": 0,
+    },
+    Object {
+      "display_type": "number",
+      "trait_type": "Y",
+      "value": 100,
+    },
+  ],
+  "contentURL": "https://api.decentraland.org/v2/parcels/0/100/map.png?size=24&width=1024&height=1024",
+  "contentURLMimeType": "image/png",
+  "externalURL": "https://market.decentraland.org/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "display_type": "number",
+        "trait_type": "X",
+        "value": 0,
+      },
+      Object {
+        "display_type": "number",
+        "trait_type": "Y",
+        "value": 100,
+      },
+    ],
+    "background_color": "000000",
+    "description": "",
+    "external_url": "https://market.decentraland.org/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100",
+    "id": "100",
+    "image": "https://api.decentraland.org/v2/parcels/0/100/map.png?size=24&width=1024&height=1024",
+    "name": "Parcel 0,100",
+  },
+  "name": "Parcel 0,100",
+  "networkId": 1,
+  "tokenAddress": "0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d",
+  "tokenId": "100",
+  "tokenURI": "https://api.decentraland.org/v2/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100",
+  "tokenURL": "https://api.decentraland.org/v2/contracts/0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d/tokens/100",
+  "tokenURLMimeType": "application/json",
+}
+`;

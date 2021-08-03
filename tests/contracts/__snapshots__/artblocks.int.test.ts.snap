@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtBlocks ERC721 should be able to fetch and parse metadata for curated token id: 100 on network: 1: 0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a-100-1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Chromie Squiggle",
+      "value": "All Chromie Squiggles",
+    },
+  ],
+  "contentURL": "https://api.artblocks.io/generator/100",
+  "contentURLMimeType": "text/html; charset=utf-8",
+  "description": "Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market.  Additional project feature(s) => Starting Color: 79, End Color: 160, Color Spread: 37, Color Direction: Forward, Height: 4, Segments: 15, Steps Between Segments: 200",
+  "externalURL": "https://www.artblocks.io/token/100",
+  "imageURL": "https://api.artblocks.io/image/100",
+  "imageURLMimeType": "image/png",
+  "metadata": Object {
+    "animation_url": "https://api.artblocks.io/generator/100",
+    "artist": "Snowfro",
+    "aspect ratio (w/h)": "1.5",
+    "collection_name": "Chromie Squiggle by Snowfro",
+    "curation_status": "curated",
+    "description": "Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market.  Additional project feature(s) => Starting Color: 79, End Color: 160, Color Spread: 37, Color Direction: Forward, Height: 4, Segments: 15, Steps Between Segments: 200",
+    "external_url": "https://www.artblocks.io/token/100",
+    "features": Array [
+      "Starting Color: 79",
+      "End Color: 160",
+      "Color Spread: 37",
+      "Color Direction: Forward",
+      "Height: 4",
+      "Segments: 15",
+      "Steps Between Segments: 200",
+    ],
+    "image": "https://api.artblocks.io/image/100",
+    "interactive_nft": Object {
+      "code_uri": "https://api.artblocks.io/generator/100",
+      "version": "0.0.9",
+    },
+    "is dynamic": true,
+    "license": "NFT License",
+    "name": "Chromie Squiggle #100",
+    "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
+    "platform": "Art Blocks Curated",
+    "royaltyInfo": Object {
+      "additionalPayee": "0xf3860788D1597cecF938424bAABe976FaC87dC26",
+      "additionalPayeePercentage": "0",
+      "artistAddress": "0xf3860788D1597cecF938424bAABe976FaC87dC26",
+      "royaltyFeeByID": "5",
+    },
+    "script type": "p5js",
+    "series": "1",
+    "token hash": "0x4941d7531cd44049c7c7396a47effe02250945947ea2b091a00462ffba4f8186",
+    "tokenID": "100",
+    "traits": Array [
+      Object {
+        "trait_type": "Chromie Squiggle",
+        "value": "All Chromie Squiggles",
+      },
+    ],
+    "uses hash": true,
+    "website": "https://www.twitter.com/artonblockchain",
+  },
+  "name": "Chromie Squiggle #100",
+  "networkId": 1,
+  "tokenAddress": "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
+  "tokenId": "100",
+  "tokenURI": "https://api.artblocks.io/token/100",
+  "tokenURL": "https://api.artblocks.io/token/100",
+  "tokenURLMimeType": "application/json; charset=utf-8",
+}
+`;
+
+exports[`ArtBlocks ERC721 should be able to fetch and parse metadata for token id: 91000216 on network: 1: 0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270-91000216-1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "planets",
+      "value": "All planets",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Rotation: clockwise",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Type: matter",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Binary: false",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Orbits: 7",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Rings: 3",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Moons: 0",
+    },
+    Object {
+      "trait_type": "planets",
+      "value": "Ufos: 0",
+    },
+  ],
+  "contentURL": "https://api.artblocks.io/generator/91000216",
+  "contentURLMimeType": "text/html; charset=utf-8",
+  "description": "A minimal and geometric interpretation of a planetary system. Additional project feature(s) => Rotation: clockwise, Type: matter, Binary: false, Orbits: 7, Rings: 3, Moons: 0, Ufos: 0",
+  "externalURL": "https://www.artblocks.io/token/91000216",
+  "imageURL": "https://api.artblocks.io/image/91000216",
+  "imageURLMimeType": "image/png",
+  "metadata": Object {
+    "animation_url": "https://api.artblocks.io/generator/91000216",
+    "artist": "donnoh",
+    "aspect ratio (w/h)": "1",
+    "collection_name": "planets by donnoh",
+    "curation_status": "factory",
+    "description": "A minimal and geometric interpretation of a planetary system. Additional project feature(s) => Rotation: clockwise, Type: matter, Binary: false, Orbits: 7, Rings: 3, Moons: 0, Ufos: 0",
+    "external_url": "https://www.artblocks.io/token/91000216",
+    "features": Array [
+      "Rotation: clockwise",
+      "Type: matter",
+      "Binary: false",
+      "Orbits: 7",
+      "Rings: 3",
+      "Moons: 0",
+      "Ufos: 0",
+    ],
+    "image": "https://api.artblocks.io/image/91000216",
+    "interactive_nft": Object {
+      "code_uri": "https://api.artblocks.io/generator/91000216",
+      "version": "0.0.9",
+    },
+    "is dynamic": true,
+    "license": "CC BY-NC 4.0",
+    "name": "planets #216",
+    "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
+    "platform": "Art Blocks Factory",
+    "royaltyInfo": Object {
+      "additionalPayee": "0x0000000000000000000000000000000000000000",
+      "additionalPayeePercentage": "0",
+      "artistAddress": "0x33D66941465ac776C38096cb1bc496C673aE7390",
+      "royaltyFeeByID": "10",
+    },
+    "script type": "p5js",
+    "series": "N/A",
+    "token hash": "0xb561d04fc80811fdc83dd2ef9b07ed357e568b5c10decba8f88a9221b15c8215",
+    "tokenID": "91000216",
+    "traits": Array [
+      Object {
+        "trait_type": "planets",
+        "value": "All planets",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Rotation: clockwise",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Type: matter",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Binary: false",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Orbits: 7",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Rings: 3",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Moons: 0",
+      },
+      Object {
+        "trait_type": "planets",
+        "value": "Ufos: 0",
+      },
+    ],
+    "uses hash": true,
+    "website": "https://twitter.com/lucadonnoh",
+  },
+  "name": "planets #216",
+  "networkId": 1,
+  "tokenAddress": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
+  "tokenId": "91000216",
+  "tokenURI": "https://api.artblocks.io/token/91000216",
+  "tokenURL": "https://api.artblocks.io/token/91000216",
+  "tokenURLMimeType": "application/json; charset=utf-8",
+}
+`;

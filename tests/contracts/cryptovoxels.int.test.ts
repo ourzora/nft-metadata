@@ -1,5 +1,4 @@
-import { CRYPTOVOXELS_TOKEN_ADDRESS, Agent, Network } from '../../src'
-import METADATA_STUB from '../mock-reponses/contracts/cryptovoxels/100.json'
+import { Agent, CRYPTOVOXELS_TOKEN_ADDRESS, Network } from '../../src'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
 
@@ -7,17 +6,7 @@ const CRYPTOVOXELS_CRITERIA = {
   input: {
     tokenId: '100',
     tokenAddress: CRYPTOVOXELS_TOKEN_ADDRESS,
-  },
-  output: {
-    metadata: METADATA_STUB,
-    name: METADATA_STUB.name,
-    description: METADATA_STUB.description,
-    tokenURL: 'https://www.cryptovoxels.com/p/100',
-    tokenURLMimeType: 'application/json; charset=utf-8',
-    contentURL: METADATA_STUB.image,
-    contentURLMimeType: 'image/png',
-    attributes: METADATA_STUB.attributes,
-    externalURL: METADATA_STUB.external_url,
+    networkId: 1,
   },
 }
 
@@ -26,21 +15,21 @@ describe('Cryptovoxels ERC721', () => {
     providers: {
       [Network.MAINNET]: testProvider,
     },
-    ipfsGateway: 'https://dweb.link',
-    fetchTimeout: 15000,
+    ipfsGateway: 'https://ipfs.fleek.co',
+    fetchTimeout: 60000,
   })
 
   beforeEach(() => {
-    jest.setTimeout(60000)
+    jest.setTimeout(120000)
   })
 
-  it(`should be able to fetch and parse metadata for token id: ${CRYPTOVOXELS_CRITERIA.input.tokenId}`, async () => {
+  it(`should be able to fetch and parse metadata for token id: ${CRYPTOVOXELS_CRITERIA.input.tokenId} on network: ${CRYPTOVOXELS_CRITERIA.input.networkId}`, async () => {
     const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
       1,
       CRYPTOVOXELS_CRITERIA.input.tokenAddress,
       CRYPTOVOXELS_CRITERIA.input.tokenId,
     )
-    expect(meta).toStrictEqual(CRYPTOVOXELS_CRITERIA.output)
+    expect(meta).toMatchSnapshot()
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

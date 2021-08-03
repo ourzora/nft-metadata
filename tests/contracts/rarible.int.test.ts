@@ -1,5 +1,4 @@
 import { Agent, RARIBLE_TOKEN_ADDRESS } from '../../src'
-import METADATA_STUB from '../mock-reponses/contracts/rarible/301_962.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
 
@@ -8,18 +7,7 @@ const RARIBLE_CRITERIA = {
     tokenId:
       '30105810670306411381802272225292624615592980350863712708305530245480406056962',
     tokenAddress: RARIBLE_TOKEN_ADDRESS,
-  },
-  output: {
-    metadata: METADATA_STUB,
-    name: METADATA_STUB.name,
-    description: METADATA_STUB.description,
-    tokenURL:
-      'https://gateway.ipfs.io/ipfs/QmfHrsEpXXrvi2dTTNake723kkMapDQXeuYDsVmSRdsQNH',
-    tokenURLMimeType: 'application/json',
-    contentURL: METADATA_STUB.image,
-    contentURLMimeType: 'image/jpeg',
-    externalURL: METADATA_STUB.external_url,
-    attributes: METADATA_STUB.attributes,
+    networkId: 1,
   },
 }
 
@@ -28,21 +16,21 @@ describe('Rarible ERC721', () => {
     providers: {
       1: testProvider,
     },
-    ipfsGateway: 'https://gateway.ipfs.io',
-    fetchTimeout: 15000,
+    ipfsGateway: 'https://ipfs.fleek.co',
+    fetchTimeout: 60000,
   })
 
   beforeEach(() => {
-    jest.setTimeout(60000)
+    jest.setTimeout(120000)
   })
 
-  it(`should be able to fetch and parse metadata for token id: ${RARIBLE_CRITERIA.input.tokenId}`, async () => {
+  it(`should be able to fetch and parse metadata for token id: ${RARIBLE_CRITERIA.input.tokenId} on network: ${RARIBLE_CRITERIA.input.networkId}`, async () => {
     const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
       1,
       RARIBLE_CRITERIA.input.tokenAddress,
       RARIBLE_CRITERIA.input.tokenId,
     )
-    expect(meta).toStrictEqual(RARIBLE_CRITERIA.output)
+    expect(meta).toMatchSnapshot()
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

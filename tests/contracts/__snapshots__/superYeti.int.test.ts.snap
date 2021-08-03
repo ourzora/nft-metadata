@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Super Yeti ERC721 should be able to fetch and parse metadata for token id: 100 on network: 1 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "Background Color",
+      "value": "Yellow",
+    },
+    Object {
+      "trait_type": "Fur Color",
+      "value": "Red Black",
+    },
+    Object {
+      "trait_type": "Eye Color",
+      "value": " Black",
+    },
+    Object {
+      "trait_type": "Face",
+      "value": "Werewolf",
+    },
+    Object {
+      "value": "DSLR",
+    },
+    Object {
+      "value": "Top Hat Gold",
+    },
+    Object {
+      "value": "Ski Goggles",
+    },
+    Object {
+      "value": "Ski Boots",
+    },
+    Object {
+      "trait_type": "Rarity",
+      "value": "Prime",
+    },
+    Object {
+      "trait_type": "Track",
+      "value": "Photographer",
+    },
+  ],
+  "contentURL": "https://ipfs.fleek.co/ipfs/Qmbhrr2skR8au5Wh8HtJhW4PYL7QjEUUnXC2r6BTwZVuYB",
+  "contentURLMimeType": "image/jpeg",
+  "description": "SuperYeti is a 3D collection of randomized characters created through a standard ERC-721 contract and backed by IPFS file storage and registered on the Ethereum Blockchain. Future implementation of a multiplayer, play-to-earn game where SuperYetis own land, breed and compete with one another to protect the Yetiverse. You can learn more at www.superyeti.co",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "trait_type": "Background Color",
+        "value": "Yellow",
+      },
+      Object {
+        "trait_type": "Fur Color",
+        "value": "Red Black",
+      },
+      Object {
+        "trait_type": "Eye Color",
+        "value": " Black",
+      },
+      Object {
+        "trait_type": "Face",
+        "value": "Werewolf",
+      },
+      Object {
+        "value": "DSLR",
+      },
+      Object {
+        "value": "Top Hat Gold",
+      },
+      Object {
+        "value": "Ski Goggles",
+      },
+      Object {
+        "value": "Ski Boots",
+      },
+      Object {
+        "trait_type": "Rarity",
+        "value": "Prime",
+      },
+      Object {
+        "trait_type": "Track",
+        "value": "Photographer",
+      },
+    ],
+    "description": "SuperYeti is a 3D collection of randomized characters created through a standard ERC-721 contract and backed by IPFS file storage and registered on the Ethereum Blockchain. Future implementation of a multiplayer, play-to-earn game where SuperYetis own land, breed and compete with one another to protect the Yetiverse. You can learn more at www.superyeti.co",
+    "image": "https://defra.mypinata.cloud/ipfs/Qmbhrr2skR8au5Wh8HtJhW4PYL7QjEUUnXC2r6BTwZVuYB",
+    "name": "Super Yeti #100",
+  },
+  "name": "Super Yeti #100",
+  "networkId": 1,
+  "tokenAddress": "0x3F0785095A660fEe131eEbcD5aa243e529C21786",
+  "tokenId": "100",
+  "tokenURI": "https://defra.systems/metadata/QmXFtqihiEDP5sJwME5dNB3NnYk6LeiepbD4RPP1XES6Ys/asset/100",
+  "tokenURL": "https://defra.systems/metadata/QmXFtqihiEDP5sJwME5dNB3NnYk6LeiepbD4RPP1XES6Ys/asset/100",
+  "tokenURLMimeType": "application/json; charset=utf-8",
+}
+`;
