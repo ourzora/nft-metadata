@@ -1,4 +1,4 @@
-import { BONSAI_TOKEN_ADDRESS, MetadataAgent } from '../../src'
+import { BONSAI_TOKEN_ADDRESS, Agent, Network } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/bonsai/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -13,7 +13,7 @@ const BONSAI_CRITERIA = {
     name: METADATA_STUB.name,
     description: METADATA_STUB.description,
     tokenURL:
-      'https://ipfs.io/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100',
+      'https://dweb.link/ipfs/QmXPSFmFqfDTMbLePfGTuYa2Vm9CoqsU11ypiMm1nKL8V9/100',
     tokenURLMimeType: 'application/json',
     contentURL: METADATA_STUB.animation_url,
     contentURLMimeType: 'video/mp4',
@@ -24,16 +24,21 @@ const BONSAI_CRITERIA = {
 }
 
 describe('Bonsai ERC721', () => {
-  const parser = new MetadataAgent(testProvider, {
-    fetchTimeout: 10000,
+  const parser = new Agent({
+    providers: {
+      [Network.MAINNET]: testProvider,
+    },
+    ipfsGateway: 'https://dweb.link',
+    fetchTimeout: 15000,
   })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${BONSAI_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       BONSAI_CRITERIA.input.tokenAddress,
       BONSAI_CRITERIA.input.tokenId,
     )

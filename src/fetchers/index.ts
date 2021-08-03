@@ -1,4 +1,3 @@
-import { defaultFetcher } from './defaultFetcher'
 import { getAddress } from '@ethersproject/address'
 import {
   DECENTRALAND_TOKEN_ADDRESS,
@@ -12,21 +11,29 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 
 export interface FetcherConfig {
   provider: JsonRpcProvider
-  contractAddress: string
+  tokenAddress: string
   tokenId: string
 }
 
 export interface FetcherResponse {
-  tokenURI: string
-  ownerAddress: string
-  creatorAddress?: string
+  tokenURI?: string
+  ownerAddress?: string
+  minterAddress?: string
 }
 
 export type Fetcher = (config: FetcherConfig) => Promise<FetcherResponse>
 
 // TODO - look at making lookup a registry instead
-export function fetcherLookup(contractAddress: string): Fetcher {
+export function fetcherLookup(
+  contractAddress: string,
+  fetchers?: { [key: string]: Fetcher },
+): Fetcher | undefined {
   const safeAddress = getAddress(contractAddress)
+
+  if (fetchers?.[safeAddress]) {
+    return fetchers[safeAddress]
+  }
+
   switch (safeAddress) {
     case DECENTRALAND_TOKEN_ADDRESS:
       return fetchDecentralandContractData
@@ -35,6 +42,6 @@ export function fetcherLookup(contractAddress: string): Fetcher {
     case ZORA_TOKEN_ADDRESS:
       return fetchZoraContractData
     default:
-      return defaultFetcher
+      return
   }
 }

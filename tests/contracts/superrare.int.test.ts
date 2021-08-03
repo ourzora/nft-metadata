@@ -1,4 +1,4 @@
-import { MetadataAgent, SUPERRARE_TOKEN_ADDRESS } from '../../src'
+import { Agent, SUPERRARE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/superrare/17798.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -21,14 +21,21 @@ const SUPERARE_CRITERIA = {
 }
 
 describe('Superrare ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+    },
+    ipfsGateway: 'https://dweb.link',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${SUPERARE_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       SUPERARE_CRITERIA.input.tokenAddress,
       SUPERARE_CRITERIA.input.tokenId,
     )

@@ -1,4 +1,4 @@
-import { MAKERSPLACE_TOKEN_ADDRESS, MetadataAgent } from '../../src'
+import { MAKERSPLACE_TOKEN_ADDRESS, Agent, Network } from '../../src'
 import IMAGE_METADATA_STUB from '../mock-reponses/contracts/makersplace/100.json'
 import VIDEO_METADATA_STUB from '../mock-reponses/contracts/makersplace/63253.json'
 import { testProvider } from '../setupProvider'
@@ -42,14 +42,21 @@ const VIDEO_CRITERIA = {
 }
 
 describe('Makersplace ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      [Network.MAINNET]: testProvider,
+    },
+    ipfsGateway: 'https://ipfsgateway.makersplace.com',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for makersplace image — token id: ${IMAGE_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       IMAGE_CRITERIA.input.tokenAddress,
       IMAGE_CRITERIA.input.tokenId,
     )
@@ -58,7 +65,8 @@ describe('Makersplace ERC721', () => {
   })
 
   it(`should be able to fetch and parse metadata for makersplace video — token id: ${VIDEO_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       VIDEO_CRITERIA.input.tokenAddress,
       VIDEO_CRITERIA.input.tokenId,
     )

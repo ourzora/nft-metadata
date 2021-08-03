@@ -4,10 +4,10 @@ import { FetcherConfig } from './index'
 
 export async function defaultFetcher({
   provider,
-  contractAddress,
+  tokenAddress,
   tokenId,
 }: FetcherConfig) {
-  const erc721Contract = Erc721Factory.connect(contractAddress, provider)
+  const erc721Contract = Erc721Factory.connect(tokenAddress, provider)
 
   const promises = [
     erc721Contract.tokenURI(tokenId),

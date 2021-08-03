@@ -1,60 +1,50 @@
 import { getIPFSUrl } from '../utils/ipfs'
-import { fetchMetadata, fetchMimeType } from '../utils/fetch'
 import { ParserConfig } from './index'
+import { NftMetadata } from '../agent'
+import { fetchMimeType } from '../utils/fetch'
 
-export async function parseMakersplaceMetadata({
-  tokenURI,
-  fetchTimeout,
-}: ParserConfig) {
-  const publicTokenURI = getIPFSUrl(
-    tokenURI,
-    'https://ipfsgateway.makersplace.com',
-  )
-  const { metadata, contentType } = await fetchMetadata(tokenURI, {
-    timeout: fetchTimeout,
-  })
-
-  if (!metadata.imageUrl) {
-    throw new Error(
-      `Invalid metadata required imageUrl key from metadata missing`,
-    )
+export async function parseMakersplaceMetadata(config: ParserConfig) {
+  const { ipfsGateway, baseMeta, fetchTimeout } = config
+  const { tokenURL, metadata } = baseMeta
+  if (!tokenURL || !metadata) {
+    throw new Error('Markersplace parser expects metadata & tokenURI')
   }
 
-  const imageURI = getIPFSUrl(
-    metadata.imageUrl,
-    'https://ipfsgateway.makersplace.com',
-  )
+  let meta: Partial<NftMetadata> = {}
 
+  if (metadata.imageUrl) {
+    meta.imageURL = getIPFSUrl(metadata.imageUrl, ipfsGateway)
+    meta.contentURL = meta.imageURL
+  }
+
+  // TODO - this sucks get makersplace to run their "rules of metadata"
   const animationURI =
     metadata?.properties?.preview_media_file2 &&
     metadata?.properties?.preview_media_file2_type?.description === 'mp4'
-      ? getIPFSUrl(
-          metadata?.properties?.preview_media_file2.description,
-          'https://ipfsgateway.makersplace.com',
-        )
-      : null
+      ? metadata?.properties?.preview_media_file2.description
+      : undefined
 
-  const { name, description, attributes } = metadata
-  const contentURL = animationURI || imageURI
-  const imageURL = imageURI && animationURI ? imageURI : undefined
-
-  const contentURLMimeType = animationURI
-    ? 'video/mp4'
-    : await fetchMimeType(contentURL, { timeout: fetchTimeout })
-  const imageURLMimeType = imageURL
-    ? await fetchMimeType(imageURL, { timeout: fetchTimeout })
-    : undefined
-
-  return {
-    metadata,
-    tokenURL: publicTokenURI,
-    tokenURLMimeType: contentType,
-    contentURL,
-    contentURLMimeType,
-    ...(imageURL && { imageURL }),
-    ...(imageURLMimeType && { imageURLMimeType }),
-    ...(name && { name }),
-    ...(description && { description }),
-    ...(attributes && { attributes }),
+  if (animationURI) {
+    meta.contentURL = getIPFSUrl(animationURI, ipfsGateway)
   }
+
+  /*
+   * TODO - this should almost definitely not be duplicated, but thoughts on
+   *  where we choose to inject manual / special case parsers
+   */
+  if (meta.contentURL) {
+    meta.contentURLMimeType = await fetchMimeType(meta.contentURL, {
+      timeout: fetchTimeout,
+    })
+  }
+
+  if (meta.imageURL && meta.imageURL !== meta.contentURL) {
+    meta.imageURLMimeType = await fetchMimeType(meta.imageURL, {
+      timeout: fetchTimeout,
+    })
+  } else {
+    delete meta.imageURL
+  }
+
+  return meta
 }

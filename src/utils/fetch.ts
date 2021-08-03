@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch'
-import { getIPFSUrl } from './ipfs'
+import { DWEB_GATEWAY, getIPFSUrl } from './ipfs'
 import { universalAtob } from './encoding'
 import AbortController from 'node-abort-controller'
 
@@ -47,7 +47,7 @@ export async function fetchMetadata(
     }
   }
 
-  const metaIPFSURI = getIPFSUrl(uri, 'https://gateway.ipfs.io')
+  const metaIPFSURI = getIPFSUrl(uri, DWEB_GATEWAY)
   const resp = await fetchWithTimeout(metaIPFSURI, { timeout })
   const contentType = resp.headers.get('content-type')
 
@@ -76,7 +76,7 @@ export async function fetchMimeType(
   uri: string,
   { timeout }: FetchOptions = {},
   defaultType?: string,
-) {
+): Promise<string | undefined> {
   if (uri.includes('data:')) {
     return getDataURIMimeType(uri)
   }
@@ -85,7 +85,7 @@ export async function fetchMimeType(
       method: 'HEAD',
       timeout,
     })
-    return resp.headers.get('content-type')
+    return resp.headers.get('content-type') || undefined
   } catch (e) {
     console.error(
       `Failed to fetch mimetype for uri: ${uri} because: ${

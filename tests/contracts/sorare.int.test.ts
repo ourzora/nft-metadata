@@ -1,4 +1,4 @@
-import { MetadataAgent, SORARE_TOKEN_ADDRESS } from '../../src'
+import { Agent, SORARE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/sorare/100_990.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -24,15 +24,22 @@ const SORARE_CRITERIA = {
 }
 
 describe('Sorare ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+    },
+    ipfsGateway: 'https://gateway.ipfs.io',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${SORARE_CRITERIA.input.tokenId}`, async () => {
     const { ownerAddress, attributes, metadata, ...meta } =
-      await parser.fetchAndParseTokenMeta(
+      await parser.fetchAndParseTokenData(
+        1,
         SORARE_CRITERIA.input.tokenAddress,
         SORARE_CRITERIA.input.tokenId,
       )

@@ -1,6 +1,6 @@
 import { URL } from 'url'
 export const IPFS_REGEX = /.*?\/ipfs\/(.*?)/g
-export const IPFS_IO_GATEWAY = 'https://gateway.ipfs.io'
+export const DWEB_GATEWAY = 'https://dweb.link'
 
 export const isValidURL = (value: string) => {
   try {
@@ -22,11 +22,7 @@ export function isRawIPFSUrl(url: string): boolean {
   return url.startsWith('ipfs://')
 }
 
-export function getIPFSUrl(
-  rawUrl: string,
-  basePath: string = IPFS_IO_GATEWAY,
-  force?: boolean,
-) {
+export function getIPFSUrl(rawUrl: string, basePath: string = DWEB_GATEWAY) {
   let url: string = rawUrl
 
   if (isRawIPFSUrl(rawUrl)) {
@@ -36,9 +32,7 @@ export function getIPFSUrl(
     )
   }
 
-  if (force) {
-    url = rawUrl.replace(IPFS_REGEX, basePath + '/ipfs/')
-  }
+  url = url.replace(IPFS_REGEX, basePath + '/ipfs/')
 
   return forceHttps(url)
 }

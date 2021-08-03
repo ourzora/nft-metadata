@@ -1,14 +1,12 @@
 import { Contract } from '@ethersproject/contracts'
-import { parseGenericMetadata } from './openseaMetadataParser'
 import { ParserConfig } from './index'
 
 export async function parseHashmasksMetadata(config: ParserConfig) {
-  const baseMeta = await parseGenericMetadata(config)
-
-  const { contractAddress, tokenId, provider } = config
+  const { provider, contractData } = config
+  const { tokenAddress, tokenId } = contractData
 
   const HMContract = new Contract(
-    contractAddress,
+    tokenAddress,
     [
       'function tokenNameByIndex(uint256 index) public view returns (string memory)',
     ],
@@ -19,6 +17,5 @@ export async function parseHashmasksMetadata(config: ParserConfig) {
 
   return {
     name,
-    ...baseMeta,
   }
 }

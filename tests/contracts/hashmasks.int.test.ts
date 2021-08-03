@@ -1,9 +1,9 @@
-import { HASHMASKS_TOKEN_ADDRESS, MetadataAgent } from '../../src'
+import { HASHMASKS_TOKEN_ADDRESS, Agent, Network } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/hashmasks/3837.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
 
-const BORED_APE_CRITERIA = {
+const HASHMASK_CRITERIA = {
   input: {
     tokenId: '3837',
     tokenAddress: HASHMASKS_TOKEN_ADDRESS,
@@ -22,18 +22,25 @@ const BORED_APE_CRITERIA = {
 }
 
 describe('Hashmask ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
-
-  beforeEach(() => {
-    jest.setTimeout(10000)
+  const parser = new Agent({
+    providers: {
+      [Network.MAINNET]: testProvider,
+    },
+    ipfsGateway: 'https://dweb.link',
+    fetchTimeout: 15000,
   })
 
-  it(`should be able to fetch and parse metadata for token id: ${BORED_APE_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
-      BORED_APE_CRITERIA.input.tokenAddress,
-      BORED_APE_CRITERIA.input.tokenId,
+  beforeEach(() => {
+    jest.setTimeout(60000)
+  })
+
+  it(`should be able to fetch and parse metadata for token id: ${HASHMASK_CRITERIA.input.tokenId}`, async () => {
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
+      HASHMASK_CRITERIA.input.tokenAddress,
+      HASHMASK_CRITERIA.input.tokenId,
     )
-    expect(meta).toStrictEqual(BORED_APE_CRITERIA.output)
+    expect(meta).toStrictEqual(HASHMASK_CRITERIA.output)
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

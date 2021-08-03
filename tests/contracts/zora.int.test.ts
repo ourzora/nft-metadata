@@ -1,8 +1,14 @@
-import { MetadataAgent, ZORA_TOKEN_ADDRESS } from '../../src'
+import {
+  Agent,
+  ZORA_RINKEBY_TOKEN_ADDRESS,
+  ZORA_TOKEN_ADDRESS,
+} from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/zora/100.json'
-import { testProvider } from '../setupProvider'
+import { testProvider, testRinkebyProvider } from '../setupProvider'
 import { getAddress, isAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
+import { additionalMetadataParser } from '../../src/parsers/additionalMetadataParser'
+import { fetchZoraContractData } from '../../src/fetchers/zoraFetcher'
 
 const ZORA_CRITERIA = {
   input: {
@@ -78,17 +84,28 @@ const ZORA_NON_URL_CRITERIA = {
 }
 
 describe('Zora ERC721', () => {
-  const parser = new MetadataAgent(testProvider, {
-    fetchTimeout: 20000,
-    ipfsBaseURL: 'https://ipfs.fleek.co',
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+      4: testRinkebyProvider,
+    },
+    ipfsGateway: 'https://ipfs.fleek.co',
+    fetchTimeout: 15000,
+    parsers: {
+      [ZORA_RINKEBY_TOKEN_ADDRESS]: additionalMetadataParser,
+    },
+    fetchers: {
+      [ZORA_RINKEBY_TOKEN_ADDRESS]: fetchZoraContractData,
+    },
   })
 
   beforeEach(() => {
-    jest.setTimeout(20000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${ZORA_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       ZORA_CRITERIA.input.tokenAddress,
       ZORA_CRITERIA.input.tokenId,
     )
@@ -97,7 +114,8 @@ describe('Zora ERC721', () => {
   })
 
   it(`should be able to fetch and parse metadata for burnt token id: ${ZORA_BURNT_CRITERIA.input.tokenId}`, async () => {
-    const meta = await parser.fetchAndParseTokenMeta(
+    const meta = await parser.fetchAndParseTokenData(
+      1,
       ZORA_BURNT_CRITERIA.input.tokenAddress,
       ZORA_BURNT_CRITERIA.input.tokenId,
     )
@@ -105,10 +123,23 @@ describe('Zora ERC721', () => {
   })
 
   it(`should be able to fetch and parse metadata for burnt token id 3313`, async () => {
-    const meta = await parser.fetchAndParseTokenMeta(
+    const meta = await parser.fetchAndParseTokenData(
+      1,
       ZORA_TOKEN_ADDRESS,
       ZORA_NON_URL_CRITERIA.input.tokenId,
     )
     expect(meta).toStrictEqual(ZORA_NON_URL_CRITERIA.output)
+  })
+
+  it(`should be able to fetch and parse metadata for burnt token id 3000 on network id 4`, async () => {
+    const meta = await parser.fetchAndParseTokenData(
+      4,
+      ZORA_RINKEBY_TOKEN_ADDRESS,
+      '3001',
+    )
+    expect(meta.tokenURL).toBeTruthy()
+    expect(meta.contentURL).toBeTruthy()
+    expect(meta.contentURLMimeType).toBeTruthy()
+    expect(meta.metadata).toBeTruthy()
   })
 })

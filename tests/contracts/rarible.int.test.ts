@@ -1,4 +1,4 @@
-import { MetadataAgent, RARIBLE_TOKEN_ADDRESS } from '../../src'
+import { Agent, RARIBLE_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/rarible/301_962.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -24,14 +24,21 @@ const RARIBLE_CRITERIA = {
 }
 
 describe('Rarible ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+    },
+    ipfsGateway: 'https://gateway.ipfs.io',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${RARIBLE_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       RARIBLE_CRITERIA.input.tokenAddress,
       RARIBLE_CRITERIA.input.tokenId,
     )

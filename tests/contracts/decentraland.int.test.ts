@@ -1,4 +1,4 @@
-import { DECENTRALAND_TOKEN_ADDRESS, MetadataAgent } from '../../src'
+import { DECENTRALAND_TOKEN_ADDRESS, Agent, Network } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/decentraland/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -22,14 +22,21 @@ const DECENTRALAND_CRITERIA = {
 }
 
 describe('Decentraland ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      [Network.MAINNET]: testProvider,
+    },
+    ipfsGateway: 'https://dweb.link',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${DECENTRALAND_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchContractData(
+      1,
       DECENTRALAND_CRITERIA.input.tokenAddress,
       DECENTRALAND_CRITERIA.input.tokenId,
     )

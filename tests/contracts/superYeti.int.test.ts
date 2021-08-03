@@ -1,4 +1,4 @@
-import { MetadataAgent, SUPER_YETI_TOKEN_ADDRESS } from '../../src'
+import { Agent, SUPER_YETI_TOKEN_ADDRESS } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/superYeti/100.json'
 import { testProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
@@ -22,14 +22,21 @@ const SUPER_YET_CRITERIA = {
 }
 
 describe('Super Yeti ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+    },
+    ipfsGateway: 'https://dweb.link',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${SUPER_YET_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       SUPER_YET_CRITERIA.input.tokenAddress,
       SUPER_YET_CRITERIA.input.tokenId,
     )

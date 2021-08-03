@@ -1,7 +1,7 @@
 import {
   ART_BLOCKS_CURATED_TOKEN_ADDRESS,
   ART_BLOCKS_TOKEN_ADDRESS,
-  MetadataAgent,
+  Agent,
 } from '../../src'
 import METADATA_STUB from '../mock-reponses/contracts/artblocks/91000216.json'
 import CURATED_METADATA_STUB from '../mock-reponses/contracts/artblocks/curated/100.json'
@@ -48,14 +48,21 @@ const ART_BLOCKS_CURATED_CRITERIA = {
 }
 
 describe('ArtBlocks ERC721', () => {
-  const parser = new MetadataAgent(testProvider)
+  const parser = new Agent({
+    providers: {
+      1: testProvider,
+    },
+    ipfsGateway: 'https://gateway.ipfs.io',
+    fetchTimeout: 15000,
+  })
 
   beforeEach(() => {
-    jest.setTimeout(10000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${ART_BLOCKS_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
       ART_BLOCKS_CRITERIA.input.tokenAddress,
       ART_BLOCKS_CRITERIA.input.tokenId,
     )
@@ -64,7 +71,8 @@ describe('ArtBlocks ERC721', () => {
   })
 
   it(`should be able to fetch and parse metadata for curated token id: ${ART_BLOCKS_CURATED_CRITERIA.input.tokenId}`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenMeta(
+    const { ownerAddress, ...meta } = await parser.fetchContractData(
+      1,
       ART_BLOCKS_CURATED_CRITERIA.input.tokenAddress,
       ART_BLOCKS_CURATED_CRITERIA.input.tokenId,
     )

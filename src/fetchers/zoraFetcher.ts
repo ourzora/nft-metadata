@@ -1,37 +1,19 @@
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
-import { getAddress } from '@ethersproject/address'
-import { AddressZero } from '@ethersproject/constants'
 import { FetcherConfig } from './index'
 
 export async function fetchZoraContractData({
-  contractAddress,
   provider,
+  tokenAddress,
   tokenId,
 }: FetcherConfig) {
-  const erc721Contract = MediaFactory.connect(contractAddress, provider)
+  const erc721Contract = MediaFactory.connect(tokenAddress, provider)
   const tokenURI = await erc721Contract.tokenMetadataURI(tokenId)
-  const creatorAddress = await erc721Contract.tokenCreators(tokenId)
+  const contentURI = await erc721Contract.tokenURI(tokenId)
+  const minterAddress = await erc721Contract.tokenCreators(tokenId)
 
-  try {
-    const ownerAddress = await erc721Contract.ownerOf(tokenId)
-
-    return {
-      tokenURI,
-      ownerAddress: getAddress(ownerAddress),
-      creatorAddress: getAddress(creatorAddress),
-    }
-  } catch (e) {
-    const totalSupply = await erc721Contract.totalSupply()
-    if (
-      totalSupply.gte(tokenId) &&
-      e.reason === 'ERC721: owner query for nonexistent token'
-    ) {
-      return {
-        tokenURI,
-        ownerAddress: getAddress(AddressZero),
-        creatorAddress: getAddress(creatorAddress),
-      }
-    }
-    throw e
+  return {
+    tokenURI,
+    contentURI,
+    minterAddress,
   }
 }
