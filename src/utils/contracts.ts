@@ -1,7 +1,11 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Erc721, Erc721Factory } from '@zoralabs/core/dist/typechain'
 import { AddressZero } from '@ethersproject/constants'
-import { MAKERSPLACE_TOKEN_ADDRESS } from '../constants'
+import {
+  MAKERSPLACE_TOKEN_ADDRESS,
+  ZORA_RINKEBY_TOKEN_ADDRESS,
+  ZORA_TOKEN_ADDRESS,
+} from '../constants'
 
 type SupportedContractResponse = {
   erc721: boolean
@@ -16,6 +20,16 @@ const registeredContracts: {
   [MAKERSPLACE_TOKEN_ADDRESS]: {
     erc721: true,
     erc721Metadata: true,
+    erc721Enumerable: true,
+  },
+  [ZORA_TOKEN_ADDRESS]: {
+    erc721: true,
+    erc721Metadata: false,
+    erc721Enumerable: true,
+  },
+  [ZORA_RINKEBY_TOKEN_ADDRESS]: {
+    erc721: true,
+    erc721Metadata: false,
     erc721Enumerable: true,
   },
 }
