@@ -4,8 +4,7 @@ import { isAddress } from '@ethersproject/address'
 
 const RARIBLE_CRITERIA = {
   input: {
-    tokenId:
-      '30105810670306411381802272225292624615592980350863712708305530245480406056962',
+    tokenId: '1166603',
     tokenAddress: RARIBLE_TOKEN_ADDRESS,
     networkId: 1,
   },
