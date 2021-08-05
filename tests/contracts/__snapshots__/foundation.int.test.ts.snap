@@ -27,7 +27,7 @@ Auction winner gets:
   "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
   "tokenId": "1798",
   "tokenURI": "https://ipfs.foundation.app/ipfs/Qmc9kjdUSYaqCcTZG5gArXttWKtsnzFjFFPfRoSLb7ZUUK/metadata.json",
-  "tokenURL": "https://ipfs.fleek.co/ipfs/Qmc9kjdUSYaqCcTZG5gArXttWKtsnzFjFFPfRoSLb7ZUUK/metadata.json",
+  "tokenURL": "https://ipfs.foundation.app/ipfs/Qmc9kjdUSYaqCcTZG5gArXttWKtsnzFjFFPfRoSLb7ZUUK/metadata.json",
   "tokenURLMimeType": "application/json",
 }
 `;

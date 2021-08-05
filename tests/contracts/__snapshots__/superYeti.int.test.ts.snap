@@ -40,7 +40,7 @@ Object {
       "value": "Photographer",
     },
   ],
-  "contentURL": "https://ipfs.fleek.co/ipfs/Qmbhrr2skR8au5Wh8HtJhW4PYL7QjEUUnXC2r6BTwZVuYB",
+  "contentURL": "https://defra.mypinata.cloud/ipfs/Qmbhrr2skR8au5Wh8HtJhW4PYL7QjEUUnXC2r6BTwZVuYB",
   "contentURLMimeType": "image/jpeg",
   "description": "SuperYeti is a 3D collection of randomized characters created through a standard ERC-721 contract and backed by IPFS file storage and registered on the Ethereum Blockchain. Future implementation of a multiplayer, play-to-earn game where SuperYetis own land, breed and compete with one another to protect the Yetiverse. You can learn more at www.superyeti.co",
   "metadata": Object {

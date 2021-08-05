@@ -12,7 +12,11 @@ export function isRawIPFSUrl(url: string): boolean {
   return url.startsWith('ipfs://')
 }
 
-export function getIPFSUrl(rawUrl: string, basePath: string = IPFS_IO_GATEWAY) {
+export function getIPFSUrl(
+  rawUrl: string,
+  basePath: string = IPFS_IO_GATEWAY,
+  force?: boolean,
+) {
   let url: string = rawUrl
 
   if (isRawIPFSUrl(rawUrl)) {
@@ -22,7 +26,9 @@ export function getIPFSUrl(rawUrl: string, basePath: string = IPFS_IO_GATEWAY) {
     )
   }
 
-  url = url.replace(IPFS_REGEX, basePath + '/ipfs/')
+  if (force) {
+    url = url.replace(IPFS_REGEX, basePath + '/ipfs/')
+  }
 
   return forceHttps(url)
 }
