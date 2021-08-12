@@ -52,7 +52,7 @@ export async function additionalMetadataParser(
       })
 
   if (image) {
-    meta.imageURL = getIPFSUrl(metadata.image, ipfsGateway)
+    meta.imageURL = getIPFSUrl(image, ipfsGateway)
     meta.contentURL = meta.imageURL
   }
 

@@ -46,7 +46,7 @@ describe('Zora ERC721', () => {
       1: testProvider,
       4: testRinkebyProvider,
     },
-    ipfsGateway: 'https://ipfs.fleek.co',
+    ipfsGateway: 'https://ipfs.infura.io:5001',
     fetchTimeout: 60000,
     parsers: {
       [ZORA_RINKEBY_TOKEN_ADDRESS]: additionalMetadataParser,
@@ -97,5 +97,14 @@ describe('Zora ERC721', () => {
     )
     expect(meta).toMatchSnapshot()
     expect(isAddress(ownerAddress)).toBeTruthy()
+  })
+
+  it(`should be able to fetch catalog nft`, async () => {
+    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
+      1,
+      ZORA_TOKEN_ADDRESS,
+      '2631',
+    )
+    console.log(meta)
   })
 })
