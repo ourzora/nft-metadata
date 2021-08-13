@@ -12,7 +12,7 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 export interface FetcherConfig {
   provider: JsonRpcProvider
   tokenAddress: string
-  tokenId: string
+  tokenId: number | string
 }
 
 export interface FetcherResponse {

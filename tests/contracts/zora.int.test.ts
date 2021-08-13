@@ -46,7 +46,7 @@ describe('Zora ERC721', () => {
       1: testProvider,
       4: testRinkebyProvider,
     },
-    ipfsGateway: 'https://ipfs.infura.io:5001',
+    ipfsGateway: process.env.IPFS_GATEWAY_URL || 'https://ipfs.infura.io:5001',
     fetchTimeout: 60000,
     parsers: {
       [ZORA_RINKEBY_TOKEN_ADDRESS]: additionalMetadataParser,
@@ -57,7 +57,7 @@ describe('Zora ERC721', () => {
   })
 
   beforeEach(() => {
-    jest.setTimeout(120000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${ZORA_CRITERIA.input.tokenId}`, async () => {
@@ -66,7 +66,9 @@ describe('Zora ERC721', () => {
       ZORA_CRITERIA.input.tokenAddress,
       ZORA_CRITERIA.input.tokenId,
     )
-    expect(meta).toMatchSnapshot()
+    expect(meta).toMatchSnapshot(
+      `${ZORA_CRITERIA.input.tokenAddress}-${ZORA_CRITERIA.input.tokenId}-${ZORA_CRITERIA.input.networkId}`,
+    )
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 
@@ -76,7 +78,9 @@ describe('Zora ERC721', () => {
       ZORA_BURNT_CRITERIA.input.tokenAddress,
       ZORA_BURNT_CRITERIA.input.tokenId,
     )
-    expect(meta).toMatchSnapshot()
+    expect(meta).toMatchSnapshot(
+      `${ZORA_BURNT_CRITERIA.input.tokenAddress}-${ZORA_BURNT_CRITERIA.input.tokenId}-${ZORA_BURNT_CRITERIA.input.networkId}`,
+    )
   })
 
   it(`should be able to fetch and parse metadata for token id ${ZORA_NON_URL_CRITERIA.input.tokenId}`, async () => {
@@ -85,7 +89,9 @@ describe('Zora ERC721', () => {
       ZORA_TOKEN_ADDRESS,
       ZORA_NON_URL_CRITERIA.input.tokenId,
     )
-    expect(meta).toMatchSnapshot()
+    expect(meta).toMatchSnapshot(
+      `${ZORA_NON_URL_CRITERIA.input.tokenAddress}-${ZORA_NON_URL_CRITERIA.input.tokenId}-${ZORA_NON_URL_CRITERIA.input.networkId}`,
+    )
     expect(isAddress(ownerAddress)).toBeTruthy()
   })
 
@@ -95,16 +101,9 @@ describe('Zora ERC721', () => {
       ZORA_RINKEBY_CRITERIA.input.tokenAddress,
       ZORA_RINKEBY_CRITERIA.input.tokenId,
     )
-    expect(meta).toMatchSnapshot()
-    expect(isAddress(ownerAddress)).toBeTruthy()
-  })
-
-  it(`should be able to fetch catalog nft`, async () => {
-    const { ownerAddress, ...meta } = await parser.fetchAndParseTokenData(
-      1,
-      ZORA_TOKEN_ADDRESS,
-      '2631',
+    expect(meta).toMatchSnapshot(
+      `${ZORA_RINKEBY_CRITERIA.input.tokenAddress}-${ZORA_RINKEBY_CRITERIA.input.tokenId}-${ZORA_RINKEBY_CRITERIA.input.networkId}`,
     )
-    console.log(meta)
+    expect(isAddress(ownerAddress)).toBeTruthy()
   })
 })

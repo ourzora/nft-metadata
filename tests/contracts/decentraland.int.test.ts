@@ -20,7 +20,7 @@ describe('Decentraland ERC721', () => {
   })
 
   beforeEach(() => {
-    jest.setTimeout(120000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${DECENTRALAND_CRITERIA.input.tokenId} on network: ${DECENTRALAND_CRITERIA.input.networkId}`, async () => {

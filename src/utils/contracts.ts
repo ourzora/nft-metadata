@@ -70,7 +70,7 @@ export async function getSupportedInterfaces(
 
 export async function fetchOwnerOf(
   contract: Erc721,
-  tokenId: string,
+  tokenId: number | string,
   canCatch = false,
 ) {
   try {

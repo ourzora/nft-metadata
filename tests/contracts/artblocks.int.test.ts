@@ -27,11 +27,11 @@ describe('ArtBlocks ERC721', () => {
       1: testProvider,
     },
     ipfsGateway: 'https://ipfs.fleek.co',
-    fetchTimeout: 60000,
+    fetchTimeout: 10000,
   })
 
   beforeEach(() => {
-    jest.setTimeout(120000)
+    jest.setTimeout(60000)
   })
 
   it(`should be able to fetch and parse metadata for token id: ${ART_BLOCKS_CRITERIA.input.tokenId} on network: ${ART_BLOCKS_CRITERIA.input.networkId}`, async () => {

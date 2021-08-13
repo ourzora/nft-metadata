@@ -2,8 +2,8 @@
 
 exports[`Superrare ERC721 should be able to fetch and parse metadata for token id: 17798 on network: 1 1`] = `
 Object {
-  "contentURL": "https://ipfs.fleek.co/ipfs/QmPkLpqqGoUJi3mk6krNuRxeemfwvPPqLkZVVSfu5LWgfZ/cupoftea.gif",
-  "contentURLMimeType": undefined,
+  "contentURL": "https://ipfs.pixura.io/ipfs/QmPkLpqqGoUJi3mk6krNuRxeemfwvPPqLkZVVSfu5LWgfZ/cupoftea.gif",
+  "contentURLMimeType": "image/gif",
   "description": "Cup_Of_Tea // Status: Initiated.",
   "metadata": Object {
     "createdBy": "Matty Furious",
@@ -28,7 +28,7 @@ Object {
   "tokenAddress": "0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0",
   "tokenId": "17798",
   "tokenURI": "https://ipfs.pixura.io/ipfs/QmfQs1DPrZgmR7osnWvRuXpDvqP5ihfEfSBKPGAQyeL1WS/metadata.json",
-  "tokenURL": "https://ipfs.fleek.co/ipfs/QmfQs1DPrZgmR7osnWvRuXpDvqP5ihfEfSBKPGAQyeL1WS/metadata.json",
+  "tokenURL": "https://ipfs.pixura.io/ipfs/QmfQs1DPrZgmR7osnWvRuXpDvqP5ihfEfSBKPGAQyeL1WS/metadata.json",
   "tokenURLMimeType": "application/json",
 }
 `;

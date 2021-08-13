@@ -9,7 +9,7 @@ import { Parser, parserLookup } from './parsers'
 export interface TokenPKDto {
   networkId: number
   tokenAddress: string
-  tokenId: string
+  tokenId: number | string
 }
 
 export interface NftMetadata extends TokenPKDto {
@@ -79,7 +79,7 @@ export class Agent {
   public async fetchContractData(
     networkId: Network,
     tokenAddress: string,
-    tokenId: string,
+    tokenId: number | string,
   ) {
     const provider = this.getProviderForNetwork(networkId)
     const { erc721, erc721Metadata, erc721Enumerable } =
@@ -220,7 +220,7 @@ export class Agent {
   public async fetchAndParseTokenData(
     networkId: number,
     tokenAddress: string,
-    tokenId: string,
+    tokenId: number | string,
   ) {
     const contractData = await this.fetchContractData(
       networkId,
