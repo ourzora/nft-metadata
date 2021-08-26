@@ -5,7 +5,7 @@ import {
 } from '../../src'
 import { testProvider, testRinkebyProvider } from '../setupProvider'
 import { isAddress } from '@ethersproject/address'
-import { additionalMetadataParser } from '../../src/parsers/additionalMetadataParser'
+import { zoraMetadataParser } from '../../src/parsers/zoraMetadataParser'
 import { fetchZoraContractData } from '../../src/fetchers/zoraFetcher'
 
 const ZORA_CRITERIA = {
@@ -49,7 +49,7 @@ describe('Zora ERC721', () => {
     ipfsGateway: process.env.IPFS_GATEWAY_URL || 'https://ipfs.infura.io:5001',
     fetchTimeout: 60000,
     parsers: {
-      [ZORA_RINKEBY_TOKEN_ADDRESS]: additionalMetadataParser,
+      [ZORA_RINKEBY_TOKEN_ADDRESS]: zoraMetadataParser,
     },
     fetchers: {
       [ZORA_RINKEBY_TOKEN_ADDRESS]: fetchZoraContractData,

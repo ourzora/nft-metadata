@@ -22,7 +22,7 @@ export function translateMetadataSchema(schema: any) {
   return schema
 }
 
-export async function additionalMetadataParser(
+export async function zoraMetadataParser(
   config: ParserConfig,
 ): Promise<ParserResponse> {
   const { ipfsGateway, baseMeta, fetchTimeout, contractData } = config

@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Known Origin ERC721 should be able to fetch and parse metadata for token id: 159330 on network: 1: 0xFBeef911Dc5821886e1dda71586d90eD28174B7d-159330 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "artist",
+      "value": "Brad Damico",
+    },
+    Object {
+      "trait_type": "scarcity",
+      "value": "rare",
+    },
+    Object {
+      "trait_type": "tags",
+      "value": Array [
+        "abstract",
+        "digital",
+        "generative",
+        "sine",
+        "waves",
+        "Wave Pool Series",
+        "artplusbrad",
+        "trigonometry",
+        "processing",
+      ],
+    },
+    Object {
+      "trait_type": "asset_type",
+      "value": "image/jpeg",
+    },
+  ],
+  "contentURL": "https://ipfs.infura.io/ipfs/QmQP1oirX9Vgq4Cm6frDo5tLB1UcSjVFXD4aTBCagdx842/asset.jpeg",
+  "contentURLMimeType": "image/jpeg",
+  "description": "Wave Pool Series
+
+Generated with Processing",
+  "metadata": Object {
+    "attributes": Object {
+      "artist": "Brad Damico",
+      "asset_type": "image/jpeg",
+      "scarcity": "rare",
+      "tags": Array [
+        "abstract",
+        "digital",
+        "generative",
+        "sine",
+        "waves",
+        "Wave Pool Series",
+        "artplusbrad",
+        "trigonometry",
+        "processing",
+      ],
+    },
+    "description": "Wave Pool Series
+
+Generated with Processing",
+    "external_uri": "https://knownorigin.io/artists/0xd7e1bc51cd3f30e21b17bab33d77078e3fb7cc26",
+    "image": "https://ipfs.infura.io/ipfs/QmQP1oirX9Vgq4Cm6frDo5tLB1UcSjVFXD4aTBCagdx842/asset.jpeg",
+    "name": "Wave Pool 05 (2002 ON05)",
+  },
+  "name": "Wave Pool 05 (2002 ON05)",
+  "networkId": 1,
+  "tokenAddress": "0xFBeef911Dc5821886e1dda71586d90eD28174B7d",
+  "tokenId": "159330",
+  "tokenURI": "https://ipfs.infura.io/ipfs/QmUh8La6vxFTZqkwwe65Wcvx1CPHm7JWpf9Wm56DTVoCtQ",
+  "tokenURL": "https://ipfs.infura.io/ipfs/QmUh8La6vxFTZqkwwe65Wcvx1CPHm7JWpf9Wm56DTVoCtQ",
+  "tokenURLMimeType": "application/json",
+}
+`;
+
+exports[`Known Origin ERC721 should be able to fetch and parse metadata for token id: 219184 on network: 1: 0xFBeef911Dc5821886e1dda71586d90eD28174B7d-219184 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "trait_type": "artist",
+      "value": "XCOPY",
+    },
+    Object {
+      "trait_type": "scarcity",
+      "value": "rare",
+    },
+    Object {
+      "trait_type": "tags",
+      "value": Array [
+        "doomed",
+        "KnownOrigin",
+        "cryptoart",
+        "hope",
+        "skull",
+        "technology",
+      ],
+    },
+    Object {
+      "trait_type": "asset_type",
+      "value": "image/gif",
+    },
+    Object {
+      "trait_type": "asset_size_in_bytes",
+      "value": 621118,
+    },
+  ],
+  "contentURL": "https://ipfs.infura.io/ipfs/QmXKQXNLe16vjuBPAAkw8fWaFBwAPjrVJtijvovbJv7tTJ/asset.gif",
+  "contentURLMimeType": "image/gif",
+  "description": "Tech still won't save us",
+  "metadata": Object {
+    "artist": "0x3768225622d53ffcc1e00eac53a2a870ecd825c8",
+    "attributes": Object {
+      "artist": "XCOPY",
+      "asset_size_in_bytes": 621118,
+      "asset_type": "image/gif",
+      "scarcity": "rare",
+      "tags": Array [
+        "doomed",
+        "KnownOrigin",
+        "cryptoart",
+        "hope",
+        "skull",
+        "technology",
+      ],
+    },
+    "description": "Tech still won't save us",
+    "external_uri": "https://knownorigin.io/0x3768225622d53ffcc1e00eac53a2a870ecd825c8",
+    "image": "https://ipfs.infura.io/ipfs/QmXKQXNLe16vjuBPAAkw8fWaFBwAPjrVJtijvovbJv7tTJ/asset.gif",
+    "name": "The Doomed (red)",
+  },
+  "name": "The Doomed (red)",
+  "networkId": 1,
+  "tokenAddress": "0xFBeef911Dc5821886e1dda71586d90eD28174B7d",
+  "tokenId": "219184",
+  "tokenURI": "https://ipfs.infura.io/ipfs/QmYHU3Yc5QLiNHCDGA9Wn5cEW6hiRb64JGLdvUis9xrb8L",
+  "tokenURL": "https://ipfs.infura.io/ipfs/QmYHU3Yc5QLiNHCDGA9Wn5cEW6hiRb64JGLdvUis9xrb8L",
+  "tokenURLMimeType": "application/json",
+}
+`;

@@ -3,6 +3,7 @@ import { Erc721, Erc721Factory } from '@zoralabs/core/dist/typechain'
 import { AddressZero } from '@ethersproject/constants'
 import {
   MAKERSPLACE_TOKEN_ADDRESS,
+  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_RINKEBY_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
 } from '../constants'
@@ -31,6 +32,11 @@ const registeredContracts: {
     erc721: true,
     erc721Metadata: false,
     erc721Enumerable: true,
+  },
+  [WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS]: {
+    erc721: true,
+    erc721Metadata: true,
+    erc721Enumerable: false,
   },
 }
 
@@ -80,6 +86,7 @@ export async function fetchOwnerOf(
     if (!canCatch) {
       throw e
     }
+    console.log(e)
     const totalSupply = await contract.totalSupply()
     if (
       totalSupply.gte(tokenId) &&
