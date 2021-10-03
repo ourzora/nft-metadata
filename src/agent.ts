@@ -17,6 +17,7 @@ type AgentOptions = {
   network: Networkish
   networkUrl: string
   ipfsGatewayUrl?: string
+  timeout?: number
 }
 
 export interface NftMetadata {
@@ -37,13 +38,14 @@ export interface NftMetadata {
 }
 
 export class Agent {
-  timeout: number = 10000
+  timeout: number
   ipfsGatewayUrl: string
   provider: JsonRpcProvider
 
   constructor(options: AgentOptions) {
     this.provider = new JsonRpcProvider(options.networkUrl, options.network)
     this.ipfsGatewayUrl = options.ipfsGatewayUrl || IPFS_IO_GATEWAY
+    this.timeout = options.timeout || 10000
   }
 
   public async fetchTokenURI(tokenAddress: string, tokenId: string) {
