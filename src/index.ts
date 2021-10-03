@@ -1,4 +1,4 @@
 export * from './constants'
-export * from './fetchers'
-export * from './parsers'
+export * from './metadata'
 export * from './agent'
+export * from './uri'

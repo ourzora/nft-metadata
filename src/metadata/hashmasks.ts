@@ -1,10 +1,11 @@
 import { Contract } from '@ethersproject/contracts'
-import { ParserConfig } from './index'
+import { JsonRpcProvider } from '@ethersproject/providers'
 
-export async function parseHashmasksMetadata(config: ParserConfig) {
-  const { provider, contractData } = config
-  const { tokenAddress, tokenId } = contractData
-
+export async function fetchHashmaskMeta(
+  tokenAddress: string,
+  tokenId: string,
+  provider: JsonRpcProvider,
+) {
   const HMContract = new Contract(
     tokenAddress,
     [
@@ -12,9 +13,7 @@ export async function parseHashmasksMetadata(config: ParserConfig) {
     ],
     provider,
   )
-
   const name = await HMContract.tokenNameByIndex(tokenId)
-
   return {
     name,
   }

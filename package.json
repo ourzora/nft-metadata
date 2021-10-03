@@ -15,6 +15,7 @@
     "access": "restricted"
   },
   "dependencies": {
+    "@pinata/ipfs-gateway-tools": "^1.1.6",
     "@zoralabs/core": "^1.0.4",
     "cross-fetch": "^3.1.4",
     "node-abort-controller": "^2.0.0"
@@ -33,7 +34,7 @@
     "jest": "^26.6.3",
     "jest-serial-runner": "^1.1.0",
     "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1",
+    "prettier": "^2.4.1",
     "ts-jest": "^26.5.5",
     "typescript": "^4.2.4"
   },
