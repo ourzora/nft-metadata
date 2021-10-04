@@ -1,9 +1,9 @@
 import {
-  ALGOLITE_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,
   SUPERRARE_TOKEN_ADDRESS,
   ZORA_RINKEBY_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
+  HEAVEN_COMPUTER_TOKEN_ADDRESS,
 } from '../constants'
 import { isAddressMatch } from '../utils/addresses'
 
@@ -79,7 +79,20 @@ export function normaliseURIData(
     }
   }
 
-  if (isAddressMatch(tokenAddress, ALGOLITE_TOKEN_ADDRESS)) {
+  if (isAddressMatch(tokenAddress, HEAVEN_COMPUTER_TOKEN_ADDRESS)) {
+    normalisedData = {
+      ...normalisedData,
+      ...(normalisedData.media && normalisedData.media && {
+        contentURL: normalisedData.image,
+        // ¯\_(ツ)_/¯
+        contentURLMimeType: 'video/mp4',
+      })
+    }
+  }
+
+  // If properties exist on object, copy them over to attributes.
+  // Properties match the 1155 standard for metadata properties.
+  if (normalisedData.properties) {
     normalisedData = {
       ...normalisedData,
       attributes: normalisedData.properties,
