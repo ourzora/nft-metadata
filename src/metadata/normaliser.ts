@@ -82,10 +82,8 @@ export function normaliseURIData(
   if (isAddressMatch(tokenAddress, HEAVEN_COMPUTER_TOKEN_ADDRESS)) {
     normalisedData = {
       ...normalisedData,
-      ...(normalisedData.media && normalisedData.media && {
-        contentURL: normalisedData.image,
-        // ¯\_(ツ)_/¯
-        contentURLMimeType: 'video/mp4',
+      ...(normalisedData.animation_url && {
+        animation_url: normalisedData.image,
       })
     }
   }
