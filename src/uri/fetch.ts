@@ -1,6 +1,5 @@
-import AbortController from 'node-abort-controller'
-import fetch from 'cross-fetch'
 import { getIPFSUrl, IPFS_IO_GATEWAY, isIPFS } from './ipfs'
+import axios from 'axios'
 
 export function isValidHttpUrl(uri: string) {
   try {
@@ -21,17 +20,9 @@ export async function fetchWithTimeout(
   resource: string,
   options: FetchOptions = {},
 ) {
-  const { timeout = 10000 } = options
-
-  const controller = new AbortController()
-  const id = setTimeout(() => controller.abort(), timeout)
-
-  const response = await fetch(resource, {
-    ...options,
-    signal: controller.signal,
+  return axios.get(resource, {
+    timeout: options.timeout,
   })
-  clearTimeout(id)
-  return response
 }
 
 export async function fetchIPFSWithTimeout(
@@ -83,12 +74,12 @@ export async function fetchURI(
 ) {
   if (isIPFS(uri)) {
     const resp = await multiAttemptIPFSFetch(uri, options, ipfsGateway)
-    return resp.json()
+    return resp?.data
   }
 
   if (isValidHttpUrl(uri)) {
     const resp = await fetchWithTimeout(uri, options)
-    return resp.json()
+    return resp?.data
   }
 
   if (isDataURI(uri)) {
@@ -110,12 +101,19 @@ export async function fetchMimeType(
   if (uri.includes('data:')) {
     return getDataURIMimeType(uri)
   }
+  if (uri.includes('.jpeg') || uri.includes('.jpg')) {
+    return 'image/jpeg'
+  }
+  if (uri.includes('.png')) {
+    return 'image/png'
+  }
   try {
     const resp = await fetchWithTimeout(uri, {
       method: 'HEAD',
       timeout,
     })
-    return resp.headers.get('content-type') || undefined
+    console.log(resp)
+    return resp.headers['content-type'] || undefined
   } catch (e) {
     console.warn(
       `Failed to fetch mimetype for uri: ${uri} because: ${

@@ -19,3 +19,19 @@ export function getStaticURI(tokenAddress: string, tokenId: string) {
       return
   }
 }
+
+export async function getURIData(tokenAddress: string, tokenId: string) {
+  switch (tokenAddress) {
+    case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
+      return Promise.resolve({
+        title: `W#${tokenId}`,
+        name: `W#${tokenId}`,
+        description:
+          'This Punk was wrapped using Wrapped Punks contract, accessible from https://wrappedpunks.com',
+        image: `https://wrappedpunks.com:3000/images/punks/${tokenId}.png`,
+        external_url: 'https://wrappedpunks.com',
+      })
+    default:
+      return
+  }
+}

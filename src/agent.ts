@@ -7,6 +7,7 @@ import {
   getIPFSUrl,
   getPrivateGateway,
   getStaticURI,
+  getURIData,
   IPFS_IO_GATEWAY,
 } from './uri'
 import { getAddress } from '@ethersproject/address'
@@ -69,7 +70,16 @@ export class Agent {
     }
   }
 
-  public async fetchURIData(tokenURI: string, ipfsGateway: string) {
+  public async fetchURIData(
+    tokenAddress: string,
+    tokenId: string,
+    tokenURI: string,
+    ipfsGateway: string,
+  ) {
+    const alternateMethod = getURIData(tokenAddress, tokenId)
+    if (alternateMethod) {
+      return alternateMethod
+    }
     const resp = await fetchURI(
       tokenURI,
       { timeout: this.timeout },
@@ -161,8 +171,14 @@ export class Agent {
         `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`,
       )
     }
+    console.log('fetched uri ', { tokenURI })
     const ipfsGateway = getPrivateGateway(tokenAddress) || this.ipfsGatewayUrl
-    const URIData = await this.fetchURIData(tokenURI, ipfsGateway)
+    const URIData = await this.fetchURIData(
+      tokenAddress,
+      tokenId,
+      tokenURI,
+      ipfsGateway,
+    )
     console.log('fetched uri data: ', { URIData })
     const metadata = await this.parseURIData(
       tokenAddress,

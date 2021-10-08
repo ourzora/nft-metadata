@@ -35,6 +35,7 @@ describe('Metadata Agent', () => {
     network: 'homestead',
     networkUrl: RPC_URL,
     ipfsGatewayUrl: IPFS_URL,
+    timeout: 60 * 10000,
   })
 
   beforeEach(() => {
@@ -49,11 +50,11 @@ describe('Metadata Agent', () => {
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://wrappedpunks.com:3000/images/punks/1.png",
-        "contentURLMimeType": "text/html",
+        "contentURLMimeType": "image/png",
         "description": "This Punk was wrapped using Wrapped Punks contract, accessible from https://wrappedpunks.com",
         "externalURL": "https://wrappedpunks.com",
         "imageURL": "https://wrappedpunks.com:3000/images/punks/1.png",
-        "imageURLMimeType": "text/html",
+        "imageURLMimeType": "image/png",
         "metadata": Object {
           "description": "This Punk was wrapped using Wrapped Punks contract, accessible from https://wrappedpunks.com",
           "external_url": "https://wrappedpunks.com",
