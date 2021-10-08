@@ -13,6 +13,9 @@ export function getStaticURI(tokenAddress: string, tokenId: string) {
       return `https://api.decentraland.org/v2/contracts/${tokenAddress.toLowerCase()}/tokens/${tokenId}`
     case HASHMASKS_TOKEN_ADDRESS:
       return `https://hashmap.azurewebsites.net/getMask/${tokenId}`
+    case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
+      // TODO(iain): Figure out why contract fails here
+      return 'data:application/json,{}';
     default:
       return
   }

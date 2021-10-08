@@ -16,7 +16,7 @@ export async function fetchPunkAttributes(
     provider,
   )
   const [type, ...accessories] = (
-    await PunksDataContract.tokenNameByIndex(tokenId)
+    await PunksDataContract.punkAttributes(tokenId)
   ).split(',')
   const image = await PunksDataContract.punkImageSvg(tokenId)
 
