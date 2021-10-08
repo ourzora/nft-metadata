@@ -42,7 +42,7 @@ describe('Metadata Agent', () => {
     jest.setTimeout(60 * 1000)
   })
 
-  it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
+  fit(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
       '1',
