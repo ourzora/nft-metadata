@@ -84,7 +84,7 @@ export function normaliseURIData(
       ...normalisedData,
       ...(normalisedData.animation_url && {
         animation_url: normalisedData.image,
-      })
+      }),
     }
   }
 
@@ -98,8 +98,12 @@ export function normaliseURIData(
   }
 
   const attributes = normalisedData.attributes || normalisedData.traits
+  const image = normalisedData.image || normalisedData.image_url
   return {
     ...normalisedData,
+    ...(image && {
+      image,
+    }),
     ...(attributes && {
       attributes: normaliseAttributes(attributes),
     }),

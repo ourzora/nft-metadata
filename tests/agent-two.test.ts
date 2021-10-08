@@ -21,6 +21,7 @@ import {
   SUPERRARE_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
+  HUMANOID_TOKEN_ADDRESS,
 } from '../src'
 import { config as dotenv } from 'dotenv'
 
@@ -65,6 +66,36 @@ describe('Metadata Agent', () => {
         "tokenId": "1",
         "tokenURI": "https://wrappedpunks.com:3000/api/punks/metadata/1",
         "tokenURL": "https://wrappedpunks.com:3000/api/punks/metadata/1",
+        "tokenURLMimeType": "application/json",
+      }
+    `)
+  })
+
+  it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+      '2066',
+    )
+    expect(resp).toMatchInlineSnapshot(`
+      Object {
+        "contentURL": "https://wrappedpunks.com:3000/images/punks/2066.png",
+        "contentURLMimeType": "image/png",
+        "description": "This Punk was wrapped using Wrapped Punks contract, accessible from https://wrappedpunks.com",
+        "externalURL": "https://wrappedpunks.com",
+        "imageURL": "https://wrappedpunks.com:3000/images/punks/2066.png",
+        "imageURLMimeType": "image/png",
+        "metadata": Object {
+          "description": "This Punk was wrapped using Wrapped Punks contract, accessible from https://wrappedpunks.com",
+          "external_url": "https://wrappedpunks.com",
+          "image": "https://wrappedpunks.com:3000/images/punks/2066.png",
+          "name": "W#2066",
+          "title": "W#2066",
+        },
+        "name": "W#2066",
+        "tokenAddress": "0xb7F7F6C52F2e2fdb1963Eab30438024864c313F6",
+        "tokenId": "2066",
+        "tokenURI": "https://wrappedpunks.com:3000/api/punks/metadata/2066",
+        "tokenURL": "https://wrappedpunks.com:3000/api/punks/metadata/2066",
         "tokenURLMimeType": "application/json",
       }
     `)
@@ -1525,6 +1556,91 @@ describe('Metadata Agent', () => {
         "tokenId": "856",
         "tokenURI": "https://buo7dhteahrnurg7h3oysx3ldezloaopronrtnyssqfbvqsamqfa.arweave.net/DR3xnmQB4tpE3z7diV9rGTK3Ac-Lmxm3EpQKGsJAZAo/856.json",
         "tokenURL": "https://buo7dhteahrnurg7h3oysx3ldezloaopronrtnyssqfbvqsamqfa.arweave.net/DR3xnmQB4tpE3z7diV9rGTK3Ac-Lmxm3EpQKGsJAZAo/856.json",
+        "tokenURLMimeType": "application/json",
+      }
+    `)
+  })
+
+  it(`should be able to fetch and parse metadata for Humanoids ${HUMANOID_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(HUMANOID_TOKEN_ADDRESS, '368')
+    expect(resp).toMatchInlineSnapshot(`
+      Object {
+        "attributes": Array [
+          Object {
+            "trait_type": "Background",
+            "value": "Grey",
+          },
+          Object {
+            "trait_type": "Type",
+            "value": "Human",
+          },
+          Object {
+            "trait_type": "Body",
+            "value": "Light Green",
+          },
+          Object {
+            "trait_type": "Face",
+            "value": "Sticker ETH",
+          },
+          Object {
+            "trait_type": "Eyes",
+            "value": "Heart Glasses",
+          },
+          Object {
+            "trait_type": "Head",
+            "value": "Halo",
+          },
+          Object {
+            "trait_type": "Neck",
+            "value": "Bow Tie",
+          },
+        ],
+        "contentURL": "https://thehumanoids.co/api/img/368.jpg",
+        "contentURLMimeType": "image/jpeg",
+        "externalURL": "https://thehumanoids.co",
+        "imageURL": "https://thehumanoids.co/api/img/368.jpg",
+        "imageURLMimeType": "image/jpeg",
+        "metadata": Object {
+          "attributes": Array [
+            Object {
+              "trait_type": "Background",
+              "value": "Grey",
+            },
+            Object {
+              "trait_type": "Type",
+              "value": "Human",
+            },
+            Object {
+              "trait_type": "Body",
+              "value": "Light Green",
+            },
+            Object {
+              "trait_type": "Face",
+              "value": "Sticker ETH",
+            },
+            Object {
+              "trait_type": "Eyes",
+              "value": "Heart Glasses",
+            },
+            Object {
+              "trait_type": "Head",
+              "value": "Halo",
+            },
+            Object {
+              "trait_type": "Neck",
+              "value": "Bow Tie",
+            },
+          ],
+          "external_url": "https://thehumanoids.co",
+          "image_url": "https://thehumanoids.co/api/img/368.jpg",
+          "name": "Humanoid #368",
+          "tokenId": "368",
+        },
+        "name": "Humanoid #368",
+        "tokenAddress": "0x3a5051566b2241285BE871f650C445A88A970edd",
+        "tokenId": "368",
+        "tokenURI": "https://raw.githubusercontent.com/TheHumanoids/metadata/main/368",
+        "tokenURL": "https://raw.githubusercontent.com/TheHumanoids/metadata/main/368",
         "tokenURLMimeType": "application/json",
       }
     `)

@@ -163,6 +163,7 @@ export class Agent {
     }
     const ipfsGateway = getPrivateGateway(tokenAddress) || this.ipfsGatewayUrl
     const URIData = await this.fetchURIData(tokenURI, ipfsGateway)
+    console.log('fetched uri data: ', { URIData })
     const metadata = await this.parseURIData(
       tokenAddress,
       tokenId,
@@ -170,6 +171,7 @@ export class Agent {
       URIData,
       ipfsGateway,
     )
+    console.log('parsed metada: ', { metadata })
 
     return {
       tokenId,
