@@ -80,6 +80,7 @@ export class Agent {
     if (alternateMethod) {
       return alternateMethod
     }
+    console.log('no alternate, using uri')
     const resp = await fetchURI(
       tokenURI,
       { timeout: this.timeout },
@@ -95,7 +96,7 @@ export class Agent {
     tokenAddress: string,
     tokenId: string,
     tokenURI: string,
-    uriData: any,
+    uriData: any = {},
     ipfsGateway: string,
   ) {
     const onChainData = await fetchOnChainData(
@@ -106,7 +107,7 @@ export class Agent {
     const meta = normaliseURIData(tokenAddress, {
       ...uriData,
       ...onChainData,
-      ...(uriData.mimeType && {
+      ...(uriData?.mimeType && {
         contentURLMimeType: uriData.mimeType,
       }),
     })

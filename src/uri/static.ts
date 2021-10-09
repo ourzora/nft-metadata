@@ -15,13 +15,13 @@ export function getStaticURI(tokenAddress: string, tokenId: string) {
       return `https://hashmap.azurewebsites.net/getMask/${tokenId}`
     case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
       // TODO(iain): Figure out why contract fails here
-      return 'data:application/json,{}';
+      return 'data:application/json,{}'
     default:
       return
   }
 }
 
-export async function getURIData(tokenAddress: string, tokenId: string) {
+export function getURIData(tokenAddress: string, tokenId: string) {
   switch (tokenAddress) {
     case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
       return Promise.resolve({

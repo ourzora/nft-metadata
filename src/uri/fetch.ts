@@ -10,6 +10,10 @@ export function isValidHttpUrl(uri: string) {
   }
 }
 
+export function forceHttps(source: string) {
+  return source.replace('http://', 'https://')
+}
+
 export function isDataURI(uri: string) {
   return uri.substring(0, 29) === 'data:application/json;base64,'
 }
@@ -20,7 +24,8 @@ export async function fetchWithTimeout(
   resource: string,
   options: FetchOptions = {},
 ) {
-  return axios.get(resource, {
+  const httpsUrl = forceHttps(resource)
+  return axios.get(httpsUrl, {
     timeout: options.timeout,
   })
 }
@@ -112,7 +117,6 @@ export async function fetchMimeType(
       method: 'HEAD',
       timeout,
     })
-    console.log(resp)
     return resp.headers['content-type'] || undefined
   } catch (e) {
     console.warn(
