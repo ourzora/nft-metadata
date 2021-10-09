@@ -23,6 +23,7 @@ import {
   ZORA_TOKEN_ADDRESS,
   HUMANOID_TOKEN_ADDRESS,
   CYBERKORGZ_VX_TOKEN_ADDRESS,
+  POTION_ART_TOKEN_ADDRESS,
 } from '../src'
 import { config as dotenv } from 'dotenv'
 
@@ -41,6 +42,48 @@ describe('Metadata Agent', () => {
 
   beforeEach(() => {
     jest.setTimeout(60 * 1000)
+  })
+
+  it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS, '2')
+    expect(resp).toMatchInlineSnapshot(`
+      Object {
+        "contentURL": "https://gateway.ipfs.io/ipfs/QmZM62hFkFDW255RhbaFs7u1xLiAJ25KFi8rUuaKxgNxbd",
+        "contentURLMimeType": "image/jpeg",
+        "description": "Acrylic on canvas, 90x90 cm.
+      A street of my childhood painting in curry mood...
+      ",
+        "imageURL": "https://gateway.ipfs.io/ipfs/QmZM62hFkFDW255RhbaFs7u1xLiAJ25KFi8rUuaKxgNxbd",
+        "imageURLMimeType": "image/jpeg",
+        "metadata": Object {
+          "properties": Object {
+            "description": Object {
+              "description": "Acrylic on canvas, 90x90 cm.
+      A street of my childhood painting in curry mood...
+      ",
+              "type": "string",
+            },
+            "image": Object {
+              "description": "https://ipfs.io/ipfs/QmZM62hFkFDW255RhbaFs7u1xLiAJ25KFi8rUuaKxgNxbd",
+              "type": "string",
+            },
+            "name": Object {
+              "description": "Curry Street",
+              "type": "string",
+            },
+          },
+          "title": "Asset Metadata",
+          "type": "object",
+        },
+        "name": "Curry Street",
+        "tokenAddress": "0xdA98f59e1EDeCb2545d7b07B794e704ed6cF1f7A",
+        "tokenId": "2",
+        "tokenURI": "https://ipfs.io/ipfs/Qmc2GNnurMgRZN6156vXutcgjYvdFyHGmAfsYE7bD1aVfp",
+        "tokenURL": "https://gateway.ipfs.io/ipfs/Qmc2GNnurMgRZN6156vXutcgjYvdFyHGmAfsYE7bD1aVfp",
+        "tokenURLMimeType": "application/json",
+      }
+    `,
+    )
   })
 
   it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
