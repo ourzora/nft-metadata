@@ -4,6 +4,7 @@ import {
   ZORA_RINKEBY_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
   HEAVEN_COMPUTER_TOKEN_ADDRESS,
+  POTION_ART_TOKEN_ADDRESS,
 } from '../constants'
 import { isAddressMatch } from '../utils/addresses'
 
@@ -68,6 +69,19 @@ export function normaliseURIData(
   ) {
     normalisedData = translateZoraMetadataSchema(normalisedData)
   }
+
+  if (isAddressMatch(tokenAddress, POTION_ART_TOKEN_ADDRESS)) {
+    normalisedData = Object.entries(normalisedData.properties).reduce(
+      (last: any, [key, value]: any) => {
+        last[key] = value.description
+        return last;
+      },
+      {},
+    )
+    console.log(normalisedData)
+  }
+
+
 
   if (isAddressMatch(tokenAddress, SUPERRARE_TOKEN_ADDRESS)) {
     normalisedData = {
