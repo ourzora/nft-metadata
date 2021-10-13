@@ -1,4 +1,5 @@
 import {
+  AUTOGLYPHS_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   LOOT_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
@@ -10,6 +11,7 @@ import { fetchHashmaskMeta } from './hashmasks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { fetchLootMeta } from './loot'
 import { fetchPunkAttributes } from './punks'
+import { fetchAutoglyphsMeta } from './autoglyphs'
 
 export function fetchOnChainData(
   tokenAddress: string,
@@ -17,6 +19,8 @@ export function fetchOnChainData(
   provider: JsonRpcProvider,
 ) {
   switch (tokenAddress) {
+    case AUTOGLYPHS_TOKEN_ADDRESS:
+      return fetchAutoglyphsMeta(tokenAddress, tokenId, provider)
     case HASHMASKS_TOKEN_ADDRESS:
       return fetchHashmaskMeta(tokenAddress, tokenId, provider)
     case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
