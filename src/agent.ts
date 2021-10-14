@@ -172,7 +172,7 @@ export class Agent {
         `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`,
       )
     }
-    console.log('fetched uri ', { tokenURI })
+    console.log('fetched uri: ', { tokenURI })
     const ipfsGateway = getPrivateGateway(tokenAddress) || this.ipfsGatewayUrl
     const URIData = await this.fetchURIData(
       tokenAddress,
@@ -188,7 +188,7 @@ export class Agent {
       URIData,
       ipfsGateway,
     )
-    console.log('parsed metada: ', { metadata })
+    console.log('parsed metadata: ', { metadata })
 
     return {
       tokenId,

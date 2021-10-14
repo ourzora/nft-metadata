@@ -1,4 +1,5 @@
 import { getIPFSUrl, IPFS_IO_GATEWAY, isIPFS } from './ipfs'
+import parseDataURL from 'data-urls'
 import axios from 'axios'
 
 export function isValidHttpUrl(uri: string) {
@@ -14,8 +15,17 @@ export function forceHttps(source: string) {
   return source.replace('http://', 'https://')
 }
 
-export function isDataURI(uri: string) {
-  return uri.substring(0, 29) === 'data:application/json;base64,'
+export function parseJSONDataURI(uri: string) {
+  const parsedUrl = parseDataURL(uri)
+  if (parsedUrl?.mimeType.toString().startsWith('application/json')) {
+    const json = Buffer.from(parsedUrl.body).toString('utf-8')
+    try {
+      return JSON.parse(json);
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined
 }
 
 export type FetchOptions = RequestInit & { timeout?: number }
@@ -37,11 +47,6 @@ export async function fetchIPFSWithTimeout(
 ) {
   const tokenURL = getIPFSUrl(uri, gateway)
   return fetchWithTimeout(tokenURL, options)
-}
-
-export function parseDataURI(uri: string) {
-  const json = Buffer.from(uri.substring(29), 'base64').toString()
-  return JSON.parse(json)
 }
 
 async function multiAttemptIPFSFetch(
@@ -87,8 +92,9 @@ export async function fetchURI(
     return resp?.data
   }
 
-  if (isDataURI(uri)) {
-    return parseDataURI(uri)
+  const inlineJsonBody = parseJSONDataURI(uri)
+  if (inlineJsonBody) {
+    return inlineJsonBody
   }
 
   return
@@ -118,7 +124,7 @@ export async function fetchMimeType(
       timeout,
     })
     return resp.headers['content-type'] || undefined
-  } catch (e) {
+  } catch (e: any) {
     console.warn(
       `Failed to fetch mimetype for uri: ${uri} because: ${
         e?.message || 'Unknown Error occurred'
