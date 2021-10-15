@@ -59,7 +59,7 @@ async function multiAttemptIPFSFetch(
       const resp = await fetchWithTimeout(uri, options)
       return resp
     } catch (e) {
-      console.warn('Failed on initial fetch')
+      console.warn('Failed on https fetch')
     }
   }
 
@@ -67,7 +67,7 @@ async function multiAttemptIPFSFetch(
     const resp = await fetchIPFSWithTimeout(uri, options, IPFS_IO_GATEWAY)
     return resp
   } catch (e) {
-    console.warn('Failed on secondary fetch')
+    console.warn('Failed on initial fetch')
     if (ipfsGateway) {
       const resp = await fetchIPFSWithTimeout(uri, options, ipfsGateway)
       return resp

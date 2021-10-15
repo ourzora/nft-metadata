@@ -9,6 +9,7 @@ import {
 import { isAddressMatch } from '../utils/addresses'
 
 export function translateZoraMetadataSchema(schema: any) {
+  // TODO - this ia naive based on current usage
   if ('body' in schema) {
     return {
       origin: 'catalog-20210202',
