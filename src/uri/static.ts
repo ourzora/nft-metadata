@@ -36,6 +36,7 @@ export function getURIData(tokenAddress: string, tokenId: string) {
       return Promise.resolve({
         title: `Autoglyph #${tokenId}`,
         name: `Autoglyph #${tokenId}`,
+        image: `https://www.larvalabs.com/autoglyphs/glyphimage?index=${tokenId}`,
         description:
           'Autoglyphs are the first “on-chain” generative art on the Ethereum blockchain. A completely self-contained mechanism for the creation and ownership of an artwork.',
         external_url: `https://www.larvalabs.com/autoglyphs/glyph?index=${tokenId}`,
