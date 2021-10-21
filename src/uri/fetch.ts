@@ -20,9 +20,9 @@ export function parseJSONDataURI(uri: string) {
   if (parsedUrl?.mimeType.toString().startsWith('application/json')) {
     const json = Buffer.from(parsedUrl.body).toString('utf-8')
     try {
-      return JSON.parse(json);
+      return JSON.parse(json)
     } catch {
-      return undefined;
+      return undefined
     }
   }
   return undefined
@@ -40,13 +40,32 @@ export async function fetchWithTimeout(
   })
 }
 
+export async function fetchWithRetries(
+  resource: string,
+  options: FetchOptions = {},
+  maxRetries = 5,
+) {
+  let retries = 0
+  do {
+    try {
+      const response = await fetchWithTimeout(resource, options)
+      return response
+    } catch (e) {
+      retries++
+    }
+  } while (retries < maxRetries)
+  throw new Error(
+    `Exhausted retries attempting to fetch from resource: ${resource}`,
+  )
+}
+
 export async function fetchIPFSWithTimeout(
   uri: string,
   options: FetchOptions,
   gateway: string,
 ) {
   const tokenURL = getIPFSUrl(uri, gateway)
-  return fetchWithTimeout(tokenURL, options)
+  return fetchWithRetries(tokenURL, options)
 }
 
 async function multiAttemptIPFSFetch(
@@ -56,7 +75,7 @@ async function multiAttemptIPFSFetch(
 ) {
   if (isValidHttpUrl(uri)) {
     try {
-      const resp = await fetchWithTimeout(uri, options)
+      const resp = await fetchWithRetries(uri, options)
       return resp
     } catch (e) {
       console.warn('Failed on https fetch')
@@ -88,7 +107,7 @@ export async function fetchURI(
   }
 
   if (isValidHttpUrl(uri)) {
-    const resp = await fetchWithTimeout(uri, options)
+    const resp = await fetchWithRetries(uri, options)
     return resp?.data
   }
 
@@ -119,10 +138,11 @@ export async function fetchMimeType(
     return 'image/png'
   }
   try {
-    const resp = await fetchWithTimeout(uri, {
+    const resp = await fetchWithRetries(uri, {
       method: 'HEAD',
       timeout,
     })
+
     return resp.headers['content-type'] || undefined
   } catch (e: any) {
     console.warn(
