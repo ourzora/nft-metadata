@@ -783,7 +783,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  fit(`should be able to fetch and parse metadata for Blitnauts ${BLITNAUT_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Blitnauts ${BLITNAUT_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(BLITNAUT_TOKEN_ADDRESS, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
