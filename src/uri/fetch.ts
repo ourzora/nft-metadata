@@ -1,5 +1,4 @@
 import { getIPFSUrl, IPFS_IO_GATEWAY, isIPFS } from './ipfs'
-import parseDataURL from 'data-urls'
 import axios from 'axios'
 
 export function isValidHttpUrl(uri: string) {
@@ -15,17 +14,29 @@ export function forceHttps(source: string) {
   return source.replace('http://', 'https://')
 }
 
-export function parseJSONDataURI(uri: string) {
-  const parsedUrl = parseDataURL(uri)
-  if (parsedUrl?.mimeType.toString().startsWith('application/json')) {
-    const json = Buffer.from(parsedUrl.body).toString('utf-8')
-    try {
-      return JSON.parse(json)
-    } catch {
-      return undefined
-    }
+export function parseDataUri(uri: string) {
+  const commaIndex = uri.indexOf(',')
+  if (commaIndex === -1) {
+    return undefined
   }
-  return undefined
+
+  const mimeData = uri.substr(0, commaIndex + 1).match(/^data:([^;,]+)(.+)$/)
+
+  if (!mimeData || !mimeData[1]) {
+    return undefined
+  }
+  const data = uri.substr(commaIndex + 1)
+  let body = data
+  if (mimeData.length > 2 && mimeData[2]?.includes('base64')) {
+    body = Buffer.from(data, 'base64').toString('utf-8')
+  }
+  if (body.includes('%')) {
+    body = decodeURIComponent(body);
+  }
+  return {
+    body,
+    mime: mimeData[1],
+  }
 }
 
 export type FetchOptions = RequestInit & { timeout?: number }
@@ -111,16 +122,12 @@ export async function fetchURI(
     return resp?.data
   }
 
-  const inlineJsonBody = parseJSONDataURI(uri)
-  if (inlineJsonBody) {
-    return inlineJsonBody
+  const inlineJsonBody = parseDataUri(uri)
+  if (inlineJsonBody && inlineJsonBody.mime.startsWith('application/json')) {
+    return JSON.parse(inlineJsonBody.body)
   }
 
   return
-}
-
-export function getDataURIMimeType(uri: string) {
-  return uri.substring(uri.indexOf(':') + 1, uri.indexOf(';'))
 }
 
 export async function fetchMimeType(
@@ -128,8 +135,12 @@ export async function fetchMimeType(
   { timeout }: FetchOptions = {},
   defaultType?: string,
 ): Promise<string | undefined> {
-  if (uri.includes('data:')) {
-    return getDataURIMimeType(uri)
+  if (uri.startsWith('data:')) {
+    const parsedUri = parseDataUri(uri)
+    if (parsedUri) {
+      return parsedUri.mime
+    }
+    throw new Error('Cannot parse data uri')
   }
   if (uri.includes('.jpeg') || uri.includes('.jpg')) {
     return 'image/jpeg'

@@ -45,6 +45,11 @@ describe('Metadata Agent', () => {
     jest.setTimeout(60 * 1000)
   })
 
+  it('should handle brotchain at 0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', async () => {
+    const resp = await parser.fetchMetadata('0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', '70026');
+    expect(resp).toMatchSnapshot();
+  })
+
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS, '2')
     expect(resp).toMatchInlineSnapshot(`
