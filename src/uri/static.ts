@@ -1,6 +1,5 @@
 import {
   AUTOGLYPHS_TOKEN_ADDRESS,
-  BLITNAUT_TOKEN_ADDRESS,
   DECENTRALAND_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
@@ -8,8 +7,6 @@ import {
 
 export function getStaticURI(tokenAddress: string, tokenId: string) {
   switch (tokenAddress) {
-    case BLITNAUT_TOKEN_ADDRESS:
-      return `https://blitnauts.blitmap.com/api/v1/metadata/${tokenId}`
     case DECENTRALAND_TOKEN_ADDRESS:
       return `https://api.decentraland.org/v2/contracts/${tokenAddress.toLowerCase()}/tokens/${tokenId}`
     case HASHMASKS_TOKEN_ADDRESS:
