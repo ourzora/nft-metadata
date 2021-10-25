@@ -1,19 +1,15 @@
 {
   "name": "@zoralabs/nft-metadata",
   "version": "0.0.18",
-  "description": "generic nft metadata parsers",
+  "description": "Generic nft metadata parsers",
   "author": "Zora",
   "license": "MIT",
-  "private": false,
   "typings": "dist/index.d.ts",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "restricted"
-  },
   "dependencies": {
     "@pinata/ipfs-gateway-tools": "^1.1.6",
     "@types/data-urls": "^2.0.1",
