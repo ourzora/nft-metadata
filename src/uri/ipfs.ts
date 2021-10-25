@@ -1,6 +1,7 @@
 import {
   FOUNDATION_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,
+  ZORA_TOKEN_ADDRESS,
 } from '../constants'
 
 export const IPFS_IO_GATEWAY = 'https://gateway.ipfs.io'
@@ -32,6 +33,8 @@ export function getPrivateGateway(tokenAddress: string) {
       return 'https://ipfsgateway.makersplace.com'
     case FOUNDATION_TOKEN_ADDRESS:
       return 'https://ipfs.foundation.app'
+    case ZORA_TOKEN_ADDRESS:
+      return 'https://zora-prod.mypinata.cloud'
     default:
       return
   }
