@@ -20,19 +20,21 @@ export function parseDataUri(uri: string) {
     return undefined
   }
 
-  const mimeData = uri
-    .substr(0, commaIndex + 1)
-    .match(/^data:([^;,]+)(.+)$/)
+  const mimeData = uri.substr(0, commaIndex + 1).match(/^data:([^;,]+)(.+)$/)
 
   if (!mimeData || !mimeData[1]) {
     return undefined
   }
   const data = uri.substr(commaIndex + 1)
+  let body = data
+  if (mimeData.length > 2 && mimeData[2]?.includes('base64')) {
+    body = Buffer.from(data, 'base64').toString('utf-8')
+  }
+  if (body.includes('%')) {
+    body = decodeURIComponent(body);
+  }
   return {
-    body:
-      mimeData.length > 2 && mimeData[2]?.includes('base64')
-        ? Buffer.from(data, 'base64').toString('utf-8')
-        : data,
+    body,
     mime: mimeData[1],
   }
 }
