@@ -1,5 +1,6 @@
-import { getIPFSUrl, IPFS_IO_GATEWAY, isIPFS } from './ipfs'
+import { getIPFSUrl, isIPFS } from './ipfs'
 import axios from 'axios'
+import { IPFS_IO_GATEWAY } from 'src/constants/ipfs'
 
 export function isValidHttpUrl(uri: string) {
   try {
@@ -31,7 +32,7 @@ export function parseDataUri(uri: string) {
     body = Buffer.from(data, 'base64').toString('utf-8')
   }
   if (body.includes('%')) {
-    body = decodeURIComponent(body);
+    body = decodeURIComponent(body)
   }
   return {
     body,
@@ -86,21 +87,18 @@ async function multiAttemptIPFSFetch(
 ) {
   if (isValidHttpUrl(uri)) {
     try {
-      const resp = await fetchWithRetries(uri, options)
-      return resp
+      return await fetchWithRetries(uri, options)
     } catch (e) {
       console.warn('Failed on https fetch')
     }
   }
 
   try {
-    const resp = await fetchIPFSWithTimeout(uri, options, IPFS_IO_GATEWAY)
-    return resp
+    return await fetchIPFSWithTimeout(uri, options, IPFS_IO_GATEWAY)
   } catch (e) {
     console.warn('Failed on initial fetch')
     if (ipfsGateway) {
-      const resp = await fetchIPFSWithTimeout(uri, options, ipfsGateway)
-      return resp
+      return await fetchIPFSWithTimeout(uri, options, ipfsGateway)
     } else {
       throw e
     }
@@ -142,6 +140,7 @@ export async function fetchMimeType(
     }
     throw new Error('Cannot parse data uri')
   }
+  // TODO(iain): Change include to endsWith
   if (uri.includes('.jpeg') || uri.includes('.jpg')) {
     return 'image/jpeg'
   }

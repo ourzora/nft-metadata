@@ -1,31 +1,36 @@
+// Addresses for general testing
 import {
   ALGOLITE_TOKEN_ADDRESS,
   ART_BLOCKS_CURATED_TOKEN_ADDRESS,
   ART_BLOCKS_TOKEN_ADDRESS,
-  HEAVEN_COMPUTER_TOKEN_ADDRESS,
   BLITNAUT_TOKEN_ADDRESS,
-  BLITMAP_TOKEN_ADDRESS,
   BLOCKPARY_TOKEN_ADDRESS,
   BORED_APE_TOKEN_ADDRESS,
   CRYPTOVOXELS_TOKEN_ADDRESS,
-  FOUNDATION_TOKEN_ADDRESS,
   HOLLY_PLUS_TOKEN_ADDRESS,
   KNOWN_ORIGIN_TOKEN_ADDRESS,
-  LOOT_TOKEN_ADDRESS,
-  MAKERSPLACE_TOKEN_ADDRESS,
   MANNYS_GAME_TOKEN_ADDRESS,
   MEEBITS_TOKEN_ADDRESS,
-  Agent,
   SETTLEMENTS_TOKEN_ADDRESS,
   SOLVENCY_TOKEN_ADDRESS,
-  SUPERRARE_TOKEN_ADDRESS,
-  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
-  ZORA_TOKEN_ADDRESS,
   HUMANOID_TOKEN_ADDRESS,
   CYBERKORGZ_VX_TOKEN_ADDRESS,
+} from './constants/addresses'
+// Addresses that are modified in the lib
+import {
+  ZORA_TOKEN_ADDRESS,
+  LOOT_TOKEN_ADDRESS,
+  FOUNDATION_TOKEN_ADDRESS,
+  HEAVEN_COMPUTER_TOKEN_ADDRESS,
+  BLITMAP_TOKEN_ADDRESS,
+  MAKERSPLACE_TOKEN_ADDRESS,
+  SUPERRARE_TOKEN_ADDRESS,
+  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
   AUTOGLYPHS_TOKEN_ADDRESS,
-} from '../src'
+} from '../src/constants/addresses'
+import { Agent } from '../src'
+
 import { config as dotenv } from 'dotenv'
 
 dotenv({ path: '.env.test' })
@@ -46,8 +51,11 @@ describe('Metadata Agent', () => {
   })
 
   it('should handle brotchain at 0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', async () => {
-    const resp = await parser.fetchMetadata('0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', '70026');
-    expect(resp).toMatchSnapshot();
+    const resp = await parser.fetchMetadata(
+      '0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D',
+      '70026',
+    )
+    expect(resp).toMatchSnapshot()
   })
 
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {

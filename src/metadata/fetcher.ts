@@ -1,3 +1,5 @@
+import { JsonRpcProvider } from '@ethersproject/providers'
+
 import {
   AUTOGLYPHS_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
@@ -5,10 +7,9 @@ import {
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_RINKEBY_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
-} from '../constants'
+} from '../constants/addresses'
 import { fetchZoraMeta } from './zora'
 import { fetchHashmaskMeta } from './hashmasks'
-import { JsonRpcProvider } from '@ethersproject/providers'
 import { fetchLootMeta } from './loot'
 import { fetchPunkAttributes } from './punks'
 import { fetchAutoglyphsMeta } from './autoglyphs'

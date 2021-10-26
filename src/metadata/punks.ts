@@ -1,6 +1,7 @@
 import { Contract } from '@ethersproject/contracts'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { PUNKS_DATA_CONTRACT } from '../constants'
+
+import { PUNKS_DATA_CONTRACT } from '../constants/addresses'
 
 // This properly encodes the svg data uri for punks
 // from: spectrexyz/use-nft

@@ -5,7 +5,7 @@ import {
   ZORA_TOKEN_ADDRESS,
   HEAVEN_COMPUTER_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
-} from '../constants'
+} from '../constants/addresses'
 import { isAddressMatch } from '../utils/addresses'
 
 export function translateZoraMetadataSchema(schema: any) {

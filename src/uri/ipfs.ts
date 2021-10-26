@@ -2,9 +2,7 @@ import {
   FOUNDATION_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
-} from '../constants'
-
-export const IPFS_IO_GATEWAY = 'https://gateway.ipfs.io'
+} from '../constants/addresses'
 
 const IPFSGatewayTools = require('@pinata/ipfs-gateway-tools/dist/node')
 const gatewayTools = new IPFSGatewayTools()

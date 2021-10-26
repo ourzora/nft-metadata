@@ -1,5 +1,8 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
+import { getAddress } from '@ethersproject/address'
+import { Erc721Factory } from '@zoralabs/core/dist/typechain'
+
 import {
   fetchMimeType,
   fetchURI,
@@ -8,11 +11,10 @@ import {
   getPrivateGateway,
   getStaticURI,
   getURIData,
-  IPFS_IO_GATEWAY,
 } from './uri'
-import { getAddress } from '@ethersproject/address'
-import { Erc721Factory } from '@zoralabs/core/dist/typechain'
 import { fetchOnChainData, normaliseURIData } from './metadata'
+import { IPFS_IO_GATEWAY } from './constants/ipfs'
+
 
 type AgentOptions = {
   network: Networkish

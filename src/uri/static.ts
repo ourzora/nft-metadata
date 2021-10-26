@@ -3,7 +3,7 @@ import {
   DECENTRALAND_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
-} from '../constants'
+} from '../constants/addresses'
 
 export function getStaticURI(tokenAddress: string, tokenId: string) {
   switch (tokenAddress) {
