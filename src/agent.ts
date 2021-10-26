@@ -13,13 +13,17 @@ import {
   getURIData,
 } from './uri'
 import { fetchOnChainData, normaliseURIData } from './metadata'
-import { IPFS_IO_GATEWAY } from './constants/ipfs'
-
+import {
+  CLOUDFLARE_RPC_DEFAULT,
+  IPFS_CLOUDFLARE_GATEWAY,
+  IPFS_IO_GATEWAY,
+} from './constants/providers'
 
 type AgentOptions = {
   network: Networkish
   networkUrl: string
   ipfsGatewayUrl?: string
+  ipfsFallbackGatewayUrl?: string
   timeout?: number
 }
 
@@ -43,12 +47,18 @@ export interface NftMetadata {
 export class Agent {
   timeout: number
   ipfsGatewayUrl: string
+  ipfsFallbackGatewayUrl: string
   provider: JsonRpcProvider
 
   constructor(options: AgentOptions) {
-    this.provider = new JsonRpcProvider(options.networkUrl, options.network)
+    this.provider = new JsonRpcProvider(
+      options.networkUrl || CLOUDFLARE_RPC_DEFAULT,
+      options.network,
+    )
     this.ipfsGatewayUrl = options.ipfsGatewayUrl || IPFS_IO_GATEWAY
-    this.timeout = options.timeout || 10000
+    this.ipfsFallbackGatewayUrl =
+      options.ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY
+    this.timeout = options.timeout || 40000
   }
 
   public async fetchTokenURI(tokenAddress: string, tokenId: string) {
@@ -87,6 +97,7 @@ export class Agent {
       tokenURI,
       { timeout: this.timeout },
       ipfsGateway,
+      this.ipfsFallbackGatewayUrl,
     )
     if (!resp) {
       throw new Error(`Failed to fetch uri data for token from: ${tokenURI}`)

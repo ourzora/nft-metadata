@@ -1,6 +1,10 @@
-import { getIPFSUrl, isIPFS } from './ipfs'
 import axios from 'axios'
-import { IPFS_IO_GATEWAY } from 'src/constants/ipfs'
+
+import { getIPFSUrl, isIPFS } from './ipfs'
+import {
+  IPFS_CLOUDFLARE_GATEWAY,
+  IPFS_IO_GATEWAY,
+} from '../constants/providers'
 
 export function isValidHttpUrl(uri: string) {
   try {
@@ -84,6 +88,7 @@ async function multiAttemptIPFSFetch(
   uri: string,
   options: FetchOptions,
   ipfsGateway?: string,
+  ipfsFallbackGatewayUrl?: string,
 ) {
   if (isValidHttpUrl(uri)) {
     try {
@@ -94,11 +99,19 @@ async function multiAttemptIPFSFetch(
   }
 
   try {
-    return await fetchIPFSWithTimeout(uri, options, IPFS_IO_GATEWAY)
+    return await fetchIPFSWithTimeout(
+      uri,
+      options,
+      ipfsGateway || IPFS_IO_GATEWAY,
+    )
   } catch (e) {
     console.warn('Failed on initial fetch')
     if (ipfsGateway) {
-      return await fetchIPFSWithTimeout(uri, options, ipfsGateway)
+      return await fetchIPFSWithTimeout(
+        uri,
+        options,
+        ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY,
+      )
     } else {
       throw e
     }
@@ -109,9 +122,15 @@ export async function fetchURI(
   uri: string,
   options: FetchOptions,
   ipfsGateway?: string,
+  ipfsFallbackGatewayUrl?: string,
 ) {
   if (isIPFS(uri)) {
-    const resp = await multiAttemptIPFSFetch(uri, options, ipfsGateway)
+    const resp = await multiAttemptIPFSFetch(
+      uri,
+      options,
+      ipfsGateway,
+      ipfsFallbackGatewayUrl,
+    )
     return resp?.data
   }
 
