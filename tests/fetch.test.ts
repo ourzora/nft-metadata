@@ -1,4 +1,4 @@
-import { parseDataUri } from '../src'
+import { uri } from '../src'
 
 describe('fetch.ts', () => {
   describe('parses data-uris', () => {
@@ -13,7 +13,7 @@ describe('fetch.ts', () => {
     `(
       '$tag: parses data uri correctly',
       ({ input, expectedResult, mime }: any) => {
-        const dataUri = parseDataUri(input)
+        const dataUri = uri.parseDataUri(input)
         if (!dataUri) {
           throw new Error('missing data uri parse')
         }

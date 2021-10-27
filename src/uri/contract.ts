@@ -1,4 +1,4 @@
-import { ZORA_RINKEBY_TOKEN_ADDRESS, ZORA_TOKEN_ADDRESS } from '../constants'
+import { ZORA_RINKEBY_TOKEN_ADDRESS, ZORA_TOKEN_ADDRESS } from '../constants/addresses'
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
 import { JsonRpcProvider } from '@ethersproject/providers'
 

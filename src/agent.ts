@@ -1,5 +1,8 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
+import { getAddress } from '@ethersproject/address'
+import { Erc721Factory } from '@zoralabs/core/dist/typechain'
+
 import {
   fetchMimeType,
   fetchURI,
@@ -8,16 +11,19 @@ import {
   getPrivateGateway,
   getStaticURI,
   getURIData,
-  IPFS_IO_GATEWAY,
 } from './uri'
-import { getAddress } from '@ethersproject/address'
-import { Erc721Factory } from '@zoralabs/core/dist/typechain'
 import { fetchOnChainData, normaliseURIData } from './metadata'
+import {
+  CLOUDFLARE_RPC_DEFAULT,
+  IPFS_CLOUDFLARE_GATEWAY,
+  IPFS_IO_GATEWAY,
+} from './constants/providers'
 
 type AgentOptions = {
   network: Networkish
   networkUrl: string
   ipfsGatewayUrl?: string
+  ipfsFallbackGatewayUrl?: string
   timeout?: number
 }
 
@@ -41,12 +47,18 @@ export interface NftMetadata {
 export class Agent {
   timeout: number
   ipfsGatewayUrl: string
+  ipfsFallbackGatewayUrl: string
   provider: JsonRpcProvider
 
   constructor(options: AgentOptions) {
-    this.provider = new JsonRpcProvider(options.networkUrl, options.network)
+    this.provider = new JsonRpcProvider(
+      options.networkUrl || CLOUDFLARE_RPC_DEFAULT,
+      options.network,
+    )
     this.ipfsGatewayUrl = options.ipfsGatewayUrl || IPFS_IO_GATEWAY
-    this.timeout = options.timeout || 10000
+    this.ipfsFallbackGatewayUrl =
+      options.ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY
+    this.timeout = options.timeout || 40000
   }
 
   public async fetchTokenURI(tokenAddress: string, tokenId: string) {
@@ -80,11 +92,11 @@ export class Agent {
     if (alternateMethod) {
       return alternateMethod
     }
-    console.log('no alternate, using uri')
     const resp = await fetchURI(
       tokenURI,
       { timeout: this.timeout },
       ipfsGateway,
+      this.ipfsFallbackGatewayUrl,
     )
     if (!resp) {
       throw new Error(`Failed to fetch uri data for token from: ${tokenURI}`)

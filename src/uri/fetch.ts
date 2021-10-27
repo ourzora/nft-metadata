@@ -1,5 +1,10 @@
-import { getIPFSUrl, IPFS_IO_GATEWAY, isIPFS } from './ipfs'
 import axios from 'axios'
+
+import { getIPFSUrl, isIPFS } from './ipfs'
+import {
+  IPFS_CLOUDFLARE_GATEWAY,
+  IPFS_IO_GATEWAY,
+} from '../constants/providers'
 
 export function isValidHttpUrl(uri: string) {
   try {
@@ -29,9 +34,12 @@ export function parseDataUri(uri: string) {
   let body = data
   if (mimeData.length > 2 && mimeData[2]?.includes('base64')) {
     body = Buffer.from(data, 'base64').toString('utf-8')
-  }
-  if (body.includes('%')) {
-    body = decodeURIComponent(body);
+  } else if (body.includes('%')) {
+    try {
+      body = decodeURIComponent(body)
+    } catch {
+      // no-op
+    }
   }
   return {
     body,
@@ -83,24 +91,30 @@ async function multiAttemptIPFSFetch(
   uri: string,
   options: FetchOptions,
   ipfsGateway?: string,
+  ipfsFallbackGatewayUrl?: string,
 ) {
   if (isValidHttpUrl(uri)) {
     try {
-      const resp = await fetchWithRetries(uri, options)
-      return resp
+      return await fetchWithRetries(uri, options)
     } catch (e) {
       console.warn('Failed on https fetch')
     }
   }
 
   try {
-    const resp = await fetchIPFSWithTimeout(uri, options, IPFS_IO_GATEWAY)
-    return resp
+    return await fetchIPFSWithTimeout(
+      uri,
+      options,
+      ipfsGateway || IPFS_IO_GATEWAY,
+    )
   } catch (e) {
     console.warn('Failed on initial fetch')
     if (ipfsGateway) {
-      const resp = await fetchIPFSWithTimeout(uri, options, ipfsGateway)
-      return resp
+      return await fetchIPFSWithTimeout(
+        uri,
+        options,
+        ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY,
+      )
     } else {
       throw e
     }
@@ -111,9 +125,15 @@ export async function fetchURI(
   uri: string,
   options: FetchOptions,
   ipfsGateway?: string,
+  ipfsFallbackGatewayUrl?: string,
 ) {
   if (isIPFS(uri)) {
-    const resp = await multiAttemptIPFSFetch(uri, options, ipfsGateway)
+    const resp = await multiAttemptIPFSFetch(
+      uri,
+      options,
+      ipfsGateway,
+      ipfsFallbackGatewayUrl,
+    )
     return resp?.data
   }
 
@@ -142,6 +162,7 @@ export async function fetchMimeType(
     }
     throw new Error('Cannot parse data uri')
   }
+  // TODO(iain): Change include to endsWith
   if (uri.includes('.jpeg') || uri.includes('.jpg')) {
     return 'image/jpeg'
   }

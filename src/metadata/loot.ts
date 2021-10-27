@@ -1,5 +1,6 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Contract } from '@ethersproject/contracts'
+
 import abi from '../abis/Loot.abi.json'
 
 export async function fetchLootMeta(

@@ -1,31 +1,36 @@
+// Addresses for general testing
 import {
   ALGOLITE_TOKEN_ADDRESS,
   ART_BLOCKS_CURATED_TOKEN_ADDRESS,
   ART_BLOCKS_TOKEN_ADDRESS,
-  HEAVEN_COMPUTER_TOKEN_ADDRESS,
   BLITNAUT_TOKEN_ADDRESS,
-  BLITMAP_TOKEN_ADDRESS,
   BLOCKPARY_TOKEN_ADDRESS,
   BORED_APE_TOKEN_ADDRESS,
   CRYPTOVOXELS_TOKEN_ADDRESS,
-  FOUNDATION_TOKEN_ADDRESS,
   HOLLY_PLUS_TOKEN_ADDRESS,
   KNOWN_ORIGIN_TOKEN_ADDRESS,
-  LOOT_TOKEN_ADDRESS,
-  MAKERSPLACE_TOKEN_ADDRESS,
   MANNYS_GAME_TOKEN_ADDRESS,
   MEEBITS_TOKEN_ADDRESS,
-  Agent,
   SETTLEMENTS_TOKEN_ADDRESS,
   SOLVENCY_TOKEN_ADDRESS,
-  SUPERRARE_TOKEN_ADDRESS,
-  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
-  ZORA_TOKEN_ADDRESS,
   HUMANOID_TOKEN_ADDRESS,
   CYBERKORGZ_VX_TOKEN_ADDRESS,
+} from './constants/addresses'
+// Addresses that are modified in the lib
+import {
+  ZORA_TOKEN_ADDRESS,
+  LOOT_TOKEN_ADDRESS,
+  FOUNDATION_TOKEN_ADDRESS,
+  HEAVEN_COMPUTER_TOKEN_ADDRESS,
+  BLITMAP_TOKEN_ADDRESS,
+  MAKERSPLACE_TOKEN_ADDRESS,
+  SUPERRARE_TOKEN_ADDRESS,
+  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
   AUTOGLYPHS_TOKEN_ADDRESS,
-} from '../src'
+} from '../src/constants/addresses'
+import { Agent } from '../src'
+
 import { config as dotenv } from 'dotenv'
 
 dotenv({ path: '.env.test' })
@@ -46,8 +51,11 @@ describe('Metadata Agent', () => {
   })
 
   it('should handle brotchain at 0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', async () => {
-    const resp = await parser.fetchMetadata('0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D', '70026');
-    expect(resp).toMatchSnapshot();
+    const resp = await parser.fetchMetadata(
+      '0xd31fC221D2b0E0321C43E9F6824b26ebfFf01D7D',
+      '70026',
+    )
+    expect(resp).toMatchSnapshot()
   })
 
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
@@ -109,11 +117,16 @@ describe('Metadata Agent', () => {
             "value": "O|-",
           },
         ],
+        "contentURL": "https://www.larvalabs.com/autoglyphs/glyphimage?index=1",
+        "contentURLMimeType": "image/svg+xml",
         "description": "Autoglyphs are the first “on-chain” generative art on the Ethereum blockchain. A completely self-contained mechanism for the creation and ownership of an artwork.",
         "externalURL": "https://www.larvalabs.com/autoglyphs/glyph?index=1",
+        "imageURL": "https://www.larvalabs.com/autoglyphs/glyphimage?index=1",
+        "imageURLMimeType": "image/svg+xml",
         "metadata": Object {
           "description": "Autoglyphs are the first “on-chain” generative art on the Ethereum blockchain. A completely self-contained mechanism for the creation and ownership of an artwork.",
           "external_url": "https://www.larvalabs.com/autoglyphs/glyph?index=1",
+          "image": "https://www.larvalabs.com/autoglyphs/glyphimage?index=1",
           "name": "Autoglyph #1",
           "title": "Autoglyph #1",
         },
@@ -199,7 +212,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for HEAVE_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
+  fit(`should be able to fetch and parse metadata for HEAVEN_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(HEAVEN_COMPUTER_TOKEN_ADDRESS, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
@@ -458,7 +471,7 @@ describe('Metadata Agent', () => {
         "tokenAddress": "0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7",
         "tokenId": "4000",
         "tokenURI": "https://ipfs.fleek.co/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
-        "tokenURL": "https://gateway.ipfs.io/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
+        "tokenURL": "https://zora-prod.mypinata.cloud/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
         "tokenURLMimeType": "application/json",
       }
     `)
@@ -980,7 +993,7 @@ describe('Metadata Agent', () => {
         "metadata": Object {
           "animation_url": "https://generator.artblocks.io/100",
           "artist": "Snowfro",
-          "aspect_ratio": "1.5",
+          "aspect_ratio": 1.5,
           "collection_name": "Chromie Squiggle by Snowfro",
           "curation_status": "curated",
           "description": "Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market. ",
@@ -1006,6 +1019,7 @@ describe('Metadata Agent', () => {
           "name": "Chromie Squiggle #100",
           "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
           "platform": "Art Blocks Curated",
+          "project_id": "0",
           "royaltyInfo": Object {
             "additionalPayee": "0x9d5025b327e6b863e5050141c987d988c07fd8b2",
             "additionalPayeePercentage": "100",
@@ -1131,6 +1145,7 @@ describe('Metadata Agent', () => {
           "name": "Blaschke Ballet #537",
           "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
           "platform": "Art Blocks Playground",
+          "project_id": "167",
           "royaltyInfo": Object {
             "additionalPayee": "0x0000000000000000000000000000000000000000",
             "additionalPayeePercentage": "0",
