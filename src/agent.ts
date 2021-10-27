@@ -92,7 +92,6 @@ export class Agent {
     if (alternateMethod) {
       return alternateMethod
     }
-    console.log('no alternate, using uri')
     const resp = await fetchURI(
       tokenURI,
       { timeout: this.timeout },

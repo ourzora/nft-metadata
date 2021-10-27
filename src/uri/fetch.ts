@@ -34,9 +34,12 @@ export function parseDataUri(uri: string) {
   let body = data
   if (mimeData.length > 2 && mimeData[2]?.includes('base64')) {
     body = Buffer.from(data, 'base64').toString('utf-8')
-  }
-  if (body.includes('%')) {
-    body = decodeURIComponent(body)
+  } else if (body.includes('%')) {
+    try {
+      body = decodeURIComponent(body)
+    } catch {
+      // no-op
+    }
   }
   return {
     body,
