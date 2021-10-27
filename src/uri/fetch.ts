@@ -1,5 +1,5 @@
-import axios from 'axios'
-
+import axios, { AxiosRequestConfig } from 'axios'
+import axiosRetry from 'axios-retry'
 import { getIPFSUrl, isIPFS } from './ipfs'
 import {
   IPFS_CLOUDFLARE_GATEWAY,
@@ -47,7 +47,7 @@ export function parseDataUri(uri: string) {
   }
 }
 
-export type FetchOptions = RequestInit & { timeout?: number }
+export type FetchOptions = AxiosRequestConfig
 
 export async function fetchWithTimeout(
   resource: string,
@@ -59,23 +59,28 @@ export async function fetchWithTimeout(
   })
 }
 
-export async function fetchWithRetries(
+export async function fetchWithRetriesAndTimeout(
   resource: string,
   options: FetchOptions = {},
   maxRetries = 5,
 ) {
-  let retries = 0
-  do {
-    try {
-      const response = await fetchWithTimeout(resource, options)
-      return response
-    } catch (e) {
-      retries++
-    }
-  } while (retries < maxRetries)
-  throw new Error(
-    `Exhausted retries attempting to fetch from resource: ${resource}`,
-  )
+  axiosRetry(axios, {
+    retryDelay: axiosRetry.exponentialDelay,
+    retries: maxRetries,
+  })
+
+  const method = options.method || 'get'
+
+  try {
+    const response = await axios(resource, {
+      timeout: options.timeout,
+      method: method,
+    })
+    return response
+  } catch (err) {
+    const errMsg = `Exhausted retries attempting to fetch ${resource} with error: ${err.message}`
+    throw new Error(errMsg)
+  }
 }
 
 export async function fetchIPFSWithTimeout(
@@ -84,7 +89,7 @@ export async function fetchIPFSWithTimeout(
   gateway: string,
 ) {
   const tokenURL = getIPFSUrl(uri, gateway)
-  return fetchWithRetries(tokenURL, options)
+  return fetchWithRetriesAndTimeout(tokenURL, options)
 }
 
 async function multiAttemptIPFSFetch(
@@ -95,7 +100,8 @@ async function multiAttemptIPFSFetch(
 ) {
   if (isValidHttpUrl(uri)) {
     try {
-      return await fetchWithRetries(uri, options)
+      const resp = await fetchWithRetriesAndTimeout(uri, options)
+      return resp
     } catch (e) {
       console.warn('Failed on https fetch')
     }
@@ -138,7 +144,7 @@ export async function fetchURI(
   }
 
   if (isValidHttpUrl(uri)) {
-    const resp = await fetchWithRetries(uri, options)
+    const resp = await fetchWithRetriesAndTimeout(uri, options)
     return resp?.data
   }
 
@@ -170,7 +176,7 @@ export async function fetchMimeType(
     return 'image/png'
   }
   try {
-    const resp = await fetchWithRetries(uri, {
+    const resp = await fetchWithRetriesAndTimeout(uri, {
       method: 'HEAD',
       timeout,
     })
