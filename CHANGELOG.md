@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.19] - 2021-10-25
 ### Added
+- Retries and backoff to fetching code
 - First public release
 - Looser parsing of data-uris to account for projects that don't properly encode uris
 - Handling of blitnauts
+- Updating imports and adding documentation for basic usage
