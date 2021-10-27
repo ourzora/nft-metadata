@@ -2,7 +2,7 @@ export { getAlternateContractCall } from './contract'
 export {
   fetchMimeType,
   fetchURI,
-  fetchWithRetries,
+  fetchWithRetriesAndTimeout,
   fetchWithTimeout,
   parseDataUri,
 } from './fetch'

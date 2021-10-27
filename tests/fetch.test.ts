@@ -1,4 +1,9 @@
 import { uri } from '../src'
+import { mocked } from 'ts-jest/utils'
+import axios from 'axios'
+
+jest.mock('axios')
+const mockedAxios = mocked(axios)
 
 describe('fetch.ts', () => {
   describe('parses data-uris', () => {
@@ -22,5 +27,67 @@ describe('fetch.ts', () => {
         expect(dataUri.mime).toEqual(mime)
       },
     )
+  })
+
+  describe('#fetchWithRetriesAndTimeout', () => {
+    it('properly makes head requests', async () => {
+      const mockResponse = {
+        'content-type': 'image/svg+xml',
+      }
+
+      mockedAxios.mockResolvedValue({
+        headers: mockResponse,
+        data: '',
+      } as any)
+
+      const resource = 'https://example.com'
+
+      const resp = await uri.fetchWithRetriesAndTimeout(resource, {
+        timeout: 10000,
+        method: 'head',
+      })
+
+      expect(mockedAxios).toHaveBeenCalledWith(resource, {
+        timeout: 10000,
+        method: 'head',
+      })
+      expect(resp.data).toEqual('')
+    })
+
+    it('defaults to make get requests', async () => {
+      const mockResponse = {
+        'content-type': 'image/svg+xml',
+      }
+
+      mockedAxios.mockResolvedValue({
+        headers: mockResponse,
+        data: 'pee pee poo poo',
+      } as any)
+
+      const resource = 'https://example.com'
+
+      const resp = await uri.fetchWithRetriesAndTimeout(resource, {
+        timeout: 10000,
+      })
+
+      expect(mockedAxios).toHaveBeenCalledWith(resource, {
+        method: 'get',
+        timeout: 10000,
+      })
+      expect(resp.data).toEqual('pee pee poo poo')
+    })
+    it('raises an error if it exhausts retries', async () => {
+      mockedAxios.mockRejectedValue(new Error('idk'))
+
+      const resource = 'https://example.com'
+
+      await await expect(
+        uri.fetchWithRetriesAndTimeout(resource, {
+          timeout: 10000,
+        }),
+      ).rejects.toThrow(
+        `Exhausted retries attempting to fetch ${resource} with error: idk`,
+      )
+    })
   })
 })
