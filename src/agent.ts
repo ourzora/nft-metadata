@@ -116,7 +116,7 @@ export class Agent {
       tokenId,
       this.provider,
     )
-    const meta = normaliseURIData(tokenAddress, {
+    const meta = normaliseURIData(this.provider.network.name, tokenAddress, {
       ...uriData,
       ...onChainData,
       ...(uriData?.mimeType && {
@@ -185,7 +185,9 @@ export class Agent {
       )
     }
     console.log('fetched uri: ', { tokenURI })
-    const ipfsGateway = getPrivateGateway(tokenAddress) || this.ipfsGatewayUrl
+    const ipfsGateway =
+      getPrivateGateway(this.provider.network.name, tokenAddress) ||
+      this.ipfsGatewayUrl
     const URIData = await this.fetchURIData(
       tokenAddress,
       tokenId,
