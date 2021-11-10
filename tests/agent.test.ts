@@ -67,7 +67,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS, '2')
+    const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS.homestead, '2')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://gateway.ipfs.io/ipfs/QmZM62hFkFDW255RhbaFs7u1xLiAJ25KFi8rUuaKxgNxbd",
@@ -109,14 +109,14 @@ describe('Metadata Agent', () => {
 
   it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '1',
     )
     expect(resp).toMatchSnapshot()
   })
 
   it(`should be able to fetch and parse metadata for GLYPHS: ${AUTOGLYPHS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(AUTOGLYPHS_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(AUTOGLYPHS_TOKEN_ADDRESS.homestead, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -150,7 +150,7 @@ describe('Metadata Agent', () => {
 
   it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '2066',
     )
     expect(resp).toMatchSnapshot()
@@ -222,7 +222,7 @@ describe('Metadata Agent', () => {
 
   // this api is VERY VERY flaky. Will re-evaluate l8er. - B.S.
   xit(`should be able to fetch and parse metadata for HEAVEN_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(HEAVEN_COMPUTER_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(HEAVEN_COMPUTER_TOKEN_ADDRESS.homestead, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -464,7 +464,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for ZORA: ${ZORA_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(ZORA_TOKEN_ADDRESS, '4000')
+    const resp = await parser.fetchMetadata(ZORA_TOKEN_ADDRESS.homestead, '4000')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.fleek.co/ipfs/bafybeiggi26g2c7enmdt6oip5ni2ba73qgcziqbxnkdxpalym5smmawmo4",
@@ -593,7 +593,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Loot ${LOOT_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(LOOT_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(LOOT_TOKEN_ADDRESS.homestead, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -731,7 +731,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Blitmap ${BLITMAP_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(BLITMAP_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(BLITMAP_TOKEN_ADDRESS.homestead, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1208,7 +1208,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(MAKERSPLACE_TOKEN_ADDRESS, '63253')
+    const resp = await parser.fetchMetadata(MAKERSPLACE_TOKEN_ADDRESS.homestead, '63253')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1352,7 +1352,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Foundation ${FOUNDATION_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(FOUNDATION_TOKEN_ADDRESS, '63253')
+    const resp = await parser.fetchMetadata(FOUNDATION_TOKEN_ADDRESS.homestead, '63253')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.foundation.app/ipfs/QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
@@ -1442,7 +1442,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for SuperRare ${SUPERRARE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(SUPERRARE_TOKEN_ADDRESS, '29061')
+    const resp = await parser.fetchMetadata(SUPERRARE_TOKEN_ADDRESS.homestead, '29061')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.pixura.io/ipfs/QmUrFzAXbJBvqdmQ9hqN7SMPuqWfW7qefithk4weTdzrT6/ACS_shaman.png",

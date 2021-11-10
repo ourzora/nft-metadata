@@ -1,4 +1,4 @@
-import { isAddressMatch } from 'src/utils/addresses'
+import { isAddressMatch } from '../utils/addresses'
 import {
   FOUNDATION_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,

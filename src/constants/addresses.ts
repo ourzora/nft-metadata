@@ -6,7 +6,6 @@ import { media as ZORA_MEDIA_ADDRESS_POLYGON } from '@zoralabs/core/dist/address
 
 import * as networks from './networks'
 
-
 export const SUPERRARE_TOKEN_ADDRESS = {
   [networks.MAINNET]: '0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0',
 }
@@ -37,6 +36,8 @@ export const MAKERSPLACE_TOKEN_ADDRESS = {
 
 export const ENS_TOKEN_ADDRESS = {
   [networks.MAINNET]: '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85',
+  [networks.ROPSTEN]: '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85',
+  [networks.RINKEBY]: '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85',
 }
 
 export const WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS = {
