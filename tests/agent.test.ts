@@ -58,6 +58,14 @@ describe('Metadata Agent', () => {
     expect(resp).toMatchSnapshot()
   })
 
+  it('should handle fetching an ens name', async () => {
+    const resp = await parser.fetchMetadata(
+      '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85',
+      '42219085255511335250589442208301538195142221433306354426240614732612795430543',
+    )
+    expect(resp).toMatchSnapshot()
+  })
+
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS, '2')
     expect(resp).toMatchInlineSnapshot(`

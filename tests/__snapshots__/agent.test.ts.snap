@@ -116,3 +116,64 @@ Object {
   "tokenURLMimeType": "application/json",
 }
 `;
+
+exports[`Metadata Agent should handle fetching an ens name 1`] = `
+Object {
+  "attributes": Array [
+    Object {
+      "display_type": "date",
+      "trait_type": "Created Date",
+      "value": null,
+    },
+    Object {
+      "display_type": "date",
+      "trait_type": "Registration Date",
+      "value": 1580803395000,
+    },
+    Object {
+      "display_type": "date",
+      "trait_type": "Expiration Date",
+      "value": 1698131707000,
+    },
+  ],
+  "contentURL": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x5d5727cb0fb76e4944eafb88ec9a3cf0b3c9025a4b2f947729137c5d7f84f68f/image",
+  "contentURLMimeType": "image/svg+xml",
+  "description": "nick.eth, an ENS name.",
+  "imageURL": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x5d5727cb0fb76e4944eafb88ec9a3cf0b3c9025a4b2f947729137c5d7f84f68f/image",
+  "imageURLMimeType": "image/svg+xml",
+  "metadata": Object {
+    "attributes": Array [
+      Object {
+        "display_type": "date",
+        "trait_type": "Created Date",
+        "value": null,
+      },
+      Object {
+        "display_type": "date",
+        "trait_type": "Registration Date",
+        "value": 1580803395000,
+      },
+      Object {
+        "display_type": "date",
+        "trait_type": "Expiration Date",
+        "value": 1698131707000,
+      },
+    ],
+    "background_image": "https://metadata.ens.domains/mainnet/avatar/nick.eth",
+    "description": "nick.eth, an ENS name.",
+    "image_url": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x5d5727cb0fb76e4944eafb88ec9a3cf0b3c9025a4b2f947729137c5d7f84f68f/image",
+    "length": 0,
+    "name": "nick.eth",
+    "name_length": 8,
+    "short_name": null,
+    "url": "https://app.ens.domains/name/nick.eth",
+    "version": 0,
+  },
+  "name": "nick.eth",
+  "tokenAddress": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+  "tokenId": "42219085255511335250589442208301538195142221433306354426240614732612795430543",
+  "tokenURI": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/42219085255511335250589442208301538195142221433306354426240614732612795430543/",
+  "tokenURL": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/42219085255511335250589442208301538195142221433306354426240614732612795430543/",
+  "tokenURLMimeType": "application/json",
+}
+`;
