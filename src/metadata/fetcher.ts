@@ -7,12 +7,12 @@ import {
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
 } from '../constants/addresses'
+import { isAddressMatch } from '../utils/addresses'
 import { fetchZoraMeta } from './zora'
 import { fetchHashmaskMeta } from './hashmasks'
 import { fetchLootMeta } from './loot'
 import { fetchPunkAttributes } from './punks'
 import { fetchAutoglyphsMeta } from './autoglyphs'
-import { isAddressMatch } from 'src/utils/addresses'
 
 export function fetchOnChainData(
   networkName: string,

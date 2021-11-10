@@ -1,7 +1,9 @@
-import { ZORA_TOKEN_ADDRESS } from '../constants/addresses'
 import { MediaFactory } from '@zoralabs/core/dist/typechain'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { isAddressMatch } from 'src/utils/addresses'
+
+import { ZORA_TOKEN_ADDRESS } from '../constants/addresses'
+import { isAddressMatch } from '../utils/addresses'
+
 
 export function getAlternateContractCall(
   networkName: string,
@@ -14,4 +16,5 @@ export function getAlternateContractCall(
         tokenId,
       )
   }
+  return;
 }
