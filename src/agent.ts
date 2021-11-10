@@ -62,7 +62,11 @@ export class Agent {
   }
 
   public async fetchTokenURI(tokenAddress: string, tokenId: string) {
-    const staticURI = getStaticURI(this.provider.network.name, tokenAddress, tokenId)
+    const staticURI = getStaticURI(
+      this.provider.network.name,
+      tokenAddress,
+      tokenId,
+    )
     if (staticURI) {
       return staticURI
     }
@@ -88,7 +92,11 @@ export class Agent {
     tokenURI: string,
     ipfsGateway: string,
   ) {
-    const alternateMethod = getURIData(this.provider.network.name, tokenAddress, tokenId)
+    const alternateMethod = getURIData(
+      this.provider.network.name,
+      tokenAddress,
+      tokenId,
+    )
     if (alternateMethod) {
       return alternateMethod
     }
@@ -112,6 +120,7 @@ export class Agent {
     ipfsGateway: string,
   ) {
     const onChainData = await fetchOnChainData(
+      this.provider.network.name,
       tokenAddress,
       tokenId,
       this.provider,
