@@ -1,4 +1,4 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { JsonRpcProvider, Provider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
@@ -19,13 +19,22 @@ import {
   IPFS_IO_GATEWAY,
 } from './constants/providers'
 
-type AgentOptions = {
-  network: Networkish
-  networkUrl: string
+type AgentBaseOptions = {
   ipfsGatewayUrl?: string
   ipfsFallbackGatewayUrl?: string
   timeout?: number
 }
+
+type AgentProviderConnectionOptions = {
+  network: Networkish
+  networkUrl: string
+} & AgentBaseOptions
+
+type AgentProviderOptions = {
+  provider: JsonRpcProvider
+} & AgentBaseOptions
+
+type AgentOptions = AgentProviderConnectionOptions | AgentProviderOptions
 
 export interface NftMetadata {
   tokenId: string
@@ -51,10 +60,14 @@ export class Agent {
   provider: JsonRpcProvider
 
   constructor(options: AgentOptions) {
-    this.provider = new JsonRpcProvider(
-      options.networkUrl || CLOUDFLARE_RPC_DEFAULT,
-      options.network,
-    )
+    if ('provider' in options) {
+      this.provider = options.provider
+    } else {
+      this.provider = new JsonRpcProvider(
+        options.networkUrl || CLOUDFLARE_RPC_DEFAULT,
+        options.network,
+      )
+    }
     this.ipfsGatewayUrl = options.ipfsGatewayUrl || IPFS_IO_GATEWAY
     this.ipfsFallbackGatewayUrl =
       options.ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY
