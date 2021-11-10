@@ -1,6 +1,7 @@
 import {
   AUTOGLYPHS_TOKEN_ADDRESS,
   DECENTRALAND_TOKEN_ADDRESS,
+  ENS_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
 } from '../constants/addresses'
@@ -11,6 +12,8 @@ export function getStaticURI(tokenAddress: string, tokenId: string) {
       return `https://api.decentraland.org/v2/contracts/${tokenAddress.toLowerCase()}/tokens/${tokenId}`
     case HASHMASKS_TOKEN_ADDRESS:
       return `https://hashmap.azurewebsites.net/getMask/${tokenId}`
+    case ENS_TOKEN_ADDRESS:
+      return `https://metadata.ens.domains/mainnet/${tokenAddress.toLowerCase()}/${tokenId}/`
     // since burned wrapped punks still have their metadata this is a no-op to prevent reverts.
     case WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS:
       return `data:application/json,{}`
