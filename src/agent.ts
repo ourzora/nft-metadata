@@ -1,4 +1,4 @@
-import { JsonRpcProvider, Provider } from '@ethersproject/providers'
+import { JsonRpcProvider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
