@@ -1,8 +1,6 @@
 import { Contract } from '@ethersproject/contracts'
 import { JsonRpcProvider } from '@ethersproject/providers'
 
-import { PUNKS_DATA_CONTRACT } from '../constants/addresses'
-
 // This properly encodes the svg data uri for punks
 // from: spectrexyz/use-nft
 function encodeUriData(dataUri: string): string {
@@ -14,12 +12,12 @@ function encodeUriData(dataUri: string): string {
 }
 
 export async function fetchPunkAttributes(
-  _: string,
+  tokenAddress: string,
   tokenId: string,
   provider: JsonRpcProvider,
 ) {
   const PunksDataContract = new Contract(
-    PUNKS_DATA_CONTRACT,
+    tokenAddress,
     [
       'function punkAttributes(uint16 index) public view returns (string memory)',
       'function punkImageSvg(uint16 index) public view returns (string memory)',

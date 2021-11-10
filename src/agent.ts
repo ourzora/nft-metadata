@@ -71,6 +71,7 @@ export class Agent {
       return staticURI
     }
     const alternateMethod = getAlternateContractCall(
+      this.provider.network.name,
       tokenAddress,
       tokenId,
       this.provider,
