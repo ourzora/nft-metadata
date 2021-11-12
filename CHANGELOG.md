@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-11-12
+- Add multichain support
+- Add ens support
+- Add ability for user to pass in arbitrary JsonRpcProvider
+
 ## [1.0.1] - 2021-10-25
 ### Fixes
 - Exports `NftMetadata` interface from agent file
