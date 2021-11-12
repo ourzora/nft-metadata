@@ -1124,10 +1124,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@zoralabs/core@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@zoralabs/core/-/core-1.0.4.tgz"
-  integrity sha512-L3U8Hr+Vb0NwsKQ8Km+cHIxOyHBiMU7OtQA7HkWg3HsPyGZPiFhb8hzgZXDAcEa7QnO8lb8DILbJHNokCF/oDw==
+"@zoralabs/core@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@zoralabs/core/-/core-1.0.7.tgz#c426b5d85cf1cb0c57d7e9dc0a3fd8519c78566d"
+  integrity sha512-BZ6/n/2YIOAXWU+VtxNo+O/1wy9mFb7Grfdg2EkJoaq/2UJjf7cpMZfdQHp2CRa+m3XYb1uVG3q6236i+Uz1MQ==
   dependencies:
     ethers "^5.0.19"
 

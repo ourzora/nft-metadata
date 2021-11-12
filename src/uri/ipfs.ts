@@ -1,3 +1,4 @@
+import { isAddressMatch } from '../utils/addresses'
 import {
   FOUNDATION_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,
@@ -25,15 +26,15 @@ export function getIPFSUrl(uri: string, gateway: string) {
   return uri
 }
 
-export function getPrivateGateway(tokenAddress: string) {
-  switch (tokenAddress) {
-    case MAKERSPLACE_TOKEN_ADDRESS:
-      return 'https://ipfsgateway.makersplace.com'
-    case FOUNDATION_TOKEN_ADDRESS:
-      return 'https://ipfs.foundation.app'
-    case ZORA_TOKEN_ADDRESS:
-      return 'https://zora-prod.mypinata.cloud'
-    default:
-      return
+export function getPrivateGateway(chainName: string, tokenAddress: string) {
+  if (isAddressMatch(chainName, tokenAddress, MAKERSPLACE_TOKEN_ADDRESS)) {
+    return 'https://ipfsgateway.makersplace.com'
   }
+  if (isAddressMatch(chainName, tokenAddress, FOUNDATION_TOKEN_ADDRESS)) {
+    return 'https://ipfs.foundation.app'
+  }
+  if (isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
+    return 'https://zora-prod.mypinata.cloud'
+  }
+  return
 }

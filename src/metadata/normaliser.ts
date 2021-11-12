@@ -1,7 +1,6 @@
 import {
   MAKERSPLACE_TOKEN_ADDRESS,
   SUPERRARE_TOKEN_ADDRESS,
-  ZORA_RINKEBY_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
   HEAVEN_COMPUTER_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
@@ -46,12 +45,13 @@ function normaliseAttributes(
 }
 
 export function normaliseURIData(
+  chainName: string,
   tokenAddress: string,
   data: Record<string, any>,
 ) {
   let normalisedData = data
 
-  if (isAddressMatch(tokenAddress, MAKERSPLACE_TOKEN_ADDRESS)) {
+  if (isAddressMatch(chainName, tokenAddress, MAKERSPLACE_TOKEN_ADDRESS)) {
     const animationURI =
       normalisedData?.properties?.preview_media_file2 &&
       normalisedData?.properties?.preview_media_file2_type?.description ===
@@ -65,13 +65,12 @@ export function normaliseURIData(
   }
 
   if (
-    isAddressMatch(tokenAddress, ZORA_TOKEN_ADDRESS) ||
-    isAddressMatch(tokenAddress, ZORA_RINKEBY_TOKEN_ADDRESS)
+    isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)
   ) {
     normalisedData = translateZoraMetadataSchema(normalisedData)
   }
 
-  if (isAddressMatch(tokenAddress, POTION_ART_TOKEN_ADDRESS)) {
+  if (isAddressMatch(chainName, tokenAddress, POTION_ART_TOKEN_ADDRESS)) {
     normalisedData = Object.entries(normalisedData.properties).reduce(
       (last: any, [key, value]: any) => {
         last[key] = value.description
@@ -84,7 +83,7 @@ export function normaliseURIData(
 
 
 
-  if (isAddressMatch(tokenAddress, SUPERRARE_TOKEN_ADDRESS)) {
+  if (isAddressMatch(chainName, tokenAddress, SUPERRARE_TOKEN_ADDRESS)) {
     normalisedData = {
       ...normalisedData,
       ...(normalisedData.media && {
@@ -94,7 +93,7 @@ export function normaliseURIData(
     }
   }
 
-  if (isAddressMatch(tokenAddress, HEAVEN_COMPUTER_TOKEN_ADDRESS)) {
+  if (isAddressMatch(chainName, tokenAddress, HEAVEN_COMPUTER_TOKEN_ADDRESS)) {
     normalisedData = {
       ...normalisedData,
       ...(normalisedData.animation_url && {

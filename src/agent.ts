@@ -75,11 +75,16 @@ export class Agent {
   }
 
   public async fetchTokenURI(tokenAddress: string, tokenId: string) {
-    const staticURI = getStaticURI(tokenAddress, tokenId)
+    const staticURI = getStaticURI(
+      this.provider.network.name,
+      tokenAddress,
+      tokenId,
+    )
     if (staticURI) {
       return staticURI
     }
     const alternateMethod = getAlternateContractCall(
+      this.provider.network.name,
       tokenAddress,
       tokenId,
       this.provider,
@@ -101,7 +106,11 @@ export class Agent {
     tokenURI: string,
     ipfsGateway: string,
   ) {
-    const alternateMethod = getURIData(tokenAddress, tokenId)
+    const alternateMethod = getURIData(
+      this.provider.network.name,
+      tokenAddress,
+      tokenId,
+    )
     if (alternateMethod) {
       return alternateMethod
     }
@@ -125,11 +134,12 @@ export class Agent {
     ipfsGateway: string,
   ) {
     const onChainData = await fetchOnChainData(
+      this.provider.network.name,
       tokenAddress,
       tokenId,
       this.provider,
     )
-    const meta = normaliseURIData(tokenAddress, {
+    const meta = normaliseURIData(this.provider.network.name, tokenAddress, {
       ...uriData,
       ...onChainData,
       ...(uriData?.mimeType && {
@@ -198,7 +208,9 @@ export class Agent {
       )
     }
     console.log('fetched uri: ', { tokenURI })
-    const ipfsGateway = getPrivateGateway(tokenAddress) || this.ipfsGatewayUrl
+    const ipfsGateway =
+      getPrivateGateway(this.provider.network.name, tokenAddress) ||
+      this.ipfsGatewayUrl
     const URIData = await this.fetchURIData(
       tokenAddress,
       tokenId,

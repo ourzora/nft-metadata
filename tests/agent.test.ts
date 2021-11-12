@@ -1,21 +1,5 @@
 // Addresses for general testing
-import {
-  ALGOLITE_TOKEN_ADDRESS,
-  ART_BLOCKS_CURATED_TOKEN_ADDRESS,
-  ART_BLOCKS_TOKEN_ADDRESS,
-  BLITNAUT_TOKEN_ADDRESS,
-  BLOCKPARY_TOKEN_ADDRESS,
-  BORED_APE_TOKEN_ADDRESS,
-  CRYPTOVOXELS_TOKEN_ADDRESS,
-  HOLLY_PLUS_TOKEN_ADDRESS,
-  KNOWN_ORIGIN_TOKEN_ADDRESS,
-  MANNYS_GAME_TOKEN_ADDRESS,
-  MEEBITS_TOKEN_ADDRESS,
-  SETTLEMENTS_TOKEN_ADDRESS,
-  SOLVENCY_TOKEN_ADDRESS,
-  HUMANOID_TOKEN_ADDRESS,
-  CYBERKORGZ_VX_TOKEN_ADDRESS,
-} from './constants/addresses'
+import * as TestAddresses from './constants/addresses'
 // Addresses that are modified in the lib
 import {
   ZORA_TOKEN_ADDRESS,
@@ -67,7 +51,10 @@ describe('Metadata Agent', () => {
   })
 
   it(`should handle a potion io art token address ${POTION_ART_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(POTION_ART_TOKEN_ADDRESS, '2')
+    const resp = await parser.fetchMetadata(
+      POTION_ART_TOKEN_ADDRESS.homestead,
+      '2',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://gateway.ipfs.io/ipfs/QmZM62hFkFDW255RhbaFs7u1xLiAJ25KFi8rUuaKxgNxbd",
@@ -109,14 +96,17 @@ describe('Metadata Agent', () => {
 
   it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '1',
     )
     expect(resp).toMatchSnapshot()
   })
 
   it(`should be able to fetch and parse metadata for GLYPHS: ${AUTOGLYPHS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(AUTOGLYPHS_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(
+      AUTOGLYPHS_TOKEN_ADDRESS.homestead,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -150,14 +140,17 @@ describe('Metadata Agent', () => {
 
   it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '2066',
     )
     expect(resp).toMatchSnapshot()
   })
 
-  it(`should be able to fetch and parse metadata for BAYC: ${BORED_APE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(BORED_APE_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for BAYC: ${TestAddresses.BORED_APE_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.BORED_APE_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -222,7 +215,10 @@ describe('Metadata Agent', () => {
 
   // this api is VERY VERY flaky. Will re-evaluate l8er. - B.S.
   xit(`should be able to fetch and parse metadata for HEAVEN_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(HEAVEN_COMPUTER_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(
+      HEAVEN_COMPUTER_TOKEN_ADDRESS.homestead,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -355,8 +351,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for MEEBIT: ${MEEBITS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(MEEBITS_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for MEEBIT: ${TestAddresses.MEEBITS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.MEEBITS_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -464,7 +463,10 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for ZORA: ${ZORA_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(ZORA_TOKEN_ADDRESS, '4000')
+    const resp = await parser.fetchMetadata(
+      ZORA_TOKEN_ADDRESS.homestead,
+      '4000',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.fleek.co/ipfs/bafybeiggi26g2c7enmdt6oip5ni2ba73qgcziqbxnkdxpalym5smmawmo4",
@@ -486,8 +488,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Holly Plu: ${HOLLY_PLUS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(HOLLY_PLUS_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for Holly Plu: ${TestAddresses.HOLLY_PLUS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.HOLLY_PLUS_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://gateway.ipfs.io/ipfs/bafybeihjm3f4bqyn5j4gsyhsp62lomuerjcyu4uah6oc2ha4pkki4c226u",
@@ -521,8 +526,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Cryptovoxels Parcel ${CRYPTOVOXELS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(CRYPTOVOXELS_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for Cryptovoxels Parcel ${TestAddresses.CRYPTOVOXELS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.CRYPTOVOXELS_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -593,7 +601,7 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Loot ${LOOT_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(LOOT_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(LOOT_TOKEN_ADDRESS.homestead, '1')
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -646,8 +654,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Settlements ${SETTLEMENTS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(SETTLEMENTS_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for Settlements ${TestAddresses.SETTLEMENTS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.SETTLEMENTS_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -731,7 +742,10 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Blitmap ${BLITMAP_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(BLITMAP_TOKEN_ADDRESS, '1')
+    const resp = await parser.fetchMetadata(
+      BLITMAP_TOKEN_ADDRESS.homestead,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -810,8 +824,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Blitnauts ${BLITNAUT_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(BLITNAUT_TOKEN_ADDRESS, '1')
+  it(`should be able to fetch and parse metadata for Blitnauts ${TestAddresses.BLITNAUT_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.BLITNAUT_TOKEN_ADDRESS,
+      '1',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -880,9 +897,9 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Known Origin ${KNOWN_ORIGIN_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Known Origin ${TestAddresses.KNOWN_ORIGIN_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      KNOWN_ORIGIN_TOKEN_ADDRESS,
+      TestAddresses.KNOWN_ORIGIN_TOKEN_ADDRESS,
       '219184',
     )
     expect(resp).toMatchInlineSnapshot(`
@@ -952,142 +969,23 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Art Blocks Curated ${ART_BLOCKS_CURATED_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Art Blocks Curated ${TestAddresses.ART_BLOCKS_CURATED_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      ART_BLOCKS_CURATED_TOKEN_ADDRESS,
+      TestAddresses.ART_BLOCKS_CURATED_TOKEN_ADDRESS,
       '100',
     )
-    expect(resp).toMatchInlineSnapshot(`
-      Object {
-        "attributes": Array [
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "All Chromie Squiggles",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Type: Normal",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Height: 4",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Segments: 15",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Spectrum: Normal",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Color Spread: 37",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Steps Between: 200",
-          },
-          Object {
-            "trait_type": "Chromie Squiggle",
-            "value": "Color Direction: Forward",
-          },
-        ],
-        "contentURL": "https://generator.artblocks.io/100",
-        "contentURLMimeType": "text/html; charset=utf-8",
-        "description": "Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market. ",
-        "externalURL": "https://artblocks.io/token/100",
-        "imageURL": "https://media.artblocks.io/100.png",
-        "imageURLMimeType": "image/png",
-        "metadata": Object {
-          "animation_url": "https://generator.artblocks.io/100",
-          "artist": "Snowfro",
-          "aspect_ratio": 1.5,
-          "collection_name": "Chromie Squiggle by Snowfro",
-          "curation_status": "curated",
-          "description": "Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market. ",
-          "external_url": "https://artblocks.io/token/100",
-          "features": Object {
-            "Color Direction": "Forward",
-            "Color Spread": 37,
-            "End Color": 160,
-            "Height": 4,
-            "Segments": 15,
-            "Spectrum": "Normal",
-            "Start Color": 79,
-            "Steps Between": 200,
-            "Type": "Normal",
-          },
-          "image": "https://media.artblocks.io/100.png",
-          "interactive_nft": Object {
-            "code_uri": "https://generator.artblocks.io/100",
-            "version": "0.0.9",
-          },
-          "is_dynamic": true,
-          "license": "NFT License",
-          "name": "Chromie Squiggle #100",
-          "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
-          "platform": "Art Blocks Curated",
-          "project_id": "0",
-          "royaltyInfo": Object {
-            "additionalPayee": "0x9d5025b327e6b863e5050141c987d988c07fd8b2",
-            "additionalPayeePercentage": "100",
-            "artistAddress": "0xb998a2520907ed1fc0f9f457b2219fb2720466cd",
-            "royaltyFeeByID": "5",
-          },
-          "script_type": "p5js",
-          "series": 1,
-          "tokenID": "100",
-          "token_hash": "0x4941d7531cd44049c7c7396a47effe02250945947ea2b091a00462ffba4f8186",
-          "traits": Array [
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "All Chromie Squiggles",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Type: Normal",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Height: 4",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Segments: 15",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Spectrum: Normal",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Color Spread: 37",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Steps Between: 200",
-            },
-            Object {
-              "trait_type": "Chromie Squiggle",
-              "value": "Color Direction: Forward",
-            },
-          ],
-          "website": "https://www.twitter.com/artonblockchain",
-        },
-        "name": "Chromie Squiggle #100",
-        "tokenAddress": "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
-        "tokenId": "100",
-        "tokenURI": "https://api.artblocks.io/token/100",
-        "tokenURL": "https://api.artblocks.io/token/100",
-        "tokenURLMimeType": "application/json",
-      }
-    `)
+    expect(resp.name).toMatchInlineSnapshot(`"Chromie Squiggle #100"`)
+    expect(resp.description).toMatchInlineSnapshot(
+      `"Simple and easily identifiable, each squiggle embodies the soul of the Art Blocks platform. Consider each my personal signature as an artist, developer, and tinkerer. Public minting of the Chromie Squiggle is permanently paused. They are now reserved for manual distribution to collectors and community members over a longer period of time. Please visit OpenSea to explore Squiggles available on the secondary market. "`,
+    )
+    expect(resp.metadata.image).toMatchInlineSnapshot(
+      `"https://media.artblocks.io/100.png"`,
+    )
   })
 
-  it(`should be able to fetch and parse metadata for Art Blocks Default ${ART_BLOCKS_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Art Blocks Default ${TestAddresses.ART_BLOCKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      ART_BLOCKS_TOKEN_ADDRESS,
+      TestAddresses.ART_BLOCKS_TOKEN_ADDRESS,
       '167000537',
     )
     expect(resp).toMatchInlineSnapshot(`
@@ -1208,7 +1106,10 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(MAKERSPLACE_TOKEN_ADDRESS, '63253')
+    const resp = await parser.fetchMetadata(
+      MAKERSPLACE_TOKEN_ADDRESS.homestead,
+      '63253',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1352,7 +1253,10 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for Foundation ${FOUNDATION_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(FOUNDATION_TOKEN_ADDRESS, '63253')
+    const resp = await parser.fetchMetadata(
+      FOUNDATION_TOKEN_ADDRESS.homestead,
+      '63253',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.foundation.app/ipfs/QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
@@ -1377,8 +1281,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Solvency ${SOLVENCY_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(SOLVENCY_TOKEN_ADDRESS, '420')
+  it(`should be able to fetch and parse metadata for Solvency ${TestAddresses.SOLVENCY_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.SOLVENCY_TOKEN_ADDRESS,
+      '420',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1441,8 +1348,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for SuperRare ${SUPERRARE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(SUPERRARE_TOKEN_ADDRESS, '29061')
+  it(`should be able to fetch and parse metadata for SuperRare ${SUPERRARE_TOKEN_ADDRESS.homestead}`, async () => {
+    const resp = await parser.fetchMetadata(
+      SUPERRARE_TOKEN_ADDRESS.homestead,
+      '29061',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "contentURL": "https://ipfs.pixura.io/ipfs/QmUrFzAXbJBvqdmQ9hqN7SMPuqWfW7qefithk4weTdzrT6/ACS_shaman.png",
@@ -1477,8 +1387,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for BlockParty ${BLOCKPARY_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(BLOCKPARY_TOKEN_ADDRESS, '1290')
+  it(`should be able to fetch and parse metadata for BlockParty ${TestAddresses.BLOCKPARY_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.BLOCKPARY_TOKEN_ADDRESS,
+      '1290',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1515,8 +1428,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Mannys Game ${MANNYS_GAME_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(MANNYS_GAME_TOKEN_ADDRESS, '1290')
+  it(`should be able to fetch and parse metadata for Mannys Game ${TestAddresses.MANNYS_GAME_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.MANNYS_GAME_TOKEN_ADDRESS,
+      '1290',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1566,8 +1482,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Algolite ${ALGOLITE_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(ALGOLITE_TOKEN_ADDRESS, '856')
+  it(`should be able to fetch and parse metadata for Algolite ${TestAddresses.ALGOLITE_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.ALGOLITE_TOKEN_ADDRESS,
+      '856',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1615,8 +1534,11 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Humanoids ${HUMANOID_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(HUMANOID_TOKEN_ADDRESS, '368')
+  it(`should be able to fetch and parse metadata for Humanoids ${TestAddresses.HUMANOID_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.HUMANOID_TOKEN_ADDRESS,
+      '368',
+    )
     expect(resp).toMatchInlineSnapshot(`
       Object {
         "attributes": Array [
@@ -1700,9 +1622,9 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for CyberKorgz VX ${CYBERKORGZ_VX_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for CyberKorgz VX ${TestAddresses.CYBERKORGZ_VX_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
-      CYBERKORGZ_VX_TOKEN_ADDRESS,
+      TestAddresses.CYBERKORGZ_VX_TOKEN_ADDRESS,
       '12152',
     )
     expect(resp).toMatchInlineSnapshot(`
