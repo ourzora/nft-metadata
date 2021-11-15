@@ -1,4 +1,4 @@
-import { ARWEAVE_DEFAULT } from "src/constants/providers";
+import { ARWEAVE_DEFAULT } from "../constants/providers";
 import { isValidHttpUrl } from "./fetch";
 
 

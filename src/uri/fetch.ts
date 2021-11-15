@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import axiosRetry from 'axios-retry'
+
 import { getIPFSUrl, isIPFS } from './ipfs'
 import {
   IPFS_CLOUDFLARE_GATEWAY,
