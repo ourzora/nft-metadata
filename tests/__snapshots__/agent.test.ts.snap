@@ -107,3 +107,25 @@ Object {
   "tokenURLMimeType": "application/json",
 }
 `;
+
+exports[`Metadata Agent should handle opensea shared 1155 contract: 0x495f947276749Ce646f68AC8c248420045cb7b5e 1`] = `
+Object {
+  "contentURL": "https://lh3.googleusercontent.com/JC1j5q4PoAukT0pYkgAg26zt3NnjzzA0cKQURa3vjoZGlvu4oqGqdPSJEbC6ZNFKemeIK83hMPkSyMGBXBEfCcPpvnu_MuUgCtkyBik",
+  "contentURLMimeType": "image/png",
+  "imageURL": "https://lh3.googleusercontent.com/JC1j5q4PoAukT0pYkgAg26zt3NnjzzA0cKQURa3vjoZGlvu4oqGqdPSJEbC6ZNFKemeIK83hMPkSyMGBXBEfCcPpvnu_MuUgCtkyBik",
+  "imageURLMimeType": "image/png",
+  "metadata": Object {
+    "animation_url": null,
+    "description": null,
+    "external_link": null,
+    "image": "https://lh3.googleusercontent.com/JC1j5q4PoAukT0pYkgAg26zt3NnjzzA0cKQURa3vjoZGlvu4oqGqdPSJEbC6ZNFKemeIK83hMPkSyMGBXBEfCcPpvnu_MuUgCtkyBik",
+    "name": "CryptoSerg #641",
+  },
+  "name": "CryptoSerg #641",
+  "tokenAddress": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+  "tokenId": "98168371784320387514732815439041609751844866237332060982262479411803787886593",
+  "tokenURI": "https://api.opensea.io/api/v1/metadata/0x495f947276749Ce646f68AC8c248420045cb7b5e/0x0000000000000000000000000000000000000000000000000000000000000000d909545440f2effbb7393d238e0d73c159f05869000000000002860000000001",
+  "tokenURL": "https://api.opensea.io/api/v1/metadata/0x495f947276749Ce646f68AC8c248420045cb7b5e/0x0000000000000000000000000000000000000000000000000000000000000000d909545440f2effbb7393d238e0d73c159f05869000000000002860000000001",
+  "tokenURLMimeType": "application/json",
+}
+`;

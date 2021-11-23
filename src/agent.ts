@@ -18,7 +18,7 @@ import {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
 } from './constants/providers'
-import { BigNumber, Contract, utils } from 'ethers'
+import { Contract } from 'ethers'
 import { normalizeTokenID1155 } from './utils/addresses'
 
 type AgentBaseOptions = {
@@ -94,26 +94,28 @@ export class Agent {
     if (alternateMethod) {
       return alternateMethod
     }
-    const erc721Contract = Erc721Factory.connect(tokenAddress, this.provider)
+
     try {
-      return erc721Contract.tokenURI(tokenId)
+      const erc721Contract = Erc721Factory.connect(tokenAddress, this.provider)
+      return await erc721Contract.tokenURI(tokenId)
     } catch (e) {
-      // attempt 1155
+      // if this fails, attempt 1155 fetch
     }
-    const erc1155Contract = new Contract(
-      tokenAddress,
-      ['function uri(uint256 index) public view returns (string memory)'],
-      this.provider,
-    )
     try {
-      const uri = erc1155Contract.uri(tokenId)
+      const erc1155Contract = new Contract(
+        tokenAddress,
+        ['function uri(uint256 index) public view returns (string memory)'],
+        this.provider,
+      )
+      const uri = await erc1155Contract.uri(tokenId)
       if (uri.includes('{id}')) {
         return uri.replace('{id}', normalizeTokenID1155(tokenId))
       }
       return uri
     } catch (e) {
-      // fail
+      // if this fails, fail function
     }
+    return;
   }
 
   public async fetchURIData(
