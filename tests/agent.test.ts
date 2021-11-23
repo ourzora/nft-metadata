@@ -94,7 +94,8 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
+  // skipping due to the fact that wrapped punks can be burned and deleted
+  xit(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '1',
@@ -136,14 +137,6 @@ describe('Metadata Agent', () => {
         "tokenURLMimeType": "application/json",
       }
     `)
-  })
-
-  it(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(
-      WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
-      '2066',
-    )
-    expect(resp).toMatchSnapshot()
   })
 
   it(`should be able to fetch and parse metadata for BAYC: ${TestAddresses.BORED_APE_TOKEN_ADDRESS}`, async () => {
@@ -771,7 +764,7 @@ describe('Metadata Agent', () => {
           },
           Object {
             "trait_type": "Attunement",
-            "value": "Unattuned",
+            "value": "Attuned",
           },
         ],
         "contentURL": "https://api.blitmap.com/v1/png/1",
@@ -805,7 +798,7 @@ describe('Metadata Agent', () => {
             },
             Object {
               "trait_type": "Attunement",
-              "value": "Unattuned",
+              "value": "Attuned",
             },
           ],
           "description": "Blitmap is a community crafted art collection and universe. All data is completely on chain.
@@ -1447,7 +1440,7 @@ describe('Metadata Agent', () => {
         ],
         "contentURL": "https://mannys-game-viewer.herokuapp.com/view/1290",
         "contentURLMimeType": "text/html; charset=UTF-8",
-        "description": "The most common Manny type. Not needed to win the game, but may be useful later. Visit https://mannys.game/1290 to interact with your Manny.",
+        "description": "The most common Manny type. Visit https://mannys.game/1290 to interact with your Manny.",
         "externalURL": "https://mannys.game/1290",
         "imageURL": "https://gateway.ipfs.io/ipfs/Qmf5ZxJ3jNX9egrwUmWRQWKgRqL62AJXfCTjHVG8KFRgWh",
         "imageURLMimeType": "image/png",
@@ -1463,8 +1456,7 @@ describe('Metadata Agent', () => {
               "value": "agony",
             },
           ],
-          "avatar_url": "ipfs://QmdZP1ESkVTGzUsph4kEqvBF3jr3vGuoXetQUq8J49kyDb",
-          "description": "The most common Manny type. Not needed to win the game, but may be useful later. Visit https://mannys.game/1290 to interact with your Manny.",
+          "description": "The most common Manny type. Visit https://mannys.game/1290 to interact with your Manny.",
           "external_url": "https://mannys.game/1290",
           "iframe_url": "https://mannys-game-viewer.herokuapp.com/view/1290",
           "image": "ipfs://Qmf5ZxJ3jNX9egrwUmWRQWKgRqL62AJXfCTjHVG8KFRgWh",
@@ -1475,8 +1467,8 @@ describe('Metadata Agent', () => {
         "name": "Manny #1290",
         "tokenAddress": "0x2bd58A19C7E4AbF17638c5eE6fA96EE5EB53aed9",
         "tokenId": "1290",
-        "tokenURI": "ipfs://QmPwTutrh6ahPUwPgkygbTSDuMzmR3gJSpsaBBo8UjQkLo/1290",
-        "tokenURL": "https://gateway.ipfs.io/ipfs/QmPwTutrh6ahPUwPgkygbTSDuMzmR3gJSpsaBBo8UjQkLo/1290",
+        "tokenURI": "https://mannys-game-viewer.herokuapp.com/api/1290",
+        "tokenURL": "https://mannys-game-viewer.herokuapp.com/api/1290",
         "tokenURLMimeType": "application/json",
       }
     `)
@@ -1608,7 +1600,7 @@ describe('Metadata Agent', () => {
             },
           ],
           "external_url": "https://thehumanoids.co",
-          "image_url": "https://thehumanoids.co/api/img/368.jpg",
+          "image": "https://thehumanoids.co/api/img/368.jpg",
           "name": "Humanoid #368",
           "tokenId": "368",
         },
