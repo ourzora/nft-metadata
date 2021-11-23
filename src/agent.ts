@@ -18,6 +18,8 @@ import {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
 } from './constants/providers'
+import { BigNumber, Contract, utils } from 'ethers'
+import { normalizeTokenID1155 } from './utils/addresses'
 
 type AgentBaseOptions = {
   ipfsGatewayUrl?: string
@@ -92,11 +94,25 @@ export class Agent {
     if (alternateMethod) {
       return alternateMethod
     }
-    const contract = Erc721Factory.connect(tokenAddress, this.provider)
+    const erc721Contract = Erc721Factory.connect(tokenAddress, this.provider)
     try {
-      return contract.tokenURI(tokenId)
+      return erc721Contract.tokenURI(tokenId)
     } catch (e) {
-      return
+      // attempt 1155
+    }
+    const erc1155Contract = new Contract(
+      tokenAddress,
+      ['function uri(uint256 index) public view returns (string memory)'],
+      this.provider,
+    )
+    try {
+      const uri = erc1155Contract.uri(tokenId)
+      if (uri.includes('{id}')) {
+        return uri.replace('{id}', normalizeTokenID1155(tokenId))
+      }
+      return uri
+    } catch (e) {
+      // fail
     }
   }
 
