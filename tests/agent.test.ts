@@ -207,7 +207,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  fit(`should be able to fetch and parse metadata for CHAIN_RUNNERS: ${CHAIN_RUNNERS_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for CHAIN_RUNNERS: ${CHAIN_RUNNERS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(CHAIN_RUNNERS_TOKEN_ADDRESS, '1');
     expect(resp).toMatchSnapshot();
   });
