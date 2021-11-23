@@ -1,4 +1,4 @@
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { JsonRpcProvider, StaticJsonRpcProvider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
@@ -65,7 +65,7 @@ export class Agent {
     if ('provider' in options) {
       this.provider = options.provider
     } else {
-      this.provider = new JsonRpcProvider(
+      this.provider = new StaticJsonRpcProvider(
         options.networkUrl || CLOUDFLARE_RPC_DEFAULT,
         options.network,
       )
