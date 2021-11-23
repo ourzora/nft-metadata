@@ -16,6 +16,7 @@ import {
 import { Agent } from '../src'
 
 import { config as dotenv } from 'dotenv'
+import { CHAIN_RUNNERS_TOKEN_ADDRESS } from './constants/addresses'
 
 dotenv({ path: '.env.test' })
 
@@ -205,6 +206,11 @@ describe('Metadata Agent', () => {
       }
     `)
   })
+
+  fit(`should be able to fetch and parse metadata for CHAIN_RUNNERS: ${CHAIN_RUNNERS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(CHAIN_RUNNERS_TOKEN_ADDRESS, '1');
+    expect(resp).toMatchSnapshot();
+  });
 
   // this api is VERY VERY flaky. Will re-evaluate l8er. - B.S.
   xit(`should be able to fetch and parse metadata for HEAVEN_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
