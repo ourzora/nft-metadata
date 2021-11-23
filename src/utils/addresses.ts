@@ -13,5 +13,5 @@ export function normalizeTokenID1155(tokenId: string) {
         64,
       ),
     )
-    .substr(2)
+    .substr(4)
 }

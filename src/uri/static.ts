@@ -6,6 +6,7 @@ import {
   HASHMASKS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
 } from '../constants/addresses'
+import { ERC721_TOKEN_TYPE } from '../constants/token-types'
 
 export function getStaticURI(
   chainName: string,
@@ -13,22 +14,34 @@ export function getStaticURI(
   tokenId: string,
 ) {
   if (isAddressMatch(chainName, tokenAddress, DECENTRALAND_TOKEN_ADDRESS)) {
-    return `https://api.decentraland.org/v2/contracts/${tokenAddress.toLowerCase()}/tokens/${tokenId}`
+    return {
+      type: ERC721_TOKEN_TYPE,
+      uri: `https://api.decentraland.org/v2/contracts/${tokenAddress.toLowerCase()}/tokens/${tokenId}`
+    }
   }
   if (isAddressMatch(chainName, tokenAddress, HASHMASKS_TOKEN_ADDRESS)) {
-    return `https://hashmap.azurewebsites.net/getMask/${tokenId}`
+    return {
+      type: ERC721_TOKEN_TYPE,
+      uri: `https://hashmap.azurewebsites.net/getMask/${tokenId}`
+    }
   }
   if (isAddressMatch(chainName, tokenAddress, ENS_TOKEN_ADDRESS)) {
     let ensChainName = chainName
     if (ensChainName == 'homestead') {
       ensChainName = 'mainnet'
     }
-    return `https://metadata.ens.domains/${ensChainName}/${tokenAddress.toLowerCase()}/${tokenId}/`
+    return {
+      type: ERC721_TOKEN_TYPE,
+      uri: `https://metadata.ens.domains/${ensChainName}/${tokenAddress.toLowerCase()}/${tokenId}/`,
+    }
   }
   if (
     isAddressMatch(chainName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
   ) {
-    return `data:application/json,{}`
+    return {
+      type: ERC721_TOKEN_TYPE,
+      uri: `data:application/json,{}`,
+    };
   }
   return
 }

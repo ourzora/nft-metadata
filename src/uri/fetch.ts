@@ -133,6 +133,7 @@ export async function fetchURI(
   ipfsGateway?: string,
   ipfsFallbackGatewayUrl?: string,
 ) {
+  console.log('fetchURI', {uri});
   if (isIPFS(uri)) {
     const resp = await multiAttemptIPFSFetch(
       uri,

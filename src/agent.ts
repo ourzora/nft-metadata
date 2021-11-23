@@ -1,4 +1,7 @@
-import { JsonRpcProvider, StaticJsonRpcProvider } from '@ethersproject/providers'
+import {
+  JsonRpcProvider,
+  StaticJsonRpcProvider,
+} from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
@@ -20,6 +23,7 @@ import {
 } from './constants/providers'
 import { Contract } from 'ethers'
 import { normalizeTokenID1155 } from './utils/addresses'
+import { ERC1155_TOKEN_TYPE, ERC721_TOKEN_TYPE } from './constants/token-types'
 
 type AgentBaseOptions = {
   ipfsGatewayUrl?: string
@@ -55,6 +59,8 @@ export interface NftMetadata {
   attributes?: Record<string, any>[]
 }
 
+export class ChainFetchError extends Error {};
+
 export class Agent {
   timeout: number
   ipfsGatewayUrl: string
@@ -85,7 +91,7 @@ export class Agent {
     if (staticURI) {
       return staticURI
     }
-    const alternateMethod = getAlternateContractCall(
+    const alternateMethod = await getAlternateContractCall(
       this.provider.network.name,
       tokenAddress,
       tokenId,
@@ -97,7 +103,11 @@ export class Agent {
 
     try {
       const erc721Contract = Erc721Factory.connect(tokenAddress, this.provider)
-      return await erc721Contract.tokenURI(tokenId)
+      const uri = await erc721Contract.tokenURI(tokenId)
+      return {
+        uri,
+        type: ERC721_TOKEN_TYPE,
+      }
     } catch (e) {
       // if this fails, attempt 1155 fetch
     }
@@ -107,15 +117,15 @@ export class Agent {
         ['function uri(uint256 index) public view returns (string memory)'],
         this.provider,
       )
-      const uri = await erc1155Contract.uri(tokenId)
+      let uri = await erc1155Contract.uri(tokenId)
       if (uri.includes('{id}')) {
-        return uri.replace('{id}', normalizeTokenID1155(tokenId))
+        uri = uri.replace('{id}', normalizeTokenID1155(tokenId))
       }
-      return uri
+      return { uri, type: ERC1155_TOKEN_TYPE }
     } catch (e) {
       // if this fails, fail function
     }
-    return;
+    throw new ChainFetchError('Cannot fetch uri from contract')
   }
 
   public async fetchURIData(
@@ -219,38 +229,47 @@ export class Agent {
     tokenId: string,
   ): Promise<NftMetadata> {
     const tokenAddress = getAddress(rawAddress)
-    const tokenURI = await this.fetchTokenURI(tokenAddress, tokenId)
-    if (!tokenURI) {
-      throw new Error(
-        `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`,
-      )
-    }
-    console.log('fetched uri: ', { tokenURI })
-    const ipfsGateway =
-      getPrivateGateway(this.provider.network.name, tokenAddress) ||
-      this.ipfsGatewayUrl
-    const URIData = await this.fetchURIData(
-      tokenAddress,
-      tokenId,
-      tokenURI,
-      ipfsGateway,
-    )
-    console.log('fetched uri data: ', { URIData })
-    const metadata = await this.parseURIData(
-      tokenAddress,
-      tokenId,
-      tokenURI,
-      URIData,
-      ipfsGateway,
-    )
-    console.log('parsed metadata: ', { metadata })
+    try {
+      const uriFetchResult = await this.fetchTokenURI(tokenAddress, tokenId)
+      const { uri: tokenURI, type: tokenType } = uriFetchResult
 
-    return {
-      tokenId,
-      tokenAddress,
-      metadata: URIData,
-      tokenURI,
-      ...metadata,
+      const ipfsGateway =
+        getPrivateGateway(this.provider.network.name, tokenAddress) ||
+        this.ipfsGatewayUrl
+
+      const URIData = await this.fetchURIData(
+        tokenAddress,
+        tokenId,
+        tokenURI,
+        ipfsGateway,
+      )
+      // console.log('fetched uri data: ', { URIData })
+
+      const metadata = await this.parseURIData(
+        tokenAddress,
+        tokenId,
+        tokenURI,
+        URIData,
+        ipfsGateway,
+      )
+      // console.log('parsed metadata: ', { metadata })
+
+      return {
+        tokenId,
+        tokenAddress,
+        metadata: URIData,
+        tokenURI,
+        tokenType,
+        ...metadata,
+      }
+    } catch (err) {
+      if (err instanceof ChainFetchError) {
+        throw new Error(
+          `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`,
+        )
+      }
+      throw err;
     }
+    // console.log('fetched uri: ', { tokenURI, tokenType })
   }
 }
