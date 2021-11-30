@@ -1,5 +1,12 @@
 import { getAddress } from '@ethersproject/address'
 
-export function isAddressMatch(chainName: string, a: string, b: any) {
-  return getAddress(a) === getAddress(b[chainName])
+export function isAddressMatch(
+  chainName: string,
+  address: string,
+  addressByNetwork: { [address: string]: string },
+) {
+  if (!addressByNetwork[chainName]) {
+    return false
+  }
+  return getAddress(address) === getAddress(addressByNetwork[chainName])
 }
