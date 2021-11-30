@@ -16,6 +16,7 @@ import {
 import { Agent } from '../src'
 
 import { config as dotenv } from 'dotenv'
+import { CHAIN_RUNNERS_TOKEN_ADDRESS } from './constants/addresses'
 
 dotenv({ path: '.env.test' })
 
@@ -204,6 +205,11 @@ describe('Metadata Agent', () => {
         "tokenURLMimeType": "application/json",
       }
     `)
+  })
+
+  it(`should be able to fetch and parse metadata for CHAIN_RUNNERS: ${CHAIN_RUNNERS_TOKEN_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(CHAIN_RUNNERS_TOKEN_ADDRESS, '1')
+    expect(resp).toMatchSnapshot()
   })
 
   // this api is VERY VERY flaky. Will re-evaluate l8er. - B.S.
@@ -556,6 +562,10 @@ describe('Metadata Agent', () => {
             "value": "Origin City",
           },
           Object {
+            "trait_type": "has_basement",
+            "value": false,
+          },
+          Object {
             "trait_type": "title",
             "value": "plot",
           },
@@ -571,6 +581,7 @@ describe('Metadata Agent', () => {
             "area": 234.00000000000003,
             "depth": 18,
             "elevation": 0,
+            "has_basement": false,
             "height": 9,
             "island": "Origin City",
             "suburb": "The Center",
