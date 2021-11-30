@@ -5,6 +5,7 @@ import {
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
+import { createDataURI } from './uri/data'
 
 import {
   fetchMimeType,
@@ -24,6 +25,7 @@ import {
 import { Contract } from 'ethers'
 import { normalizeTokenID1155 } from './utils/addresses'
 import { ERC1155_TOKEN_TYPE, ERC721_TOKEN_TYPE } from './constants/token-types'
+import { SVG_IMAGE_MIME_TYPE } from './constants/mime'
 
 type AgentBaseOptions = {
   ipfsGatewayUrl?: string
@@ -177,6 +179,11 @@ export class Agent {
 
     if (meta.image) {
       meta.imageURL = getIPFSUrl(meta.image, ipfsGateway)
+    }
+
+    if (meta.image_data) {
+      meta.imageURL = createDataURI(SVG_IMAGE_MIME_TYPE, meta.image_data)
+      meta.imageURLMimeType = SVG_IMAGE_MIME_TYPE
     }
 
     if (meta.animation_url) {
