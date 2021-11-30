@@ -2,6 +2,7 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import { Networkish } from '@ethersproject/networks'
 import { getAddress } from '@ethersproject/address'
 import { Erc721Factory } from '@zoralabs/core/dist/typechain'
+import { createDataURI } from './uri/data'
 
 import {
   fetchMimeType,
@@ -18,6 +19,7 @@ import {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
 } from './constants/providers'
+import { SVG_IMAGE_MIME_TYPE } from './constants/mime'
 
 type AgentBaseOptions = {
   ipfsGatewayUrl?: string
@@ -149,6 +151,11 @@ export class Agent {
 
     if (meta.image) {
       meta.imageURL = getIPFSUrl(meta.image, ipfsGateway)
+    }
+
+    if (meta.image_data) {
+      meta.imageURL = createDataURI(SVG_IMAGE_MIME_TYPE, meta.image_data)
+      meta.imageURLMimeType = SVG_IMAGE_MIME_TYPE
     }
 
     if (meta.animation_url) {
