@@ -160,6 +160,11 @@ Object {
       "value": null,
     },
     Object {
+      "display_type": "number",
+      "trait_type": "Length",
+      "value": 4,
+    },
+    Object {
       "display_type": "date",
       "trait_type": "Registration Date",
       "value": 1580803395000,
@@ -183,6 +188,11 @@ Object {
         "value": null,
       },
       Object {
+        "display_type": "number",
+        "trait_type": "Length",
+        "value": 4,
+      },
+      Object {
         "display_type": "date",
         "trait_type": "Registration Date",
         "value": 1580803395000,
@@ -196,10 +206,9 @@ Object {
     "background_image": "https://metadata.ens.domains/mainnet/avatar/nick.eth",
     "description": "nick.eth, an ENS name.",
     "image_url": "https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x5d5727cb0fb76e4944eafb88ec9a3cf0b3c9025a4b2f947729137c5d7f84f68f/image",
-    "length": 0,
+    "is_normalized": true,
     "name": "nick.eth",
-    "name_length": 8,
-    "short_name": null,
+    "name_length": 4,
     "url": "https://app.ens.domains/name/nick.eth",
     "version": 0,
   },
