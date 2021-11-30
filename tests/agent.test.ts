@@ -208,9 +208,9 @@ describe('Metadata Agent', () => {
   })
 
   it(`should be able to fetch and parse metadata for CHAIN_RUNNERS: ${CHAIN_RUNNERS_TOKEN_ADDRESS}`, async () => {
-    const resp = await parser.fetchMetadata(CHAIN_RUNNERS_TOKEN_ADDRESS, '1');
-    expect(resp).toMatchSnapshot();
-  });
+    const resp = await parser.fetchMetadata(CHAIN_RUNNERS_TOKEN_ADDRESS, '1')
+    expect(resp).toMatchSnapshot()
+  })
 
   // this api is VERY VERY flaky. Will re-evaluate l8er. - B.S.
   xit(`should be able to fetch and parse metadata for HEAVEN_COMPUTER: ${HEAVEN_COMPUTER_TOKEN_ADDRESS}`, async () => {
@@ -562,6 +562,10 @@ describe('Metadata Agent', () => {
             "value": "Origin City",
           },
           Object {
+            "trait_type": "has_basement",
+            "value": false,
+          },
+          Object {
             "trait_type": "title",
             "value": "plot",
           },
@@ -577,6 +581,7 @@ describe('Metadata Agent', () => {
             "area": 234.00000000000003,
             "depth": 18,
             "elevation": 0,
+            "has_basement": false,
             "height": 9,
             "island": "Origin City",
             "suburb": "The Center",
@@ -1386,7 +1391,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for BlockParty ${TestAddresses.BLOCKPARY_TOKEN_ADDRESS}`, async () => {
+  xit(`should be able to fetch and parse metadata for BlockParty ${TestAddresses.BLOCKPARY_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       TestAddresses.BLOCKPARY_TOKEN_ADDRESS,
       '1290',
