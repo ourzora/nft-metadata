@@ -3,6 +3,7 @@ import {
   AUTOGLYPHS_TOKEN_ADDRESS,
   DECENTRALAND_TOKEN_ADDRESS,
   ENS_TOKEN_ADDRESS,
+  FOUNDATION_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
 } from '../constants/addresses'
@@ -24,6 +25,9 @@ export function getStaticURI(
       ensChainName = 'mainnet'
     }
     return `https://metadata.ens.domains/${ensChainName}/${tokenAddress.toLowerCase()}/${tokenId}/`
+  }
+  if (isAddressMatch(chainName, tokenAddress, FOUNDATION_TOKEN_ADDRESS)) {
+    return `https://api.foundation.app/opensea/${tokenId}`
   }
   if (
     isAddressMatch(chainName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)

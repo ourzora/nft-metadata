@@ -4,6 +4,7 @@ import {
   ZORA_TOKEN_ADDRESS,
   HEAVEN_COMPUTER_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
+  FOUNDATION_TOKEN_ADDRESS,
 } from '../constants/addresses'
 import { isAddressMatch } from '../utils/addresses'
 
@@ -64,9 +65,17 @@ export function normaliseURIData(
     }
   }
 
-  if (
-    isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)
-  ) {
+  // Fix for foundation: normalize content-type in animation for files ending in glb.
+  if (isAddressMatch(chainName, tokenAddress, FOUNDATION_TOKEN_ADDRESS)) {
+    normalisedData = {
+      ...normalisedData,
+      contentURLMimeType: normalisedData.animation_url?.endsWith('glb')
+        ? 'model/gltf-binary'
+        : undefined,
+    }
+  }
+
+  if (isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
     normalisedData = translateZoraMetadataSchema(normalisedData)
   }
 
@@ -74,14 +83,12 @@ export function normaliseURIData(
     normalisedData = Object.entries(normalisedData.properties).reduce(
       (last: any, [key, value]: any) => {
         last[key] = value.description
-        return last;
+        return last
       },
       {},
     )
     console.log(normalisedData)
   }
-
-
 
   if (isAddressMatch(chainName, tokenAddress, SUPERRARE_TOKEN_ADDRESS)) {
     normalisedData = {

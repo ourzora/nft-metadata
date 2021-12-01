@@ -1256,6 +1256,46 @@ describe('Metadata Agent', () => {
     `)
   })
 
+  fit(`should be able to parse foundation 3d nft in ${FOUNDATION_TOKEN_ADDRESS.homestead}`, async () => {
+    const resp = await parser.fetchMetadata(
+      FOUNDATION_TOKEN_ADDRESS.homestead,
+      '107855',
+    )
+    expect(resp).toMatchInlineSnapshot(`
+      Object {
+        "contentURL": "https://ipfs.foundation.app/ipfs/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.glb",
+        "contentURLMimeType": "model/gltf-binary",
+        "description": "\\"Core Surge\\"  is a digital sculpture modelled in virtual reality by Sebastian Millar, aka Cryote, Montreal based multimedia artist.
+
+      Augmented Reality Object
+      view in AR mode on mobile
+
+      Sculpted in November 2021",
+        "externalURL": "https://foundation.app/@Cryote/~/107855",
+        "imageURL": "https://d1hiserqh6k9o1.cloudfront.net/76/TF/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.png",
+        "imageURLMimeType": "image/png",
+        "metadata": Object {
+          "animation_url": "ipfs://QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.glb",
+          "description": "\\"Core Surge\\"  is a digital sculpture modelled in virtual reality by Sebastian Millar, aka Cryote, Montreal based multimedia artist.
+
+      Augmented Reality Object
+      view in AR mode on mobile
+
+      Sculpted in November 2021",
+          "external_url": "https://foundation.app/@Cryote/~/107855",
+          "image": "https://d1hiserqh6k9o1.cloudfront.net/76/TF/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.png",
+          "name": "Core Surge",
+        },
+        "name": "Core Surge",
+        "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
+        "tokenId": "107855",
+        "tokenURI": "https://api.foundation.app/opensea/107855",
+        "tokenURL": "https://api.foundation.app/opensea/107855",
+        "tokenURLMimeType": "application/json",
+      }
+    `)
+  })
+
   it(`should be able to fetch and parse metadata for Foundation ${FOUNDATION_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       FOUNDATION_TOKEN_ADDRESS.homestead,
