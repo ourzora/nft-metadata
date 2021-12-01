@@ -142,7 +142,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  fit(`should handle opensea shared 1155 contract: ${TestAddresses.OPENSEA_OPENSTORE_CONTRACT_ADDRESS}`, async () => {
+  it(`should handle opensea shared 1155 contract: ${TestAddresses.OPENSEA_OPENSTORE_CONTRACT_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       TestAddresses.OPENSEA_OPENSTORE_CONTRACT_ADDRESS,
       '98168371784320387514732815439041609751844866237332060982262479411803787886593',
