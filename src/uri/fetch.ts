@@ -1,10 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import axiosRetry from 'axios-retry'
+
 import { getIPFSUrl, isIPFS } from './ipfs'
 import {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
 } from '../constants/providers'
+import { getARWeaveURI, isArweave } from './arweave'
 
 export function isValidHttpUrl(uri: string) {
   try {
@@ -83,6 +85,14 @@ export async function fetchWithRetriesAndTimeout(
   }
 }
 
+export async function fetchARWeaveWithTimeout(
+  uri: string,
+  options: FetchOptions,
+) {
+  const tokenURL = getARWeaveURI(uri)
+  return fetchWithRetriesAndTimeout(tokenURL, options)
+}
+
 export async function fetchIPFSWithTimeout(
   uri: string,
   options: FetchOptions,
@@ -133,7 +143,10 @@ export async function fetchURI(
   ipfsGateway?: string,
   ipfsFallbackGatewayUrl?: string,
 ) {
-  console.log('fetchURI', {uri});
+  if (isArweave(uri)) {
+    const resp = await fetchARWeaveWithTimeout(uri, options)
+    return resp?.data
+  }
   if (isIPFS(uri)) {
     const resp = await multiAttemptIPFSFetch(
       uri,
