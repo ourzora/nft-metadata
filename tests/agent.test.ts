@@ -1307,19 +1307,21 @@ describe('Metadata Agent', () => {
         "contentURLMimeType": "image/jpeg",
         "description": "The last door is here. We have visited 3 dimensions already but we still looking for the perfect one to stay. Is this the light of a new day or it is the one leaving? Is this the one that we've been looking for all along? 
       In this last entry of the series we finally see that after dark there's always a light and that no matter what happens we will find a way out",
+        "externalURL": "https://foundation.app/@AmaurieRaz/~/63253",
         "imageURL": "https://ipfs.foundation.app/ipfs/QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
         "imageURLMimeType": "image/jpeg",
         "metadata": Object {
           "description": "The last door is here. We have visited 3 dimensions already but we still looking for the perfect one to stay. Is this the light of a new day or it is the one leaving? Is this the one that we've been looking for all along? 
       In this last entry of the series we finally see that after dark there's always a light and that no matter what happens we will find a way out",
+          "external_url": "https://foundation.app/@AmaurieRaz/~/63253",
           "image": "ipfs://QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
           "name": "Dimensions III",
         },
         "name": "Dimensions III",
         "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
         "tokenId": "63253",
-        "tokenURI": "https://ipfs.foundation.app/ipfs/QmcUh1Suak814TqXUJjGveUQG4CVumiCLQPvqKzJBMFxWA/metadata.json",
-        "tokenURL": "https://ipfs.foundation.app/ipfs/QmcUh1Suak814TqXUJjGveUQG4CVumiCLQPvqKzJBMFxWA/metadata.json",
+        "tokenURI": "https://api.foundation.app/opensea/63253",
+        "tokenURL": "https://api.foundation.app/opensea/63253",
         "tokenURLMimeType": "application/json",
       }
     `)
