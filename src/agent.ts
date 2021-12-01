@@ -271,6 +271,7 @@ export class Agent {
       }
     } catch (err) {
       if (err instanceof ChainFetchError) {
+        console.error(err);
         throw new Error(
           `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`,
         )

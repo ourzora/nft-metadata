@@ -492,7 +492,7 @@ describe('Metadata Agent', () => {
         "name": "Ignition",
         "tokenAddress": "0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7",
         "tokenId": "4000",
-        "tokenType": undefined,
+        "tokenType": "ERC721",
         "tokenURI": "https://ipfs.fleek.co/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
         "tokenURL": "https://zora-prod.mypinata.cloud/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
         "tokenURLMimeType": "application/json",
@@ -1130,7 +1130,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS.homestead}`, async () => {
     const resp = await parser.fetchMetadata(
       MAKERSPLACE_TOKEN_ADDRESS.homestead,
       '63253',
@@ -1311,6 +1311,7 @@ describe('Metadata Agent', () => {
         "name": "Core Surge",
         "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
         "tokenId": "107855",
+        "tokenType": "ERC721",
         "tokenURI": "https://api.foundation.app/opensea/107855",
         "tokenURL": "https://api.foundation.app/opensea/107855",
         "tokenURLMimeType": "application/json",
