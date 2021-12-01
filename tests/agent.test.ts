@@ -1256,7 +1256,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  fit(`should be able to parse foundation 3d nft in ${FOUNDATION_TOKEN_ADDRESS.homestead}`, async () => {
+  it(`should be able to parse foundation 3d nft in ${FOUNDATION_TOKEN_ADDRESS.homestead}`, async () => {
     const resp = await parser.fetchMetadata(
       FOUNDATION_TOKEN_ADDRESS.homestead,
       '107855',
