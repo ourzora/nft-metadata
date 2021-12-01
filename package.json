@@ -1,6 +1,6 @@
 {
   "name": "@zoralabs/nft-metadata",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Generic nft metadata parsers",
   "author": "Zora",
   "license": "MIT",
@@ -44,7 +44,7 @@
     "@ethersproject/providers": "5.3.1"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=--max-http-header-size=16384 jest",
+    "test": "NODE_OPTIONS=--max-http-header-size=16384 jest --runInBand",
     "clean": "rm -rf ./dist",
     "prepack": "yarn clean && tsc",
     "build": "yarn run prepack",
