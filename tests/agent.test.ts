@@ -88,6 +88,7 @@ describe('Metadata Agent', () => {
         "name": "Curry Street",
         "tokenAddress": "0xdA98f59e1EDeCb2545d7b07B794e704ed6cF1f7A",
         "tokenId": "2",
+        "tokenType": "ERC721",
         "tokenURI": "https://ipfs.io/ipfs/Qmc2GNnurMgRZN6156vXutcgjYvdFyHGmAfsYE7bD1aVfp",
         "tokenURL": "https://gateway.ipfs.io/ipfs/Qmc2GNnurMgRZN6156vXutcgjYvdFyHGmAfsYE7bD1aVfp",
         "tokenURLMimeType": "application/json",
@@ -133,11 +134,20 @@ describe('Metadata Agent', () => {
         "name": "Autoglyph #1",
         "tokenAddress": "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "data:text/plain;charset=utf-8,.|.|.O..-.-.-.-.-.|.|.|.O.O.O.O..O.O.O.O.|.|.|.-.-.-.-.-..O.|.|.%0A|-.|.O|.O-.|..|.O-.O..|..-.O-.|..|.-O.-..|..O.-O.|..|.-O.|O.|.-|%0A..|-..|-.OO-..|...|..O-..O|..O-..-O..|O..-O..|...|..-OO.-|..-|..%0A||-...OO|....OO--...O|--...||-....-||...--|O...--OO....|OO...-||%0A..........O.OOOOO||-||--.-............-.--||-||OOOOO.O..........%0AOO.......-|||OO.......-|-|OOO......OOO|-|-.......OO|||-.......OO%0A.||O..--O..-||O..-|O..-||...-|O..O|-...||-..O|-..O||-..O--..O||.%0A..-O..-O.-O..|..|..-O.--O.-O..|..|..O-.O--.O-..|..|..O-.O-..O-..%0A-O.|..O.-.-..|.-O.|.-O.|.|..O.-..-.O..|.|.O-.|.O-.|..-.-.O..|.O-%0A.-O..-.-.|.|.-.|.|.O.O.|.O.O..-..-..O.O.|.O.O.|.|.-.|.|.-.-..O-.%0A-.O.O|.O-.|..-.O-.O.O|.O-.|-.-.OO.-.-|.-O.|O.O.-O.-..|.-O.|O.O.-%0A.|-..|-..|..|-..|-.O|..O|..O-..OO..-O..|O..|O.-|..-|..|..-|..-|.%0A-...O||....||.....||....O|-...OOOO...-|O....||.....||....||O...-%0A...OOO|||---.---.........OOOO||||||OOOO.........---.---|||OOO...%0A-||OOOO......--|-|OO.O.......-||||-.......O.OO|-|--......OOOO||-%0A...-O...-|O..-||O...|O...-|O..-||-..O|-...O|...O||-..O|-...O-...%0A-O.-O..|O.-|..-O.-O..|..-O..|O.--.O|..O-..|..O-.O-..|-.O|..O-.O-%0A.-..|.-..|.-..|.-..|....|....|....|....|....|..-.|..-.|..-.|..-.%0A|.|.|.|.|.O.|.O.O.O.O.|.O.O.O-O..O-O.O.O.|.O.O.O.O.|.O.|.|.|.|.|%0A.O..-.O-.O.O|.O..|..-.|-.|..-.O..O.-..|.-|.-..|..O.|O.O.-O.-..O.%0A|..O|..O-.O|...|..O-..|-..|..O|..|O..|..-|..-O..|...|O.-O..|O..|%0A..O||...OO|...OO|....O|-...O||....||O...-|O....|OO...|OO...||O..%0A||------..........||||||---..........---||||||..........------||%0A...--||-||OO.......---||||OOO......OOO||||---.......OO||-||--...%0AO....-|O..-|O...-|O...-|...-|O....O|-...|-...O|-...O|-..O|-....O%0A.-O.-|..|O..|O.-O..|..-|..|O.-O..O-.O|..|-..|..O-.O|..O|..|-.O-.%0AO.|..O.-..|.-O.|..O.|.-O.|.-O.|..|.O-.|.O-.|.O..|.O-.|..-.O..|.O%0A.O.|.O.O.O-O.O.O.....O.O-O-O........O-O-O.O.....O.O.O-O.O.O.|.O.%0AO-.|.O-.O..-.O..|.O-.|.O|.O..|.OO.|..O.|O.|.-O.|..O.-..O.-O.|.-O%0A..O-..|...-..|-.O|-.O|..O-..|..OO..|..-O..|O.-|O.-|..-...|..-O..%0AO|-...O|--..O||-..OO|....O|....OO....|O....|OO..-||O..--|O...-|O%0A..........OOO|||-...........OOOOOOOO...........-|||OOO..........%0A..........OOO|||-...........OOOOOOOO...........-|||OOO..........%0AO|-...O|--..O||-..OO|....O|....OO....|O....|OO..-||O..--|O...-|O%0A..O-..|...-..|-.O|-.O|..O-..|..OO..|..-O..|O.-|O.-|..-...|..-O..%0AO-.|.O-.O..-.O..|.O-.|.O|.O..|.OO.|..O.|O.|.-O.|..O.-..O.-O.|.-O%0A.O.|.O.O.O-O.O.O.....O.O-O-O........O-O-O.O.....O.O.O-O.O.O.|.O.%0AO.|..O.-..|.-O.|..O.|.-O.|.-O.|..|.O-.|.O-.|.O..|.O-.|..-.O..|.O%0A.-O.-|..|O..|O.-O..|..-|..|O.-O..O-.O|..|-..|..O-.O|..O|..|-.O-.%0AO....-|O..-|O...-|O...-|...-|O....O|-...|-...O|-...O|-..O|-....O%0A...--||-||OO.......---||||OOO......OOO||||---.......OO||-||--...%0A||------..........||||||---..........---||||||..........------||%0A..O||...OO|...OO|....O|-...O||....||O...-|O....|OO...|OO...||O..%0A|..O|..O-.O|...|..O-..|-..|..O|..|O..|..-|..-O..|...|O.-O..|O..|%0A.O..-.O-.O.O|.O..|..-.|-.|..-.O..O.-..|.-|.-..|..O.|O.O.-O.-..O.%0A|.|.|.|.|.O.|.O.O.O.O.|.O.O.O-O..O-O.O.O.|.O.O.O.O.|.O.|.|.|.|.|%0A.-..|.-..|.-..|.-..|....|....|....|....|....|..-.|..-.|..-.|..-.%0A-O.-O..|O.-|..-O.-O..|..-O..|O.--.O|..O-..|..O-.O-..|-.O|..O-.O-%0A...-O...-|O..-||O...|O...-|O..-||-..O|-...O|...O||-..O|-...O-...%0A-||OOOO......--|-|OO.O.......-||||-.......O.OO|-|--......OOOO||-%0A...OOO|||---.---.........OOOO||||||OOOO.........---.---|||OOO...%0A-...O||....||.....||....O|-...OOOO...-|O....||.....||....||O...-%0A.|-..|-..|..|-..|-.O|..O|..O-..OO..-O..|O..|O.-|..-|..|..-|..-|.%0A-.O.O|.O-.|..-.O-.O.O|.O-.|-.-.OO.-.-|.-O.|O.O.-O.-..|.-O.|O.O.-%0A.-O..-.-.|.|.-.|.|.O.O.|.O.O..-..-..O.O.|.O.O.|.|.-.|.|.-.-..O-.%0A-O.|..O.-.-..|.-O.|.-O.|.|..O.-..-.O..|.|.O-.|.O-.|..-.-.O..|.O-%0A..-O..-O.-O..|..|..-O.--O.-O..|..|..O-.O--.O-..|..|..O-.O-..O-..%0A.||O..--O..-||O..-|O..-||...-|O..O|-...||-..O|-..O||-..O--..O||.%0AOO.......-|||OO.......-|-|OOO......OOO|-|-.......OO|||-.......OO%0A..........O.OOOOO||-||--.-............-.--||-||OOOOO.O..........%0A||-...OO|....OO--...O|--...||-....-||...--|O...--OO....|OO...-||%0A..|-..|-.OO-..|...|..O-..O|..O-..-O..|O..-O..|...|..-OO.-|..-|..%0A|-.|.O|.O-.|..|.O-.O..|..-.O-.|..|.-O.-..|..O.-O.|..|.-O.|O.|.-|%0A.|.|.O..-.-.-.-.-.|.|.|.O.O.O.O..O.O.O.O.|.|.|.-.-.-.-.-..O.|.|.%0A",
         "tokenURL": "data:text/plain;charset=utf-8,.|.|.O..-.-.-.-.-.|.|.|.O.O.O.O..O.O.O.O.|.|.|.-.-.-.-.-..O.|.|.%0A|-.|.O|.O-.|..|.O-.O..|..-.O-.|..|.-O.-..|..O.-O.|..|.-O.|O.|.-|%0A..|-..|-.OO-..|...|..O-..O|..O-..-O..|O..-O..|...|..-OO.-|..-|..%0A||-...OO|....OO--...O|--...||-....-||...--|O...--OO....|OO...-||%0A..........O.OOOOO||-||--.-............-.--||-||OOOOO.O..........%0AOO.......-|||OO.......-|-|OOO......OOO|-|-.......OO|||-.......OO%0A.||O..--O..-||O..-|O..-||...-|O..O|-...||-..O|-..O||-..O--..O||.%0A..-O..-O.-O..|..|..-O.--O.-O..|..|..O-.O--.O-..|..|..O-.O-..O-..%0A-O.|..O.-.-..|.-O.|.-O.|.|..O.-..-.O..|.|.O-.|.O-.|..-.-.O..|.O-%0A.-O..-.-.|.|.-.|.|.O.O.|.O.O..-..-..O.O.|.O.O.|.|.-.|.|.-.-..O-.%0A-.O.O|.O-.|..-.O-.O.O|.O-.|-.-.OO.-.-|.-O.|O.O.-O.-..|.-O.|O.O.-%0A.|-..|-..|..|-..|-.O|..O|..O-..OO..-O..|O..|O.-|..-|..|..-|..-|.%0A-...O||....||.....||....O|-...OOOO...-|O....||.....||....||O...-%0A...OOO|||---.---.........OOOO||||||OOOO.........---.---|||OOO...%0A-||OOOO......--|-|OO.O.......-||||-.......O.OO|-|--......OOOO||-%0A...-O...-|O..-||O...|O...-|O..-||-..O|-...O|...O||-..O|-...O-...%0A-O.-O..|O.-|..-O.-O..|..-O..|O.--.O|..O-..|..O-.O-..|-.O|..O-.O-%0A.-..|.-..|.-..|.-..|....|....|....|....|....|..-.|..-.|..-.|..-.%0A|.|.|.|.|.O.|.O.O.O.O.|.O.O.O-O..O-O.O.O.|.O.O.O.O.|.O.|.|.|.|.|%0A.O..-.O-.O.O|.O..|..-.|-.|..-.O..O.-..|.-|.-..|..O.|O.O.-O.-..O.%0A|..O|..O-.O|...|..O-..|-..|..O|..|O..|..-|..-O..|...|O.-O..|O..|%0A..O||...OO|...OO|....O|-...O||....||O...-|O....|OO...|OO...||O..%0A||------..........||||||---..........---||||||..........------||%0A...--||-||OO.......---||||OOO......OOO||||---.......OO||-||--...%0AO....-|O..-|O...-|O...-|...-|O....O|-...|-...O|-...O|-..O|-....O%0A.-O.-|..|O..|O.-O..|..-|..|O.-O..O-.O|..|-..|..O-.O|..O|..|-.O-.%0AO.|..O.-..|.-O.|..O.|.-O.|.-O.|..|.O-.|.O-.|.O..|.O-.|..-.O..|.O%0A.O.|.O.O.O-O.O.O.....O.O-O-O........O-O-O.O.....O.O.O-O.O.O.|.O.%0AO-.|.O-.O..-.O..|.O-.|.O|.O..|.OO.|..O.|O.|.-O.|..O.-..O.-O.|.-O%0A..O-..|...-..|-.O|-.O|..O-..|..OO..|..-O..|O.-|O.-|..-...|..-O..%0AO|-...O|--..O||-..OO|....O|....OO....|O....|OO..-||O..--|O...-|O%0A..........OOO|||-...........OOOOOOOO...........-|||OOO..........%0A..........OOO|||-...........OOOOOOOO...........-|||OOO..........%0AO|-...O|--..O||-..OO|....O|....OO....|O....|OO..-||O..--|O...-|O%0A..O-..|...-..|-.O|-.O|..O-..|..OO..|..-O..|O.-|O.-|..-...|..-O..%0AO-.|.O-.O..-.O..|.O-.|.O|.O..|.OO.|..O.|O.|.-O.|..O.-..O.-O.|.-O%0A.O.|.O.O.O-O.O.O.....O.O-O-O........O-O-O.O.....O.O.O-O.O.O.|.O.%0AO.|..O.-..|.-O.|..O.|.-O.|.-O.|..|.O-.|.O-.|.O..|.O-.|..-.O..|.O%0A.-O.-|..|O..|O.-O..|..-|..|O.-O..O-.O|..|-..|..O-.O|..O|..|-.O-.%0AO....-|O..-|O...-|O...-|...-|O....O|-...|-...O|-...O|-..O|-....O%0A...--||-||OO.......---||||OOO......OOO||||---.......OO||-||--...%0A||------..........||||||---..........---||||||..........------||%0A..O||...OO|...OO|....O|-...O||....||O...-|O....|OO...|OO...||O..%0A|..O|..O-.O|...|..O-..|-..|..O|..|O..|..-|..-O..|...|O.-O..|O..|%0A.O..-.O-.O.O|.O..|..-.|-.|..-.O..O.-..|.-|.-..|..O.|O.O.-O.-..O.%0A|.|.|.|.|.O.|.O.O.O.O.|.O.O.O-O..O-O.O.O.|.O.O.O.O.|.O.|.|.|.|.|%0A.-..|.-..|.-..|.-..|....|....|....|....|....|..-.|..-.|..-.|..-.%0A-O.-O..|O.-|..-O.-O..|..-O..|O.--.O|..O-..|..O-.O-..|-.O|..O-.O-%0A...-O...-|O..-||O...|O...-|O..-||-..O|-...O|...O||-..O|-...O-...%0A-||OOOO......--|-|OO.O.......-||||-.......O.OO|-|--......OOOO||-%0A...OOO|||---.---.........OOOO||||||OOOO.........---.---|||OOO...%0A-...O||....||.....||....O|-...OOOO...-|O....||.....||....||O...-%0A.|-..|-..|..|-..|-.O|..O|..O-..OO..-O..|O..|O.-|..-|..|..-|..-|.%0A-.O.O|.O-.|..-.O-.O.O|.O-.|-.-.OO.-.-|.-O.|O.O.-O.-..|.-O.|O.O.-%0A.-O..-.-.|.|.-.|.|.O.O.|.O.O..-..-..O.O.|.O.O.|.|.-.|.|.-.-..O-.%0A-O.|..O.-.-..|.-O.|.-O.|.|..O.-..-.O..|.|.O-.|.O-.|..-.-.O..|.O-%0A..-O..-O.-O..|..|..-O.--O.-O..|..|..O-.O--.O-..|..|..O-.O-..O-..%0A.||O..--O..-||O..-|O..-||...-|O..O|-...||-..O|-..O||-..O--..O||.%0AOO.......-|||OO.......-|-|OOO......OOO|-|-.......OO|||-.......OO%0A..........O.OOOOO||-||--.-............-.--||-||OOOOO.O..........%0A||-...OO|....OO--...O|--...||-....-||...--|O...--OO....|OO...-||%0A..|-..|-.OO-..|...|..O-..O|..O-..-O..|O..-O..|...|..-OO.-|..-|..%0A|-.|.O|.O-.|..|.O-.O..|..-.O-.|..|.-O.-..|..O.-O.|..|.-O.|O.|.-|%0A.|.|.O..-.-.-.-.-.|.|.|.O.O.O.O..O.O.O.O.|.|.|.-.-.-.-.-..O.|.|.%0A",
         "tokenURLMimeType": "application/json",
       }
     `)
+  })
+
+  it(`should handle opensea shared 1155 contract: ${TestAddresses.OPENSEA_OPENSTORE_CONTRACT_ADDRESS}`, async () => {
+    const resp = await parser.fetchMetadata(
+      TestAddresses.OPENSEA_OPENSTORE_CONTRACT_ADDRESS,
+      '98168371784320387514732815439041609751844866237332060982262479411803787886593',
+    )
+    expect(resp).toMatchSnapshot()
   })
 
   it(`should be able to fetch and parse metadata for BAYC: ${TestAddresses.BORED_APE_TOKEN_ADDRESS}`, async () => {
@@ -200,6 +210,7 @@ describe('Metadata Agent', () => {
         },
         "tokenAddress": "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1",
         "tokenURL": "https://gateway.ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/1",
         "tokenURLMimeType": "application/json",
@@ -454,6 +465,7 @@ describe('Metadata Agent', () => {
         "name": "Meebit #1",
         "tokenAddress": "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "https://meebits.larvalabs.com/meebit/1",
         "tokenURL": "https://meebits.larvalabs.com/meebit/1",
         "tokenURLMimeType": "application/json",
@@ -480,6 +492,7 @@ describe('Metadata Agent', () => {
         "name": "Ignition",
         "tokenAddress": "0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7",
         "tokenId": "4000",
+        "tokenType": "ERC721",
         "tokenURI": "https://ipfs.fleek.co/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
         "tokenURL": "https://zora-prod.mypinata.cloud/ipfs/bafybeiflyzanwx6ensp3fa7piqbqysgjr3l4xmw7sqogwmghqoiaadtqqq",
         "tokenURLMimeType": "application/json",
@@ -487,7 +500,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Holly Plu: ${TestAddresses.HOLLY_PLUS_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Holly Plus: ${TestAddresses.HOLLY_PLUS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       TestAddresses.HOLLY_PLUS_TOKEN_ADDRESS,
       '1',
@@ -518,6 +531,7 @@ describe('Metadata Agent', () => {
         "name": "Genesis - Holly+ Speaking Model I",
         "tokenAddress": "0x6688Ee4E6e17a9cF88A13Da833b011E64C2B4203",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "ipfs://bafybeihbarwrmsai2grajb6az7n6aokbxrtl6dq4lqmcrbmq62poa3smla",
         "tokenURL": "https://gateway.ipfs.io/ipfs/bafybeihbarwrmsai2grajb6az7n6aokbxrtl6dq4lqmcrbmq62poa3smla",
         "tokenURLMimeType": "application/json",
@@ -597,6 +611,7 @@ describe('Metadata Agent', () => {
         "name": "70 Block Fork",
         "tokenAddress": "0x79986aF15539de2db9A5086382daEdA917A9CF0C",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "https://www.cryptovoxels.com/p/1",
         "tokenURL": "https://www.cryptovoxels.com/p/1",
         "tokenURLMimeType": "application/json",
@@ -651,6 +666,7 @@ describe('Metadata Agent', () => {
         "name": "Bag #1",
         "tokenAddress": "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "data:application/json;base64,eyJuYW1lIjogIkJhZyAjMSIsICJkZXNjcmlwdGlvbiI6ICJMb290IGlzIHJhbmRvbWl6ZWQgYWR2ZW50dXJlciBnZWFyIGdlbmVyYXRlZCBhbmQgc3RvcmVkIG9uIGNoYWluLiBTdGF0cywgaW1hZ2VzLCBhbmQgb3RoZXIgZnVuY3Rpb25hbGl0eSBhcmUgaW50ZW50aW9uYWxseSBvbWl0dGVkIGZvciBvdGhlcnMgdG8gaW50ZXJwcmV0LiBGZWVsIGZyZWUgdG8gdXNlIExvb3QgaW4gYW55IHdheSB5b3Ugd2FudC4iLCAiaW1hZ2UiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhCeVpYTmxjblpsUVhOd1pXTjBVbUYwYVc4OUluaE5hVzVaVFdsdUlHMWxaWFFpSUhacFpYZENiM2c5SWpBZ01DQXpOVEFnTXpVd0lqNDhjM1I1YkdVK0xtSmhjMlVnZXlCbWFXeHNPaUIzYUdsMFpUc2dabTl1ZEMxbVlXMXBiSGs2SUhObGNtbG1PeUJtYjI1MExYTnBlbVU2SURFMGNIZzdJSDA4TDNOMGVXeGxQanh5WldOMElIZHBaSFJvUFNJeE1EQWxJaUJvWldsbmFIUTlJakV3TUNVaUlHWnBiR3c5SW1Kc1lXTnJJaUF2UGp4MFpYaDBJSGc5SWpFd0lpQjVQU0l5TUNJZ1kyeGhjM005SW1KaGMyVWlQaUpIY21sdElGTm9iM1YwSWlCSGNtRjJaU0JYWVc1a0lHOW1JRk5yYVd4c0lDc3hQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJME1DSWdZMnhoYzNNOUltSmhjMlVpUGtoaGNtUWdUR1ZoZEdobGNpQkJjbTF2Y2p3dmRHVjRkRDQ4ZEdWNGRDQjRQU0l4TUNJZ2VUMGlOakFpSUdOc1lYTnpQU0ppWVhObElqNUVhWFpwYm1VZ1NHOXZaRHd2ZEdWNGRENDhkR1Y0ZENCNFBTSXhNQ0lnZVQwaU9EQWlJR05zWVhOelBTSmlZWE5sSWo1SVlYSmtJRXhsWVhSb1pYSWdRbVZzZER3dmRHVjRkRDQ4ZEdWNGRDQjRQU0l4TUNJZ2VUMGlNVEF3SWlCamJHRnpjejBpWW1GelpTSStJa1JsWVhSb0lGSnZiM1FpSUU5eWJtRjBaU0JIY21WaGRtVnpJRzltSUZOcmFXeHNQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE1qQWlJR05zWVhOelBTSmlZWE5sSWo1VGRIVmtaR1ZrSUV4bFlYUm9aWElnUjJ4dmRtVnpQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE5EQWlJR05zWVhOelBTSmlZWE5sSWo1T1pXTnJiR0ZqWlNCdlppQkZibXhwWjJoMFpXNXRaVzUwUEM5MFpYaDBQangwWlhoMElIZzlJakV3SWlCNVBTSXhOakFpSUdOc1lYTnpQU0ppWVhObElqNUhiMnhrSUZKcGJtYzhMM1JsZUhRK1BDOXpkbWMrIn0=",
         "tokenURL": "data:application/json;base64,eyJuYW1lIjogIkJhZyAjMSIsICJkZXNjcmlwdGlvbiI6ICJMb290IGlzIHJhbmRvbWl6ZWQgYWR2ZW50dXJlciBnZWFyIGdlbmVyYXRlZCBhbmQgc3RvcmVkIG9uIGNoYWluLiBTdGF0cywgaW1hZ2VzLCBhbmQgb3RoZXIgZnVuY3Rpb25hbGl0eSBhcmUgaW50ZW50aW9uYWxseSBvbWl0dGVkIGZvciBvdGhlcnMgdG8gaW50ZXJwcmV0LiBGZWVsIGZyZWUgdG8gdXNlIExvb3QgaW4gYW55IHdheSB5b3Ugd2FudC4iLCAiaW1hZ2UiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhCeVpYTmxjblpsUVhOd1pXTjBVbUYwYVc4OUluaE5hVzVaVFdsdUlHMWxaWFFpSUhacFpYZENiM2c5SWpBZ01DQXpOVEFnTXpVd0lqNDhjM1I1YkdVK0xtSmhjMlVnZXlCbWFXeHNPaUIzYUdsMFpUc2dabTl1ZEMxbVlXMXBiSGs2SUhObGNtbG1PeUJtYjI1MExYTnBlbVU2SURFMGNIZzdJSDA4TDNOMGVXeGxQanh5WldOMElIZHBaSFJvUFNJeE1EQWxJaUJvWldsbmFIUTlJakV3TUNVaUlHWnBiR3c5SW1Kc1lXTnJJaUF2UGp4MFpYaDBJSGc5SWpFd0lpQjVQU0l5TUNJZ1kyeGhjM005SW1KaGMyVWlQaUpIY21sdElGTm9iM1YwSWlCSGNtRjJaU0JYWVc1a0lHOW1JRk5yYVd4c0lDc3hQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJME1DSWdZMnhoYzNNOUltSmhjMlVpUGtoaGNtUWdUR1ZoZEdobGNpQkJjbTF2Y2p3dmRHVjRkRDQ4ZEdWNGRDQjRQU0l4TUNJZ2VUMGlOakFpSUdOc1lYTnpQU0ppWVhObElqNUVhWFpwYm1VZ1NHOXZaRHd2ZEdWNGRENDhkR1Y0ZENCNFBTSXhNQ0lnZVQwaU9EQWlJR05zWVhOelBTSmlZWE5sSWo1SVlYSmtJRXhsWVhSb1pYSWdRbVZzZER3dmRHVjRkRDQ4ZEdWNGRDQjRQU0l4TUNJZ2VUMGlNVEF3SWlCamJHRnpjejBpWW1GelpTSStJa1JsWVhSb0lGSnZiM1FpSUU5eWJtRjBaU0JIY21WaGRtVnpJRzltSUZOcmFXeHNQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE1qQWlJR05zWVhOelBTSmlZWE5sSWo1VGRIVmtaR1ZrSUV4bFlYUm9aWElnUjJ4dmRtVnpQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE5EQWlJR05zWVhOelBTSmlZWE5sSWo1T1pXTnJiR0ZqWlNCdlppQkZibXhwWjJoMFpXNXRaVzUwUEM5MFpYaDBQangwWlhoMElIZzlJakV3SWlCNVBTSXhOakFpSUdOc1lYTnpQU0ppWVhObElqNUhiMnhrSUZKcGJtYzhMM1JsZUhRK1BDOXpkbWMrIn0=",
         "tokenURLMimeType": "application/json",
@@ -738,6 +754,7 @@ describe('Metadata Agent', () => {
         "name": "Settlement #1",
         "tokenAddress": "0xdEcC60000ba66700a009b8F9F7D82676B5cfA88A",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "data:application/json;base64,eyJuYW1lIjogIlNldHRsZW1lbnQgIzEiLCAiZGVzY3JpcHRpb24iOiAiU2V0dGxlbWVudHMgYXJlIGEgdHVybiBiYXNlZCBjaXZpbGlzYXRpb24gc2ltdWxhdG9yIHN0b3JlZCBlbnRpcmVseSBvbiBjaGFpbiwgZ28gZm9ydGggYW5kIGNvbnF1ZXIuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMblI0ZENCN0lHWnBiR3c2SUdKc1lXTnJPeUJtYjI1MExXWmhiV2xzZVRvZ2JXOXViM053WVdObE95Qm1iMjUwTFhOcGVtVTZJREV5Y0hnN2ZUd3ZjM1I1YkdVK1BISmxZM1FnZDJsa2RHZzlJakV3TUNVaUlHaGxhV2RvZEQwaU1UQXdKU0lnWm1sc2JEMGlkMmhwZEdVaUlDOCtQSFJsZUhRZ2VEMGlNVEFpSUhrOUlqSXdJaUJqYkdGemN6MGlkSGgwSWo1SVlXMXNaWFE4TDNSbGVIUStQSFJsZUhRZ2VEMGlNVEFpSUhrOUlqUXdJaUJqYkdGemN6MGlkSGgwSWo1R2FYSmxQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUluUjRkQ0krUVc1amFXVnVkRHd2ZEdWNGRENDhkR1Y0ZENCNFBTSXhNQ0lnZVQwaU9EQWlJR05zWVhOelBTSjBlSFFpUGxkdmIyUThMM1JsZUhRK1BIUmxlSFFnZUQwaU1UQWlJSGs5SWpFd01DSWdZMnhoYzNNOUluUjRkQ0krUlhod1pXTjBZVzUwUEM5MFpYaDBQangwWlhoMElIZzlJakV3SWlCNVBTSXhNakFpSUdOc1lYTnpQU0owZUhRaVBrRnlhWE4wYjJOeVlXTjVQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE5EQWlJR05zWVhOelBTSjBlSFFpUGtkbGJtVnphWE04TDNSbGVIUStQQzl6ZG1jKyIsImF0dHJpYnV0ZXMiOlt7ICJ0cmFpdF90eXBlIjogIlNpemUiLCAidmFsdWUiOiAiSGFtbGV0IiB9LCB7ICJ0cmFpdF90eXBlIjogIlNwaXJpdCIsICJ2YWx1ZSI6ICJGaXJlIiB9LCB7ICJ0cmFpdF90eXBlIjogIkFnZSIsICJ2YWx1ZSI6ICJBbmNpZW50IiB9LCB7ICJ0cmFpdF90eXBlIjogIlJlc291cmNlIiwgInZhbHVlIjogIldvb2QiIH0sIHsgInRyYWl0X3R5cGUiOiAiTW9yYWxlIiwgInZhbHVlIjogIkV4cGVjdGFudCIgfSwgeyAidHJhaXRfdHlwZSI6ICJHb3Zlcm5tZW50IiwgInZhbHVlIjogIkFyaXN0b2NyYWN5IiB9LCB7ICJ0cmFpdF90eXBlIjogIlJlYWxtIiwgInZhbHVlIjogIkdlbmVzaXMiIH1dfQ==",
         "tokenURL": "data:application/json;base64,eyJuYW1lIjogIlNldHRsZW1lbnQgIzEiLCAiZGVzY3JpcHRpb24iOiAiU2V0dGxlbWVudHMgYXJlIGEgdHVybiBiYXNlZCBjaXZpbGlzYXRpb24gc2ltdWxhdG9yIHN0b3JlZCBlbnRpcmVseSBvbiBjaGFpbiwgZ28gZm9ydGggYW5kIGNvbnF1ZXIuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMblI0ZENCN0lHWnBiR3c2SUdKc1lXTnJPeUJtYjI1MExXWmhiV2xzZVRvZ2JXOXViM053WVdObE95Qm1iMjUwTFhOcGVtVTZJREV5Y0hnN2ZUd3ZjM1I1YkdVK1BISmxZM1FnZDJsa2RHZzlJakV3TUNVaUlHaGxhV2RvZEQwaU1UQXdKU0lnWm1sc2JEMGlkMmhwZEdVaUlDOCtQSFJsZUhRZ2VEMGlNVEFpSUhrOUlqSXdJaUJqYkdGemN6MGlkSGgwSWo1SVlXMXNaWFE4TDNSbGVIUStQSFJsZUhRZ2VEMGlNVEFpSUhrOUlqUXdJaUJqYkdGemN6MGlkSGgwSWo1R2FYSmxQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUluUjRkQ0krUVc1amFXVnVkRHd2ZEdWNGRENDhkR1Y0ZENCNFBTSXhNQ0lnZVQwaU9EQWlJR05zWVhOelBTSjBlSFFpUGxkdmIyUThMM1JsZUhRK1BIUmxlSFFnZUQwaU1UQWlJSGs5SWpFd01DSWdZMnhoYzNNOUluUjRkQ0krUlhod1pXTjBZVzUwUEM5MFpYaDBQangwWlhoMElIZzlJakV3SWlCNVBTSXhNakFpSUdOc1lYTnpQU0owZUhRaVBrRnlhWE4wYjJOeVlXTjVQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeE5EQWlJR05zWVhOelBTSjBlSFFpUGtkbGJtVnphWE04TDNSbGVIUStQQzl6ZG1jKyIsImF0dHJpYnV0ZXMiOlt7ICJ0cmFpdF90eXBlIjogIlNpemUiLCAidmFsdWUiOiAiSGFtbGV0IiB9LCB7ICJ0cmFpdF90eXBlIjogIlNwaXJpdCIsICJ2YWx1ZSI6ICJGaXJlIiB9LCB7ICJ0cmFpdF90eXBlIjogIkFnZSIsICJ2YWx1ZSI6ICJBbmNpZW50IiB9LCB7ICJ0cmFpdF90eXBlIjogIlJlc291cmNlIiwgInZhbHVlIjogIldvb2QiIH0sIHsgInRyYWl0X3R5cGUiOiAiTW9yYWxlIiwgInZhbHVlIjogIkV4cGVjdGFudCIgfSwgeyAidHJhaXRfdHlwZSI6ICJHb3Zlcm5tZW50IiwgInZhbHVlIjogIkFyaXN0b2NyYWN5IiB9LCB7ICJ0cmFpdF90eXBlIjogIlJlYWxtIiwgInZhbHVlIjogIkdlbmVzaXMiIH1dfQ==",
         "tokenURLMimeType": "application/json",
@@ -821,6 +838,7 @@ describe('Metadata Agent', () => {
         "name": "#1 - Rose",
         "tokenAddress": "0x8d04a8c79cEB0889Bdd12acdF3Fa9D207eD3Ff63",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "https://api.blitmap.com/v1/metadata/1",
         "tokenURL": "https://api.blitmap.com/v1/metadata/1",
         "tokenURLMimeType": "application/json",
@@ -894,6 +912,7 @@ describe('Metadata Agent', () => {
         "name": "#1 - Quark Beta",
         "tokenAddress": "0x448f3219CF2A23b0527A7a0158e7264B87f635Db",
         "tokenId": "1",
+        "tokenType": "ERC721",
         "tokenURI": "https://blitnauts.blitmap.com/api/v1/metadata/1",
         "tokenURL": "https://blitnauts.blitmap.com/api/v1/metadata/1",
         "tokenURLMimeType": "application/json",
@@ -966,6 +985,7 @@ describe('Metadata Agent', () => {
         "name": "The Doomed (red)",
         "tokenAddress": "0xFBeef911Dc5821886e1dda71586d90eD28174B7d",
         "tokenId": "219184",
+        "tokenType": "ERC721",
         "tokenURI": "https://ipfs.infura.io/ipfs/QmYHU3Yc5QLiNHCDGA9Wn5cEW6hiRb64JGLdvUis9xrb8L",
         "tokenURL": "https://gateway.ipfs.io/ipfs/QmYHU3Yc5QLiNHCDGA9Wn5cEW6hiRb64JGLdvUis9xrb8L",
         "tokenURLMimeType": "application/json",
@@ -1046,12 +1066,13 @@ describe('Metadata Agent', () => {
             "Mouvement": "Balançoire",
             "Rang": "Chassé",
           },
+          "generator_url": "https://generator.artblocks.io/167000537",
           "image": "https://media.artblocks.io/167000537.png",
           "interactive_nft": Object {
             "code_uri": "https://generator.artblocks.io/167000537",
             "version": "0.0.9",
           },
-          "is_dynamic": true,
+          "is_static": false,
           "license": "CC BY-NC 4.0",
           "name": "Blaschke Ballet #537",
           "payout_address": "0x6C093Fe8bc59e1e0cAe2Ec10F0B717D3D182056B",
@@ -1102,6 +1123,7 @@ describe('Metadata Agent', () => {
         "name": "Blaschke Ballet #537",
         "tokenAddress": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
         "tokenId": "167000537",
+        "tokenType": "ERC721",
         "tokenURI": "https://api.artblocks.io/token/167000537",
         "tokenURL": "https://api.artblocks.io/token/167000537",
         "tokenURLMimeType": "application/json",
@@ -1109,7 +1131,7 @@ describe('Metadata Agent', () => {
     `)
   })
 
-  it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS}`, async () => {
+  it(`should be able to fetch and parse metadata for Makersplace ${MAKERSPLACE_TOKEN_ADDRESS.homestead}`, async () => {
     const resp = await parser.fetchMetadata(
       MAKERSPLACE_TOKEN_ADDRESS.homestead,
       '63253',
@@ -1249,6 +1271,7 @@ describe('Metadata Agent', () => {
         "name": "We Are Made of Stardust",
         "tokenAddress": "0x2A46f2fFD99e19a89476E2f62270e0a35bBf0756",
         "tokenId": "63253",
+        "tokenType": "ERC721",
         "tokenURI": "ipfs://ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU",
         "tokenURL": "https://ipfsgateway.makersplace.com/ipfs/QmczR8BYHGsfMjiQ988mhrQo4Femozf4RoVsqu8PjxFMNU",
         "tokenURLMimeType": "application/json",
@@ -1289,6 +1312,7 @@ describe('Metadata Agent', () => {
         "name": "Core Surge",
         "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
         "tokenId": "107855",
+        "tokenType": "ERC721",
         "tokenURI": "https://api.foundation.app/opensea/107855",
         "tokenURL": "https://api.foundation.app/opensea/107855",
         "tokenURLMimeType": "application/json",
@@ -1320,6 +1344,7 @@ describe('Metadata Agent', () => {
         "name": "Dimensions III",
         "tokenAddress": "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405",
         "tokenId": "63253",
+        "tokenType": "ERC721",
         "tokenURI": "https://api.foundation.app/opensea/63253",
         "tokenURL": "https://api.foundation.app/opensea/63253",
         "tokenURLMimeType": "application/json",
@@ -1387,6 +1412,7 @@ describe('Metadata Agent', () => {
         "name": "Solvency #420",
         "tokenAddress": "0x82262bFba3E25816b4C720F1070A71C7c16A8fc4",
         "tokenId": "420",
+        "tokenType": "ERC721",
         "tokenURI": "https://solvency.art/api/420",
         "tokenURL": "https://solvency.art/api/420",
         "tokenURLMimeType": "application/json",
@@ -1426,6 +1452,7 @@ describe('Metadata Agent', () => {
         "name": "Requiem of the Gatekeeper",
         "tokenAddress": "0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0",
         "tokenId": "29061",
+        "tokenType": "ERC721",
         "tokenURI": "https://ipfs.pixura.io/ipfs/QmdL1WzygHFE8r4g2Gp6PfLu8xKYDJcjQzCbnSPcQAAEt6/metadata.json",
         "tokenURL": "https://gateway.ipfs.io/ipfs/QmdL1WzygHFE8r4g2Gp6PfLu8xKYDJcjQzCbnSPcQAAEt6/metadata.json",
         "tokenURLMimeType": "application/json",
@@ -1467,6 +1494,7 @@ describe('Metadata Agent', () => {
         "name": "FNTN // 59",
         "tokenAddress": "0x2Fb704d243cFA179fFaD4D87AcB1D36bcf243a44",
         "tokenId": "1290",
+        "tokenType": "ERC721",
         "tokenURI": "https://gateway.ipfs.io/ipfs/QmbYNDhcPxvHxNwrxGJJbgQ2HPb5E2yjkTftWgiZzvuDbp",
         "tokenURL": "https://gateway.ipfs.io/ipfs/QmbYNDhcPxvHxNwrxGJJbgQ2HPb5E2yjkTftWgiZzvuDbp",
         "tokenURLMimeType": "application/json",
@@ -1520,6 +1548,7 @@ describe('Metadata Agent', () => {
         "name": "Manny #1290",
         "tokenAddress": "0x2bd58A19C7E4AbF17638c5eE6fA96EE5EB53aed9",
         "tokenId": "1290",
+        "tokenType": "ERC721",
         "tokenURI": "https://mannys-game-viewer.herokuapp.com/api/1290",
         "tokenURL": "https://mannys-game-viewer.herokuapp.com/api/1290",
         "tokenURLMimeType": "application/json",
@@ -1572,6 +1601,7 @@ describe('Metadata Agent', () => {
         "name": "Soy yo, Pup. — Guerrere valiente. — Weed y Jarrito — No tienen iguales. — Escúchame. Amame. Intercambiame. — Boxer",
         "tokenAddress": "0x5c685a3EBC751F36B2123C25F5c464D3b9964AfC",
         "tokenId": "856",
+        "tokenType": "ERC721",
         "tokenURI": "https://buo7dhteahrnurg7h3oysx3ldezloaopronrtnyssqfbvqsamqfa.arweave.net/DR3xnmQB4tpE3z7diV9rGTK3Ac-Lmxm3EpQKGsJAZAo/856.json",
         "tokenURL": "https://buo7dhteahrnurg7h3oysx3ldezloaopronrtnyssqfbvqsamqfa.arweave.net/DR3xnmQB4tpE3z7diV9rGTK3Ac-Lmxm3EpQKGsJAZAo/856.json",
         "tokenURLMimeType": "application/json",
@@ -1660,6 +1690,7 @@ describe('Metadata Agent', () => {
         "name": "Humanoid #368",
         "tokenAddress": "0x3a5051566b2241285BE871f650C445A88A970edd",
         "tokenId": "368",
+        "tokenType": "ERC721",
         "tokenURI": "https://raw.githubusercontent.com/TheHumanoids/metadata/main/368",
         "tokenURL": "https://raw.githubusercontent.com/TheHumanoids/metadata/main/368",
         "tokenURLMimeType": "application/json",
@@ -1717,6 +1748,7 @@ describe('Metadata Agent', () => {
         "name": "CyberKong VX #12152",
         "tokenAddress": "0x7EA3Cca10668B8346aeC0bf1844A49e995527c8B",
         "tokenId": "12152",
+        "tokenType": "ERC721",
         "tokenURI": "http://kongz.herokuapp.com/api/metadata-vx/12152",
         "tokenURL": "http://kongz.herokuapp.com/api/metadata-vx/12152",
         "tokenURLMimeType": "application/json",
