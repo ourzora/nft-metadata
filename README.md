@@ -26,7 +26,7 @@ const parser = new Agent({
   // IPFS Gateway URL (optional, defaults to cloudflare)
   ipfsGatewayUrl: IPFS_URL,
   // Timeout: defaults to 40 seconds, recommended timeout is 60 seconds (in milliseconds)
-  timeout: 60 * 10000,
+  timeout: 60 * 1000,
 })
 
 // Can use typical promises or async/await to get the return value of fetchMetadata
