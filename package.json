@@ -1,6 +1,6 @@
 {
   "name": "@zoralabs/nft-metadata",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generic nft metadata parsers",
   "author": "Zora",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "dist"
   ],
   "dependencies": {
-    "@pinata/ipfs-gateway-tools": "^1.1.6",
+    "@pinata/ipfs-gateway-tools": "1.1.6",
     "@zoralabs/core": "^1.0.7",
     "axios": "^0.22.0",
     "axios-retry": "^3.2.3",

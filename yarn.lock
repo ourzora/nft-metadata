@@ -963,7 +963,7 @@
   resolved "https://registry.yarnpkg.com/@multiformats/base-x/-/base-x-4.0.1.tgz#95ff0fa58711789d53aefb2590a8b7a4e715d121"
   integrity sha512-eMk0b9ReBbV23xXU693TAIrLyeO5iTgBZGSJfpqriG8UkYvr/hC9u9pyMlAakDNHWmbhMZCDs6KQO0jzKD8OTw==
 
-"@pinata/ipfs-gateway-tools@^1.1.6":
+"@pinata/ipfs-gateway-tools@1.1.6":
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/@pinata/ipfs-gateway-tools/-/ipfs-gateway-tools-1.1.6.tgz#1378db5e3dd879cd615fd88c952624f4c93e9e18"
   integrity sha512-0KXTUkt8rxJWUXzTMS46OoeVDiDe15S7enZQV+TLU6/knrxg40H8aGl4D1IVg8vPt5ISBd9uePziIjN/UDlXaQ==
