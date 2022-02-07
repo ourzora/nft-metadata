@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.3]  - 2021-02-07
+- Fix timeout in example code
+- Add correct ERC1155 padding for tokenId field
+
 ## [1.1.0] - 2021-11-12
 - Add multichain support
 - Add ens support
