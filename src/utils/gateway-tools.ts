@@ -33,11 +33,11 @@ export const convertToDesiredGateway = (
     throw new Error('url does not contain CID')
   }
 
-  if (isIPFS.cid(cid)) {
-    return `${desiredGatewayPrefix}/ipfs/${cid}`
-  }
-
   const splitUrl = sourceUrl.split(cid)
+
+  if (isIPFS.cid(cid)) {
+    return `${desiredGatewayPrefix}/ipfs/${cid}${splitUrl[1]}`
+  }
 
   // Case 1 - the ipfs://cid path
   if (sourceUrl.includes(`ipfs://${cid}`)) {
