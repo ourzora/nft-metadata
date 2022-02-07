@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Removing dep on pinata gateway tools and cleaning up ipfs handling code
 
 ## [1.2.3]  - 2021-02-07
 - Fix timeout in example code
