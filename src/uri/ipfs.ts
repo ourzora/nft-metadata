@@ -5,11 +5,10 @@ import {
   ZORA_TOKEN_ADDRESS,
 } from '../constants/addresses'
 
-const IPFSGatewayTools = require('@pinata/ipfs-gateway-tools/dist/node')
-const gatewayTools = new IPFSGatewayTools()
+const GatewayTools = require('../utils/gateway-tools')
 
 export function isIPFS(uri: string) {
-  const result = gatewayTools.containsCID(uri)
+  const result = GatewayTools.containsCID(uri)
 
   // TODO - this lib is not working right so hack for now
   return result.containsCid && (uri.includes('/ipfs/') || hasIpfsPrefix(uri))
@@ -21,7 +20,7 @@ export function hasIpfsPrefix(uri: string) {
 
 export function getIPFSUrl(uri: string, gateway: string) {
   if (isIPFS(uri)) {
-    return gatewayTools.convertToDesiredGateway(uri, gateway)
+    return GatewayTools.convertToDesiredGateway(uri, gateway)
   }
   return uri
 }
