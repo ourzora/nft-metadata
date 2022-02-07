@@ -1,5 +1,5 @@
 import { getAddress } from '@ethersproject/address'
-import { ethers, utils } from 'ethers'
+import { BigNumber, utils } from 'ethers'
 
 export function isAddressMatch(
   chainName: string,
@@ -13,12 +13,5 @@ export function isAddressMatch(
 }
 
 export function normalizeTokenID1155(tokenId: string) {
-  return utils
-    .hexlify(
-      utils.zeroPad(
-        utils.arrayify(ethers.BigNumber.from(tokenId).toHexString()),
-        64,
-      ),
-    )
-    .substr(4)
+  return utils.hexZeroPad(utils.arrayify(BigNumber.from(tokenId)), 32).replace('0x', '')
 }
