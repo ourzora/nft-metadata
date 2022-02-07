@@ -6,6 +6,10 @@ import {
   ZORA_TOKEN_ADDRESS,
 } from '../constants/addresses'
 
+export function isIPFS(uri: string) {
+  return !!getCID(uri);
+}
+
 export function getIPFSUrl(uri: string, gateway: string) {
   if (getCID(uri)) {
     return convertToDesiredGateway(uri, gateway)
