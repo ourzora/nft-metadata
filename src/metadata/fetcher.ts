@@ -4,6 +4,7 @@ import {
   AUTOGLYPHS_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
   LOOT_TOKEN_ADDRESS,
+  PUNKS_DATA_CONTRACT,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
 } from '../constants/addresses'
@@ -29,7 +30,8 @@ export function fetchOnChainData(
   if (
     isAddressMatch(networkName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
   ) {
-    return fetchPunkAttributes(tokenAddress, tokenId, provider)
+    const punksDataContract = (PUNKS_DATA_CONTRACT as any)[networkName];
+    return fetchPunkAttributes(punksDataContract, tokenId, provider)
   }
   if (isAddressMatch(networkName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
     return fetchZoraMeta(tokenAddress, tokenId, provider)
