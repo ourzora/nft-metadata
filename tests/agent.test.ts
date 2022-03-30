@@ -97,10 +97,10 @@ describe('Metadata Agent', () => {
   })
 
   // skipping due to the fact that wrapped punks can be burned and deleted
-  xit(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
+  fit(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
-      '1',
+      '416',
     )
     expect(resp).toMatchSnapshot()
   })
