@@ -12,12 +12,12 @@ function encodeUriData(dataUri: string): string {
 }
 
 export async function fetchPunkAttributes(
-  tokenAddress: string,
+  punksDataContract: string,
   tokenId: string,
   provider: JsonRpcProvider,
 ) {
   const PunksDataContract = new Contract(
-    tokenAddress,
+    punksDataContract,
     [
       'function punkAttributes(uint16 index) public view returns (string memory)',
       'function punkImageSvg(uint16 index) public view returns (string memory)',
