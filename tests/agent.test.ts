@@ -100,7 +100,7 @@ describe('Metadata Agent', () => {
   xit(`should be able to fetch and parse metadata for PUNKS: ${WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS}`, async () => {
     const resp = await parser.fetchMetadata(
       WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
-      '1',
+      '416',
     )
     expect(resp).toMatchSnapshot()
   })
@@ -586,7 +586,7 @@ describe('Metadata Agent', () => {
         ],
         "contentURL": "https://map.cryptovoxels.com/tile/parcel?x=0.09&y=0.11",
         "contentURLMimeType": "image/png",
-        "description": "234m² parcel near The Center in Origin City, 2m from the origin, with a 9m build height and near to Addy Gardens, Block Fork, Ben Bypass, Buffer Crossing and Angstrom Arcade",
+        "description": "234m² parcel near The Center in Origin City, 2m from the origin, with a 9m build height and floor is at 0m elevation",
         "externalURL": "https://www.cryptovoxels.com/parcels/1",
         "imageURL": "https://map.cryptovoxels.com/tile/parcel?x=0.09&y=0.11",
         "imageURLMimeType": "image/png",
@@ -603,7 +603,7 @@ describe('Metadata Agent', () => {
             "width": 13,
           },
           "background_color": "f3f3f3",
-          "description": "234m² parcel near The Center in Origin City, 2m from the origin, with a 9m build height and near to Addy Gardens, Block Fork, Ben Bypass, Buffer Crossing and Angstrom Arcade",
+          "description": "234m² parcel near The Center in Origin City, 2m from the origin, with a 9m build height and floor is at 0m elevation",
           "external_url": "https://www.cryptovoxels.com/parcels/1",
           "image": "https://map.cryptovoxels.com/tile/parcel?x=0.09&y=0.11",
           "name": "70 Block Fork",
@@ -1294,8 +1294,8 @@ describe('Metadata Agent', () => {
       view in AR mode on mobile
 
       Sculpted in November 2021",
-        "externalURL": "https://foundation.app/@Cryote/~/107855",
-        "imageURL": "https://d1hiserqh6k9o1.cloudfront.net/76/TF/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.png",
+        "externalURL": "https://foundation.app/@Cryote/foundation/107855",
+        "imageURL": "https://ipfs.foundation.app/ipfs/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.png",
         "imageURLMimeType": "image/png",
         "metadata": Object {
           "animation_url": "ipfs://QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.glb",
@@ -1305,7 +1305,7 @@ describe('Metadata Agent', () => {
       view in AR mode on mobile
 
       Sculpted in November 2021",
-          "external_url": "https://foundation.app/@Cryote/~/107855",
+          "external_url": "https://foundation.app/@Cryote/foundation/107855",
           "image": "https://d1hiserqh6k9o1.cloudfront.net/76/TF/QmQULkQrpsZvoN6FixBc1nQmPXpEaW6SrSfmjDvnV976TF/nft.png",
           "name": "Core Surge",
         },
@@ -1331,13 +1331,13 @@ describe('Metadata Agent', () => {
         "contentURLMimeType": "image/jpeg",
         "description": "The last door is here. We have visited 3 dimensions already but we still looking for the perfect one to stay. Is this the light of a new day or it is the one leaving? Is this the one that we've been looking for all along? 
       In this last entry of the series we finally see that after dark there's always a light and that no matter what happens we will find a way out",
-        "externalURL": "https://foundation.app/@AmaurieRaz/~/63253",
+        "externalURL": "https://foundation.app/@AmaurieRaz/foundation/63253",
         "imageURL": "https://ipfs.foundation.app/ipfs/QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
         "imageURLMimeType": "image/jpeg",
         "metadata": Object {
           "description": "The last door is here. We have visited 3 dimensions already but we still looking for the perfect one to stay. Is this the light of a new day or it is the one leaving? Is this the one that we've been looking for all along? 
       In this last entry of the series we finally see that after dark there's always a light and that no matter what happens we will find a way out",
-          "external_url": "https://foundation.app/@AmaurieRaz/~/63253",
+          "external_url": "https://foundation.app/@AmaurieRaz/foundation/63253",
           "image": "ipfs://QmYpdbauWs12W9HDsTeTXKJ1wGL3JeRrCjzLSV56dXzxgp/nft.jpg",
           "name": "Dimensions III",
         },
@@ -1648,6 +1648,7 @@ describe('Metadata Agent', () => {
         ],
         "contentURL": "https://thehumanoids.co/api/img/368.jpg",
         "contentURLMimeType": "image/jpeg",
+        "description": "The Humanoids is a collection of 10,000 unique Humanoids who live on the Ethereum blockchain.",
         "externalURL": "https://thehumanoids.co",
         "imageURL": "https://thehumanoids.co/api/img/368.jpg",
         "imageURLMimeType": "image/jpeg",
@@ -1682,6 +1683,7 @@ describe('Metadata Agent', () => {
               "value": "Bow Tie",
             },
           ],
+          "description": "The Humanoids is a collection of 10,000 unique Humanoids who live on the Ethereum blockchain.",
           "external_url": "https://thehumanoids.co",
           "image": "https://thehumanoids.co/api/img/368.jpg",
           "name": "Humanoid #368",

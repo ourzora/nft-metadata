@@ -1,27 +1,18 @@
 import { isAddressMatch } from '../utils/addresses'
+import { getCID, convertToDesiredGateway } from '../utils/gateway-tools'
 import {
   FOUNDATION_TOKEN_ADDRESS,
   MAKERSPLACE_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
 } from '../constants/addresses'
 
-const IPFSGatewayTools = require('@pinata/ipfs-gateway-tools/dist/node')
-const gatewayTools = new IPFSGatewayTools()
-
 export function isIPFS(uri: string) {
-  const result = gatewayTools.containsCID(uri)
-
-  // TODO - this lib is not working right so hack for now
-  return result.containsCid && (uri.includes('/ipfs/') || hasIpfsPrefix(uri))
-}
-
-export function hasIpfsPrefix(uri: string) {
-  return uri.startsWith('ipfs://')
+  return !!getCID(uri);
 }
 
 export function getIPFSUrl(uri: string, gateway: string) {
-  if (isIPFS(uri)) {
-    return gatewayTools.convertToDesiredGateway(uri, gateway)
+  if (getCID(uri)) {
+    return convertToDesiredGateway(uri, gateway)
   }
   return uri
 }
