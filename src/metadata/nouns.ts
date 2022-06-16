@@ -33,7 +33,7 @@ export async function fetchNounAttributes(
 
   const updates: any = {}
   if (nounsContract === LIL_NOUNS_TOKEN_ADDRESS.homestead) {
-    updates['name'] = `Lil Noun #${tokenId}`
+    updates['name'] = `Lil Noun ${tokenId}`
   }
 
   return {
