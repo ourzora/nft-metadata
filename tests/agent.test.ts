@@ -12,6 +12,8 @@ import {
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   POTION_ART_TOKEN_ADDRESS,
   AUTOGLYPHS_TOKEN_ADDRESS,
+  NOUNS_TOKEN_ADDRESS,
+  LIL_NOUNS_TOKEN_ADDRESS,
 } from '../src/constants/addresses'
 import { Agent } from '../src'
 
@@ -101,6 +103,19 @@ describe('Metadata Agent', () => {
     const resp = await parser.fetchMetadata(
       WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS.homestead,
       '416',
+    )
+    expect(resp).toMatchSnapshot()
+  })
+
+  it('should handle nouns', async () => {
+    const resp = await parser.fetchMetadata(NOUNS_TOKEN_ADDRESS.homestead, '23')
+    expect(resp).toMatchSnapshot()
+  })
+
+  it('should handle lil nouns', async () => {
+    const resp = await parser.fetchMetadata(
+      LIL_NOUNS_TOKEN_ADDRESS.homestead,
+      '23',
     )
     expect(resp).toMatchSnapshot()
   })

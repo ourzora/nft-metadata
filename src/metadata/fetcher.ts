@@ -3,7 +3,9 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import {
   AUTOGLYPHS_TOKEN_ADDRESS,
   HASHMASKS_TOKEN_ADDRESS,
+  LIL_NOUNS_TOKEN_ADDRESS,
   LOOT_TOKEN_ADDRESS,
+  NOUNS_TOKEN_ADDRESS,
   PUNKS_DATA_CONTRACT,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   ZORA_TOKEN_ADDRESS,
@@ -14,6 +16,7 @@ import { fetchHashmaskMeta } from './hashmasks'
 import { fetchLootMeta } from './loot'
 import { fetchPunkAttributes } from './punks'
 import { fetchAutoglyphsMeta } from './autoglyphs'
+import { fetchNounAttributes } from './nouns'
 
 export function fetchOnChainData(
   networkName: string,
@@ -28,9 +31,15 @@ export function fetchOnChainData(
     return fetchHashmaskMeta(tokenAddress, tokenId, provider)
   }
   if (
+    isAddressMatch(networkName, tokenAddress, NOUNS_TOKEN_ADDRESS) ||
+    isAddressMatch(networkName, tokenAddress, LIL_NOUNS_TOKEN_ADDRESS)
+  ) {
+    return fetchNounAttributes(tokenAddress, tokenId, provider)
+  }
+  if (
     isAddressMatch(networkName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
   ) {
-    const punksDataContract = (PUNKS_DATA_CONTRACT as any)[networkName];
+    const punksDataContract = (PUNKS_DATA_CONTRACT as any)[networkName]
     return fetchPunkAttributes(punksDataContract, tokenId, provider)
   }
   if (isAddressMatch(networkName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
