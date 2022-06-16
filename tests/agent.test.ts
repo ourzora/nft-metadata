@@ -107,12 +107,12 @@ describe('Metadata Agent', () => {
     expect(resp).toMatchSnapshot()
   })
 
-  fit('should handle nouns', async () => {
+  it('should handle nouns', async () => {
     const resp = await parser.fetchMetadata(NOUNS_TOKEN_ADDRESS.homestead, '23')
     expect(resp).toMatchSnapshot()
   })
 
-  fit('should handle lil nouns', async () => {
+  it('should handle lil nouns', async () => {
     const resp = await parser.fetchMetadata(
       LIL_NOUNS_TOKEN_ADDRESS.homestead,
       '23',
